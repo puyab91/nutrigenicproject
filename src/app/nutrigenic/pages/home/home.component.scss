@@ -3,6 +3,13 @@
   display: flex;
   max-height: 350px;
 }
+@media screen and (min-width: 1700px) {
+  .baseContainer {
+    position: relative;
+    display: flex;
+    max-height: 550px;
+  }
+}
 
 .overlay {
   position: absolute;
@@ -57,26 +64,40 @@
 }
 
 .leftDish {
-  width: 18%;
-  min-width: 18%;
+  width: 90%;
+  min-width: 90%;
   height: auto;
   //margin-top: 0rem !important;
   display: block;
 }
 
-.rightDish {
-  width: 15%;
-  min-width: 15%;
-  //margin-top: 3rem;
-  height: auto;
-  display: block;
-  padding-top: 150px;
+.curved-line{
+  width: 2px;
+  height: 100px; /* Adjust height as needed */
+  background-color: black;
+  position: relative;
 }
 
-.flex-grow-1 {
-  flex-grow: 1;
-  /* Allow the placeholder div to grow and push the right image to the right */
+.curved-line:before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  height: 2px; /* Adjust thickness of the curve */
+  background-color: black;
+  border-radius: 50%;
 }
+.rightDish {
+  width: 90%;
+  min-width: 90%;
+  right: 0px;
+  margin-top: 3rem;  
+  height: auto;
+  display: block;
+  //padding-top: 150px;
+}
+
 
 .mx-10 {
   margin-left: 10rem;
