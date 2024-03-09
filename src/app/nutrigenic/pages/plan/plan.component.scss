@@ -1,0 +1,14 @@
+ul li::marker {
+    //content: '•'; /* Use a bullet character */
+    color: #EF870A; /* Change the color of the bullet */
+    margin-right: 0.5em; /* Adjust spacing between bullet and text */
+    font-size: 1.3rem;
+  }
+
+
+.btn-plan {
+    align-items: center;
+    background-color: #EF870A !important;
+    border: none;
+    border-radius: 25px;
+  }

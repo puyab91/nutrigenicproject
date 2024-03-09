@@ -7,13 +7,15 @@ import {MenubarModule} from 'primeng/menubar';
 import { HomeComponent } from './pages/home/home.component';
 import { DividerModule } from 'primeng/divider';
 import {CarouselModule} from 'primeng/carousel';
+import { PlanComponent } from './pages/plan/plan.component';
 
 
 @NgModule({
     declarations: [
         NutrigenicComponent,
         HeaderComponent,
-        HomeComponent
+        HomeComponent,
+        PlanComponent
     ],
     imports: [
         CommonModule,

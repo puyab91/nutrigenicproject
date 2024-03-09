@@ -15,6 +15,7 @@ export class HomeComponent {
     selectedMasterTab: string | null = 'Home';
     comments: any = [];
     responsiveOptions: any[] = [];
+    images: string[] = [];
     constructor() {
     }
     ngOnInit() {
@@ -65,6 +66,20 @@ export class HomeComponent {
             {stars: 5, time: '2 days ago', title: 'Best on the market', description: 'i love this product i love this product', user: 'worldTraveler'},
         ];
 
+        this.images = [
+            'assets/images/Ouichef.png',
+            'assets/images/TH_Main.png',
+            'assets/images/Salvo.png',
+            'assets/images/clorence.png',
+            'assets/images/Ouichef.png',
+            'assets/images/TH_Main.png',
+            'assets/images/Salvo.png',
+            'assets/images/clorence.png',
+            'assets/images/Ouichef.png',
+            'assets/images/TH_Main.png',
+            'assets/images/Salvo.png',
+            'assets/images/clorence.png',
+  ];
         this.responsiveOptions = [
             {
                 breakpoint: '1024px',
@@ -85,7 +100,6 @@ export class HomeComponent {
     }
 
     onItemClick(item: any): void {
-        debugger;
         this.selectedMasterTab = item.label;
     }
 }

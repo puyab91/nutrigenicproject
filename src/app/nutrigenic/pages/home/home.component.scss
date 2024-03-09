@@ -3,6 +3,7 @@
   display: flex;
   max-height: 350px;
 }
+
 @media screen and (min-width: 1700px) {
   .baseContainer {
     position: relative;
@@ -29,9 +30,20 @@
   width: 25%;
   padding: 10px;
   z-index: 1;
-  font-family: Prompt;
   font-size: 1.3rem;
   font-weight: bold;
+  text-align: left;
+}
+
+.getStartButton {
+  align-items: center;
+  background-color: #EF870A !important;
+  border: none;
+  border-radius: 10px;
+}
+
+.fs08 {
+  font-size: 0.8rem;
 }
 
 .imgMain {
@@ -60,42 +72,28 @@
 .d-flex {
   display: flex;
   align-items: center;
-  /* Align flex items vertically */
 }
 
 .leftDish {
   width: 90%;
   min-width: 90%;
   height: auto;
-  //margin-top: 0rem !important;
   display: block;
 }
 
-.curved-line{
-  width: 2px;
-  height: 100px; /* Adjust height as needed */
-  background-color: black;
-  position: relative;
+.leftDish img {
+  width: 35%;
+  height: 20%;
 }
 
-.curved-line:before {
-  content: '';
-  position: absolute;
-  top: 50%;
-  left: 0;
-  width: 100%;
-  height: 2px; /* Adjust thickness of the curve */
-  background-color: black;
-  border-radius: 50%;
-}
 .rightDish {
   width: 90%;
   min-width: 90%;
   right: 0px;
-  margin-top: 3rem;  
+  margin-top: 3rem;
   height: auto;
   display: block;
-  //padding-top: 150px;
+  margin-top: 50%;
 }
 
 
@@ -107,9 +105,12 @@
 .secondDiv {
   padding: 20px;
   position: absolute;
-  /* Position the second div absolutely */
   width: 100%;
-  /* Occupy the full width of the container */
+  margin-top: -5%;
+  border-radius: 15%;
+  background-color: white;
+  text-align: center;
+  z-index: 2;
 }
 
 .user-icon {
@@ -127,11 +128,7 @@
 }
 
 .partner-icon {
-  display: flex;
   align-items: center;
-  margin-right: 20px;
-  margin-left: 20px;
-  min-width: 50px;
 }
 
 .partner-icon img {
@@ -151,11 +148,28 @@
   text-align: -webkit-center;
 }
 
+.mastrPlan button {
+  min-width: 115px;
+  align-items: center;
+  background-color: white;
+  border: solid 1px #d7d7de;
+  border-radius: 30px;
+  color: #5D5D66;
+}
+
 .templateStyles {
   flex-wrap: wrap;
   display: flex;
   justify-content: center;
 }
+
+.commentStars {
+  width: 20px;
+  height: 20px;
+  background-color: #219653;
+  margin-right: 0.1rem;
+}
+
 .responsiveWidth {
   width: 90%;
   justify-content: center;
@@ -172,11 +186,39 @@
   text-align: -webkit-center;
 }
 
+.helpButton {
+  align-items: center;
+  background-color: #EF870A;
+  border: none;
+  border-radius: 10px;
+  padding: 0.5rem;
+
+}
+
 .horizontal-menu {
   list-style-type: none;
   padding: 0;
   margin: 0;
 }
+
+.socialIcons {
+  max-width: 18px;
+  min-height: 18px;
+  margin: auto;
+}
+
+.masterPlanCard {
+  min-width: 45% !important;
+  max-width: 45% !important;
+}
+
+.masterPlanImg {
+  min-width: 120px;
+  max-width: 140px;
+  max-height: 140px;
+  min-height: 120px;
+}
+
 
 .horizontal-menu li {
   display: inline-block;
