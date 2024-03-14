@@ -1,0 +1,40 @@
+name: Deploy to VPS
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    types:
+      - closed
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18.10.0'
+      - name: Install dependencies
+        run: |
+          npm install
+
+      - name: Build the app
+        run: |
+          npm run build
+          npm run lint
+
+      - name: Copy artifacts to VPS
+        uses: appleboy/scp-action@master
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          key: ${{ secrets.SSHKEY }}
+          port: ${{ secrets.PORT }}
+          source: "production/"
+          target: "/var/www/html/nutrigenic-frontend"
