@@ -8,14 +8,18 @@ import { HomeComponent } from './pages/home/home.component';
 import { DividerModule } from 'primeng/divider';
 import {CarouselModule} from 'primeng/carousel';
 import { PlanComponent } from './pages/plan/plan.component';
+import { FooterComponent } from './layout/components/footer/footer.component';
+import { AboutUsComponent } from './pages/about-us/about-us.component';
 
 
 @NgModule({
     declarations: [
         NutrigenicComponent,
         HeaderComponent,
+        FooterComponent,
         HomeComponent,
-        PlanComponent
+        PlanComponent,
+        AboutUsComponent
     ],
     imports: [
         CommonModule,

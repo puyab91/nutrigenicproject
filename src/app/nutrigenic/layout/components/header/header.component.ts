@@ -20,7 +20,7 @@ export class HeaderComponent {
             },
             {
                 label: 'About us',
-                command: () => this.onItemClick({ label: 'About us' })
+                command: () => this.onItemClick({ label: 'About Us' })
             },
             {
                 label: 'Blog',
@@ -55,10 +55,16 @@ export class HeaderComponent {
 
     onItemClick(item: any): void {
         this.selectedItem = item.label;
-        this.router
-        .navigate(['/' + item.label])
-        .then(() => {})
-        .catch(() => {});
+        if (item.label == 'About us')
+            this.router
+                .navigate(['/AboutUs'])
+                .then(() => { })
+                .catch(() => { });
+        else
+            this.router
+                .navigate(['/' + item.label])
+                .then(() => { })
+                .catch(() => { });
     }
 
 
