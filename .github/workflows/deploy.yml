@@ -27,7 +27,6 @@ jobs:
       - name: Build the app
         run: |
           npm run build
-          
 
       - name: Copy artifacts to VPS
         uses: appleboy/scp-action@master
