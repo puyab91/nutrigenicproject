@@ -10,6 +10,8 @@ import {CarouselModule} from 'primeng/carousel';
 import { PlanComponent } from './pages/plan/plan.component';
 import { FooterComponent } from './layout/components/footer/footer.component';
 import { AboutUsComponent } from './pages/about-us/about-us.component';
+import { BlogComponent } from './pages/blog/blog.component';
+import { BlogDetailComponent } from './pages/blog/blog-detail/blog-detail.component';
 
 
 @NgModule({
@@ -19,7 +21,9 @@ import { AboutUsComponent } from './pages/about-us/about-us.component';
         FooterComponent,
         HomeComponent,
         PlanComponent,
-        AboutUsComponent
+        AboutUsComponent,
+        BlogComponent,
+        BlogDetailComponent
     ],
     imports: [
         CommonModule,
