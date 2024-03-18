@@ -1,14 +1,14 @@
 <div class="web-center">
     <div class="position-relative">
-        <div class="z-2 position-absolute fw-bold fs-4" style="margin-left: 45%;
+        <div class="position-absolute fw-bold fs-4" style="margin-left: 45%;
         margin-top: 100px;">
             On our blog
         </div>
-        <div class="w-100 z-1" style="margin-bottom: -20%;">
+        <div class="w-100">
             <img class="w-100" src="../../../../assets/images/blog-top.png" />
         </div>
     </div>
-    <div style="margin-top: 270px;">
+    <div class="mt-5">
         <button *ngFor="let item of tabItems"
             [style.background-color]="selectedMasterTab === item ? '#dfdfef' : 'white'"
             (click)="selectedMasterTab = item" class="btn btn-primary mt-2 mx-2 categoriesButton">
