@@ -11,6 +11,9 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    
+    env:
+      TERM: xterm
 
     steps:
       - name: Checkout code
