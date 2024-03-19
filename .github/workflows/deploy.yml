@@ -37,3 +37,4 @@ jobs:
           port: ${{ secrets.PORT }}
           source: "production/"
           target: "/var/www/html/nutrigenic-frontend"
+          strip_components: 2
