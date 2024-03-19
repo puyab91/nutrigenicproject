@@ -38,5 +38,5 @@ jobs:
           source: "production/"
           target: "/var/www/html/nutrigenic-frontend"
           rm: true
-          strip_components: 2
+          strip_components: 1
           overwrite: true
