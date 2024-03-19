@@ -34,9 +34,9 @@ jobs:
         with:
           ssh-private-key: ${{ secrets.SSHKEY }}
 
-      - name: Remove and recreate target directory on VPS
+      - name: Remove existing files inside target directory on VPS
         run: |
-          ssh -o StrictHostKeyChecking=no ${{ secrets.USERNAME }}@${{ secrets.HOST }} -p ${{ secrets.PORT }} 'rm -rf /var/www/html/nutrigenic-frontend && mkdir -p /var/www/html/nutrigenic-frontend'
+          ssh -o StrictHostKeyChecking=no ${{ secrets.USERNAME }}@${{ secrets.HOST }} -p ${{ secrets.PORT }} 'rm -rf /var/www/html/nutrigenic-frontend/*'
 
       - name: Copy artifacts to VPS
         run: |
