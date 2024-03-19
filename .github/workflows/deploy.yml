@@ -35,5 +35,8 @@ jobs:
           username: ${{ secrets.USERNAME }}
           key: ${{ secrets.SSHKEY }}
           port: ${{ secrets.PORT }}
-          script: |
-           scp -r production user@host:/var/www/html/nutrigenic-frontend
+          source: "production/"
+          target: "/var/www/html/nutrigenic-frontend"
+          rm: true
+          strip_components: 2
+          overwrite: true
