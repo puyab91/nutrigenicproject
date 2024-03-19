@@ -29,11 +29,15 @@ jobs:
         run: |
           npm run build
 
-      - name: Setup SSH and Deploy
+      - name: SSH Agent Setup
+        uses: webfactory/ssh-agent@v0.5.3
+        with:
+          ssh-private-key: ${{ secrets.SSHKEY }}
+
+      - name: Remove and recreate target directory on VPS
         run: |
-          mkdir -p ~/.ssh
-          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
-          chmod 600 ~/.ssh/id_rsa
-          ssh-keyscan -H ${{ secrets.HOST }} >> ~/.ssh/known_hosts
-          ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa ${{ secrets.USERNAME }}@${{ secrets.HOST }} -p ${{ secrets.PORT }} 'rm -rf /var/www/html/nutrigenic-frontend && mkdir -p /var/www/html/nutrigenic-frontend'
-          scp -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa -P ${{ secrets.PORT }} -r production/ ${{ secrets.USERNAME }}@${{ secrets.HOST }}:/var/www/html/nutrigenic-frontend
+          ssh -o StrictHostKeyChecking=no ${{ secrets.USERNAME }}@${{ secrets.HOST }} -p ${{ secrets.PORT }} 'rm -rf /var/www/html/nutrigenic-frontend && mkdir -p /var/www/html/nutrigenic-frontend'
+
+      - name: Copy artifacts to VPS
+        run: |
+          scp -o StrictHostKeyChecking=no -P ${{ secrets.PORT }} -r production/ ${{ secrets.USERNAME }}@${{ secrets.HOST }}:/var/www/html/nutrigenic-frontend
