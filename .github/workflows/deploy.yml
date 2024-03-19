@@ -43,4 +43,4 @@ jobs:
 
       - name: Copy artifacts to VPS
         run: |
-          scp -o StrictHostKeyChecking=no -P ${{ secrets.PORT }} -r production/ ${{ secrets.USERNAME }}@${{ secrets.HOST }}:/var/www/html/nutrigenic-frontend
+          scp -o StrictHostKeyChecking=no -P ${{ secrets.PORT }} -i ~/.ssh/id_rsa -r production/* ${{ secrets.USERNAME }}@${{ secrets.HOST }}:/var/www/html/nutrigenic-frontend
