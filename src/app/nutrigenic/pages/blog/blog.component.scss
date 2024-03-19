@@ -6,3 +6,15 @@
     border-radius: 30px;
     color: #5D5D66;
 }
+
+@media screen and (min-width: 1700px) {
+    .responsiveFont {
+      font-size: 1.4rem;
+    }
+  }
+  
+  @media screen and (max-width: 1699px) {
+    .responsiveFont {
+      font-size: 1rem;
+    }
+  }
