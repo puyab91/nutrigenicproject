@@ -13,6 +13,8 @@ export class HeaderComponent {
     items: MenuItem[] = [];
     constructor(private router: Router) { }
     ngOnInit(): void {
+        this.selectedItem = this.router.url.replace('/','') == 'AboutUs' ? 'About us' : this.router.url.replace('/','');
+
         this.items = [
             {
                 label: 'Home',
