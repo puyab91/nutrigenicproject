@@ -11,6 +11,9 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    
+    env:
+      TERM: xterm
 
     steps:
       - name: Checkout code
@@ -19,7 +22,8 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '18.10.0'
+          node-version: '18'
+
       - name: Install dependencies
         run: |
           npm install
@@ -28,12 +32,15 @@ jobs:
         run: |
           npm run build
 
-      - name: Copy artifacts to VPS
-        uses: appleboy/scp-action@master
+      - name: SSH Agent Setup
+        uses: webfactory/ssh-agent@v0.5.3
         with:
-          host: ${{ secrets.HOST }}
-          username: ${{ secrets.USERNAME }}
-          key: ${{ secrets.SSHKEY }}
-          port: ${{ secrets.PORT }}
-          source: "production/"
-          target: "/var/www/html/nutrigenic-frontend"
+          ssh-private-key: ${{ secrets.SSHKEY }}
+
+      - name: Remove existing files inside target directory on VPS
+        run: |
+          ssh -o StrictHostKeyChecking=no ${{ secrets.USERNAME }}@${{ secrets.HOST }} -p ${{ secrets.PORT }} 'rm -rf /var/www/html/nutrigenic-frontend/*'
+
+      - name: Copy artifacts to VPS
+        run: |
+          scp -o StrictHostKeyChecking=no -P ${{ secrets.PORT }} -r production/* ${{ secrets.USERNAME }}@${{ secrets.HOST }}:/var/www/html/nutrigenic-frontend
