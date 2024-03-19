@@ -5,6 +5,7 @@
     border: solid 1px #d7d7de;
     border-radius: 30px;
     color: #5D5D66;
+    padding: 1rem;
 }
 
 .categoriesButton{
@@ -19,6 +20,12 @@
 @media screen and (min-width: 1700px) {
     .responsiveFont {
       font-size: 1.7rem;
+      font-weight: 300;
+    }
+
+    .responsiveTextFont {
+      font-size: 1.4rem;
+      font-weight: 300;
     }
 
     .responsiveCardFont {
@@ -28,7 +35,13 @@
   
   @media screen and (max-width: 1699px) {
     .responsiveFont {
+      font-size: 1.3rem;
+      font-weight: 300;
+    }
+
+    .responsiveTextFont {
       font-size: 1rem;
+      font-weight: 300;
     }
 
   }

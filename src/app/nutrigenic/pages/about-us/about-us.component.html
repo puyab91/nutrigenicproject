@@ -3,8 +3,8 @@
         <div class="row">
             <div class="col-md-8 web-left">
                 <div>
-                    <div class="fs-3">ABOUT US</div>
-                    <div class="responsiveFont fm-rubik" style="width: 85%;">
+                    <div class="fs-3 text-black">ABOUT US</div>
+                    <div class="responsiveFont fm-rubik mt-3" style="width: 85%;">
                         At NutriGenic, we are committed to transforming the meal delivery experience with a focus on
                         <span class="fw-bold">excellence</span> and <span class="fw-bold">innovation</span>. Our mission
                         is to provide a culinary journey <span class="fw-bold">unlike any other</span>,
@@ -54,9 +54,9 @@
         </div>
     </div>
     <div class="secondDiv">
-        <p class="mt-4 fs-3">CORE VALUES</p>
-        <div class="web-center">
-            <div *ngFor="let item of coreValues" class="d-flex mt-3 web-left coreValuesmargin fm-rubik" style="width: 65%;opacity: 1;"
+        <p class="mt-4 fs-3 text-black">CORE VALUES</p>
+        <div class="web-center mt-5">
+            <div *ngFor="let item of coreValues" class="d-flex mt-3 web-left coreValuesmargin fm-rubik" style="width: 65%;opacity: 1;cursor: pointer;"
                 (mouseover)="hoveredCoreValue = item.title" (mouseout)="hoveredCoreValue = null"
                 [style.opacity]="hoveredCoreValue === item.title ? '1' : (hoveredCoreValue === null ? '1' : '0.3')">
                 <img [src]="item.imgUrl" style="width: 80px;height: 80px;border-radius: 50%;" alt="">
@@ -76,8 +76,8 @@
     </div>
     <div class="w-75 row ourFounderMargin">
         <div class="col-md-8 web-left">
-            <div class="fs-3">OUR FOUNDER</div>
-            <div class="mt-2 responsiveFont fm-rubik">Our culinary journey began with the vision of our passionate founder,
+            <div class="fs-3 text-black">OUR FOUNDER</div>
+            <div class="mt-3 responsiveFont fm-rubik">Our culinary journey began with the vision of our passionate founder,
                 Taoufik Hannachi, an accomplished professional chef with 18 years of
                 experience in the culinary world. His culinary expertise and dedication to
                 crafting exceptional meals form the cornerstone of our mission. Inspired by
@@ -134,7 +134,7 @@
         </div>
     </div>
     <div class="w-50 mt-5">
-        <div class="fs-3">
+        <div class="fs-3 text-black">
             OUR TEAM
         </div>
         <div class="web-left mt-5 responsiveFont fm-rubik">
