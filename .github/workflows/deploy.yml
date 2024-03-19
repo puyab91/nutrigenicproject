@@ -36,4 +36,4 @@ jobs:
           key: ${{ secrets.SSHKEY }}
           port: ${{ secrets.PORT }}
           script: |
-           scp -r production/ user@host:/var/www/html/nutrigenic-frontend
+           scp -r production user@host:/var/www/html/nutrigenic-frontend
