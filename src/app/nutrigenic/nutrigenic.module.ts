@@ -12,6 +12,7 @@ import { FooterComponent } from './layout/components/footer/footer.component';
 import { AboutUsComponent } from './pages/about-us/about-us.component';
 import { BlogComponent } from './pages/blog/blog.component';
 import { BlogDetailComponent } from './pages/blog/blog-detail/blog-detail.component';
+import { DialogModule } from 'primeng/dialog';
 
 
 @NgModule({
@@ -30,7 +31,8 @@ import { BlogDetailComponent } from './pages/blog/blog-detail/blog-detail.compon
         NutrigenicRoutingModule,
         MenubarModule,
         DividerModule,
-        CarouselModule
+        CarouselModule,
+        DialogModule
     ],
     exports: [],
     providers: [

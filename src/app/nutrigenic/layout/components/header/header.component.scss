@@ -71,3 +71,24 @@
     font-family: Prompt;
     font-size: 1.3rem;
 }
+
+.input-promo {
+    border-radius: 8px;
+    border: none;
+    background-color: #F0F4F8 !important;
+  }
+
+::ng-deep .p-dialog .p-dialog-header {
+    border-bottom: 0 none;
+    background: #ffffff;
+    color: #343a40;
+    padding: 0.5rem;
+    border-top-right-radius: 6px;
+    border-top-left-radius: 6px;
+}
+
+::ng-deep .p-dialog .p-dialog-content {
+    background: #ffffff;
+    color: #495057;
+    padding: 0 0.5rem 1rem 0.5rem;
+}

@@ -11,6 +11,9 @@ export class HeaderComponent {
     menuItems = ['Home', 'About us', 'Blog', 'Plans', 'Our shop'];
     selectedItem: string | null = 'Home';
     items: MenuItem[] = [];
+    loginPopupVisibility = false;
+    signUpPopupVisibility = false;
+
     constructor(private router: Router) { }
     ngOnInit(): void {
         this.selectedItem = this.router.url.replace('/','') == 'AboutUs' ? 'About us' : this.router.url.replace('/','');
@@ -69,5 +72,18 @@ export class HeaderComponent {
                 .catch(() => { });
     }
 
+    loginPopupManager(){
+        this.loginPopupVisibility = !this.loginPopupVisibility;
+    }
+
+    signUpLinkToSignIn(){
+        this.signUpPopupVisibility = false;
+        this.loginPopupVisibility = true;
+    }
+
+    signInLinkToSignUp(){
+        this.loginPopupVisibility = false; 
+        this.signUpPopupVisibility = true;
+    }
 
 }
