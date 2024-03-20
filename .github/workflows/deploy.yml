@@ -39,8 +39,8 @@ jobs:
 
       - name: Remove existing files inside target directory on VPS
         run: |
-          ssh -o StrictHostKeyChecking=no ${{ secrets.USERNAME }}@${{ secrets.HOST }} -p ${{ secrets.PORT }} 'rm -rf /var/www/html/nutrigenic-frontend/*'
+          ssh -o StrictHostKeyChecking=no ${{ secrets.USERNAME }}@${{ secrets.HOST }} -p ${{ secrets.PORT }} 'rm -rf /var/www/html/nutrigenicproject/*'
 
       - name: Copy artifacts to VPS
         run: |
-          scp -o StrictHostKeyChecking=no -P ${{ secrets.PORT }} -r production/* ${{ secrets.USERNAME }}@${{ secrets.HOST }}:/var/www/html/nutrigenic-frontend
+          scp -o StrictHostKeyChecking=no -P ${{ secrets.PORT }} -r production/* ${{ secrets.USERNAME }}@${{ secrets.HOST }}:/var/www/html/nutrigenicproject
