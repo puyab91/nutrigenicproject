@@ -44,7 +44,7 @@ jobs:
       - name: Create directory on VPS
         run: |
           export TERM=xterm
-          ssh -o StrictHostKeyChecking=no ${{ secrets.USERNAME }}@${{ secrets.HOST }} -p ${{ secrets.PORT }} 'sudo mkdir -p /var/www/html/nutrigenic-frontend'
+          ssh -o StrictHostKeyChecking=no ${{ secrets.USERNAME }}@${{ secrets.HOST }} -p ${{ secrets.PORT }} 'mkdir -p /var/www/html/nutrigenic-frontend'
 
       - name: Copy artifacts to VPS
         run: |
