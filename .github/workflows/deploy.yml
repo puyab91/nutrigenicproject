@@ -36,6 +36,10 @@ jobs:
         uses: webfactory/ssh-agent@v0.5.3
         with:
           ssh-private-key: ${{ secrets.SSHKEY }}
+      - name: Create directory on VPS (if not exists)
+        run: |
+          export TERM=xterm
+          ssh -o StrictHostKeyChecking=no ${{ secrets.USERNAME }}@${{ secrets.HOST }} -p ${{ secrets.PORT }} '[ -d "/home/rcgcrzd20ttm/public_html" ] || sudo mkdir -p /home/rcgcrzd20ttm/public_html'
 
       - name: Remove existing files inside target directory on VPS
         run: |
