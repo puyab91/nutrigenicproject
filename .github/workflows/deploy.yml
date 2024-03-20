@@ -39,13 +39,8 @@ jobs:
 
       - name: Remove existing files inside target directory on VPS
         run: |
-          ssh -o StrictHostKeyChecking=no ${{ secrets.USERNAME }}@${{ secrets.HOST }} -p ${{ secrets.PORT }} 'sudo rm -rf /home/rcgcrzd20ttm/public_html/*'
-
-      - name: Create directory on VPS
-        run: |
-          export TERM=xterm
-          ssh -o StrictHostKeyChecking=no ${{ secrets.USERNAME }}@${{ secrets.HOST }} -p ${{ secrets.PORT }} 'sudo mkdir -p /home/rcgcrzd20ttm/public_html'
-
+          ssh -o StrictHostKeyChecking=no ${{ secrets.USERNAME }}@${{ secrets.HOST }} -p ${{ secrets.PORT }} 'rm -rf /home/rcgcrzd20ttm/public_html/*'
+          
       - name: Copy artifacts to VPS
         run: |
           scp -o StrictHostKeyChecking=no -P ${{ secrets.PORT }} -r production/* ${{ secrets.USERNAME }}@${{ secrets.HOST }}:/home/rcgcrzd20ttm/public_html
