@@ -92,3 +92,8 @@
     color: #495057;
     padding: 0 0.5rem 1rem 0.5rem;
 }
+
+ ::ng-deep .p-dialog {
+    z-index: 1001 !important;
+    filter: none;
+  }

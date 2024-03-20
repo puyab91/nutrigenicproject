@@ -54,3 +54,9 @@ a {
 .fm-prompt-bold{
   font-family: Prompt-Bold;
 }
+
+.p-dialog-blur {
+  filter: blur(5px); 
+  pointer-events: none;
+  scroll-behavior: unset;
+}

@@ -16,7 +16,7 @@ export class HeaderComponent {
 
     constructor(private router: Router) { }
     ngOnInit(): void {
-        this.selectedItem = this.router.url.replace('/','') == 'AboutUs' ? 'About us' : this.router.url.replace('/','');
+        this.selectedItem = this.router.url.replace('/', '') == 'AboutUs' ? 'About us' : this.router.url.replace('/', '');
 
         this.items = [
             {
@@ -72,18 +72,35 @@ export class HeaderComponent {
                 .catch(() => { });
     }
 
-    loginPopupManager(){
+    loginPopupManager() {
         this.loginPopupVisibility = !this.loginPopupVisibility;
+        this.handleBlurFilter();
     }
 
-    signUpLinkToSignIn(){
+    signUpLinkToSignIn() {
         this.signUpPopupVisibility = false;
         this.loginPopupVisibility = true;
+        this.handleBlurFilter();
     }
 
-    signInLinkToSignUp(){
-        this.loginPopupVisibility = false; 
+    signInLinkToSignUp() {
+        this.loginPopupVisibility = false;
         this.signUpPopupVisibility = true;
+        this.handleBlurFilter();
     }
 
+    onDialogHide() {
+        this.handleBlurFilter();
+    }
+
+    handleBlurFilter() {
+        if (this.loginPopupVisibility || this.signUpPopupVisibility) {
+            document.getElementById('layoutHome')?.classList.add('p-dialog-blur');
+            document.getElementById('layoutHeader')?.classList.add('p-dialog-blur');
+        }
+        else {
+            document.getElementById('layoutHome')?.classList.remove('p-dialog-blur');
+            document.getElementById('layoutHeader')?.classList.remove('p-dialog-blur');
+        }
+    }
 }
