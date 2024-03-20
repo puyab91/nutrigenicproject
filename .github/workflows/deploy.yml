@@ -30,7 +30,7 @@ jobs:
 
       - name: Build the app
         run: |
-          npm run build -- --prod
+          npm run build
 
       - name: SSH Agent Setup
         uses: webfactory/ssh-agent@v0.5.3
