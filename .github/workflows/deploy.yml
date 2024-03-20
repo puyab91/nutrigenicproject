@@ -30,7 +30,7 @@ jobs:
 
       - name: Build the app
         run: |
-          npm run build
+          npm run build -- --prod
 
       - name: SSH Agent Setup
         uses: webfactory/ssh-agent@v0.5.3
@@ -39,13 +39,13 @@ jobs:
 
       - name: Remove existing files inside target directory on VPS
         run: |
-          ssh -o StrictHostKeyChecking=no ${{ secrets.USERNAME }}@${{ secrets.HOST }} -p ${{ secrets.PORT }} 'sudo rm -rf /var/www/html/nutrigenic-frontend/*'
+          ssh -o StrictHostKeyChecking=no ${{ secrets.USERNAME }}@${{ secrets.HOST }} -p ${{ secrets.PORT }} 'sudo rm -rf /home/rcgcrzd20ttm/public_html/*'
 
       - name: Create directory on VPS
         run: |
           export TERM=xterm
-          ssh -o StrictHostKeyChecking=no ${{ secrets.USERNAME }}@${{ secrets.HOST }} -p ${{ secrets.PORT }} 'sudo mkdir -p /var/www/html/nutrigenic-frontend'
+          ssh -o StrictHostKeyChecking=no ${{ secrets.USERNAME }}@${{ secrets.HOST }} -p ${{ secrets.PORT }} 'sudo mkdir -p /home/rcgcrzd20ttm/public_html'
 
       - name: Copy artifacts to VPS
         run: |
-          scp -o StrictHostKeyChecking=no -P ${{ secrets.PORT }} -r production/* ${{ secrets.USERNAME }}@${{ secrets.HOST }}:/var/www/html/nutrigenic-frontend
+          scp -o StrictHostKeyChecking=no -P ${{ secrets.PORT }} -r production/* ${{ secrets.USERNAME }}@${{ secrets.HOST }}:/home/rcgcrzd20ttm/public_html
