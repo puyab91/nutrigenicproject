@@ -9,7 +9,7 @@ on:
       - closed
 
 jobs:
-  checkout-code:
+  deploy:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
