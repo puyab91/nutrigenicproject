@@ -1,4 +1,4 @@
-name: Deploy to VPS E
+name: Deploy to VPS EE
 
 on:
   push:
