@@ -29,15 +29,12 @@ jobs:
       - name: Build the app
         run: npm run build
 
-      - name: Install SSHpass
-        run: sudo apt-get install sshpass -y
-
       - name: Copy artifacts to VPS
         uses: appleboy/scp-action@master
         with:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME }}
-          key: ${{ secrets.SSHKEY }}
+          password: ${{ secrets.PASSWORD }}
           port: ${{ secrets.PORT }}
           source: "production/"
           target: "/var/www/html/nutrigenic-frontend"
