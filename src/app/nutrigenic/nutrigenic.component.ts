@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-nutrigenic',
@@ -8,6 +9,12 @@ import { Component } from '@angular/core';
 export class NutrigenicComponent {
   underConstruction: boolean = true;
   
+  constructor(private router: Router){
+    this.router
+    .navigate(['/Home'])
+    .then(() => { })
+    .catch(() => { });
+  }
     get containerClass(): any {
         return {
           'layout-theme-light': 'light',
