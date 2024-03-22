@@ -3,14 +3,14 @@
         <div class="row">
             <div class="col-md-3 adaptiveImgHeight">
                 <div class="textbox">
-                    <span class="text-black">Exquisitely crafted meals</span>
+                    <span class="text-black" style="color: #2C2C30;">Exquisitely crafted meals</span>
                     <br />
-                    <span class="text-black"> made of exemplary ingredients</span>
+                    <span class="text-black"  style="color: #2C2C30;"> made of exemplary ingredients</span>
                     <br />
-                    <span class="fs08 text-black" style="font-weight: 100;">and delivered to your home or place of
+                    <span class="fs08 text-black" style="font-weight: 100;color: #2C2C30;">and delivered to your home or place of
                         work</span>
                     <br />
-                    <button class="btn btn-primary mt-2 fw-bold getStartButton fm-rubik-bold">
+                    <button class="btn btn-primary mt-4 fw-bold getStartButton fm-rubik-bold">
                         <span>Get started</span>
                         <i class="pi pi-arrow-right text-white arrow-icon"></i>
                     </button>
@@ -37,16 +37,16 @@
                 </div>
             </div>
             <div class="col-md-7">
-                <div class="w-75 web-left ourMission fm-rubik">
-                    <span class="fs-3 text-black">OUR MISSION</span>
-                    <p>
+                <div class="w-75 web-left ourMission">
+                    <span class="fs-3 fm-prompt" style="color: #2C2C30;font-weight: 500;">OUR MISSION</span>
+                    <p class="mt-3 fm-rubik" style="color: #848790;font-weight: 600;">
                         We are dedicated to revolutionising the meal delivery experience<br /> by offering exquisitely
                         crafted
                         high
                         quality
                         meals developed by<br /> executive chefs renowned in the culinary world.
                     </p>
-                    <p class="mt-4">
+                    <p class="mt-4 fm-rubik" style="color: #848790;font-weight: 600;">
                         Our meals not only deliver exceptional taste, but are also<br /> meticulously tailored to meet
                         nutritional
                         needs,
@@ -65,8 +65,8 @@
             </div>
         </div>
         <div class="secondDiv">
-            <p class="mt-4 fs-2">Why choose Nutrigenic?</p>
-            <div class="d-flex justify-content-center my-5 responsiveFont">
+            <p class="mt-4 fs-2" style="color: #5D5D66;">Why choose Nutrigenic?</p>
+            <div class="d-flex justify-content-center my-5 responsiveFont" style="color: #2C2C30;">
                 <div class="user-icon">
                     <img src="assets/images/laurel-wreath-first.png" alt="User Icon">
                     <div class="pb-3">
@@ -92,7 +92,7 @@
                     </div>
                 </div>
             </div>
-            <div class="d-flex justify-content-center mb-5 responsiveFont">
+            <div class="d-flex justify-content-center mb-5 responsiveFont" style="color: #2C2C30;">
                 <div class="user-icon">
                     <img src="assets/images/location-user.png" alt="User Icon">
                     <div class="pb-3">
@@ -126,11 +126,11 @@
     </div>
     <div class="web-center" style="margin-top: 370px;">
         <div>
-            <p class="mt-4 fs-3">Who made us?</p>
+            <p class="mt-4 fs-3" style="color:#5D5D66">Who made us?</p>
         </div>
         <div class="d-flex justify-content-center">
             <div class="m-3" style="width: 15%;">
-                <span class="mb-3">OUR CHEFS</span>
+                <span class="mb-3"  style="color:#5D5D66">OUR CHEFS</span>
                 <div class="card p-0">
                     <div class="card-body">
                         <img class="d-block mb-2 w-100 object-fit-contain" src="../../../../assets/images/chef.png">
@@ -143,7 +143,7 @@
                 </div>
             </div>
             <div class="m-3" style="width: 15%;">
-                <span class="mb-3">OUR EXPERTS</span>
+                <span class="mb-3"  style="color:#5D5D66">OUR EXPERTS</span>
                 <div class="card p-0">
                     <div class="card-body">
                         <img class="d-block mb-2 w-100 object-fit-contain" src="../../../../assets/images/expert.png">
@@ -159,10 +159,10 @@
     </div>
 
     <div class="mt-3 web-center">
-        <span>OUR PARTENERS</span>
+        <span style="color:#5D5D66;font-size: 0.9rem;">OUR PARTENERS</span>
         <div class="card mt-2 w-75 p-0 shadow">
             <div class="card-body">
-                <span class="fm-rubik">Those who help us to delivery the best food and experience possible to you</span>
+                <span class="fm-rubik" style="color: #494646;">Those who help us to delivery the best food and experience possible to you</span>
                 <div class="d-flex mt-3 justify-content-center w-75">
                     <p-carousel [value]="images" [numVisible]="5" [numScroll]="1" [circular]="false"
                         [responsiveOptions]="responsiveOptions">
@@ -177,7 +177,7 @@
         </div>
     </div>
     <div class="mt-4 p-2 mastrPlan">
-        <p class="mt-5 fs-3">Master Plan</p>
+        <p class="mt-5 fs-3" style="color: #5D5D66;">Master Plan</p>
         <button *ngFor="let item of tabItems"
             [style.background-color]="selectedMasterTab === item ? '#dfdfef' : 'white'"
             (click)="selectedMasterTab = item" class="btn btn-primary mt-2 mx-2">
@@ -233,7 +233,7 @@
         </p-carousel>
     </div>
     <div class="mt-4 p-2 helpSector">
-        <p class="mt-5 fs-3">We’re here to help!</p>
+        <p class="mt-5 fs-3" style="color: #2C2C30;">We’re here to help!</p>
         <div class="mt-3 w-50 fm-rubik">
             <span>
                 Feel free to reach out using any of the contact methods listed,
