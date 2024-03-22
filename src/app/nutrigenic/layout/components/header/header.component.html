@@ -5,9 +5,9 @@
     <div class="d-flex mx-auto">
         <div>
             <ul class="horizontal-menu">
-                <li *ngFor="let item of items" [class.selected]="selectedItem === item.label"
+                <li *ngFor="let item of items" [class.selected]="selectedItem === item.url"
                     (click)="onItemClick(item)">
-                    <span *ngIf="item.label !== 'Login'">
+                    <span style="font-size: 1.143rem;font-weight: 500;" *ngIf="item.url !== 'login'">
                         {{ item.label }}
                     </span>
                 </li>

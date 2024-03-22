@@ -12,10 +12,10 @@ export const NutrigenicRoutes: Routes = [
         component: NutrigenicComponent,
         children: [
             { path: '', component: HomeComponent },
-            { path: 'Home', component: HomeComponent },
-            { path: 'Plans', component: PlanComponent },
-            { path: 'AboutUs', component: AboutUsComponent },
-            { path: 'Blog', component: BlogComponent },
+            { path: 'home', component: HomeComponent },
+            { path: 'plans', component: PlanComponent },
+            { path: 'about-us', component: AboutUsComponent },
+            { path: 'blog', component: BlogComponent },
             { path: 'blogDetail', component: BlogDetailComponent },
         ]
     }
