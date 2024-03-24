@@ -1,0 +1,72 @@
+<div class="web-center fm-rubik">
+    <div class="row mt-2 w-75">
+        <div class="col-md-4">
+            <div class="card mt-2 w-100 p-0 mb-5" style="border-radius: 24px;">
+                <div class="card-body m-3">
+                    <div class="web-left">
+                        <span class="general-font">3 weeks <span style="font-weight: normal;">plan</span></span>
+                        <span class="general-font" style="float: right;">3 meals x 6 days</span>
+                    </div>
+                    <p-divider></p-divider>
+                    <div class="d-flex justify-content-center">
+                        <i class="text-black mx-3 pi pi-angle-double-left" style="font-size: 2rem;"></i>
+                        <div>
+                            <button class="btn fm-prompt px-3"
+                                style="background-color: #DFDFEF;font-size: 1.143rem;font-weight: bold;border-radius: 12px;">I°
+                                Week</button>
+                        </div>
+                        <i class="text-black mx-3 pi pi-angle-double-right" style="font-size: 2rem;"></i>
+                    </div>
+                    <div class="web-left" style="width: 85%;">
+                        <div class="mt-4 fw-bold" style="color: #5D5D66;font-size: 0.857rem;"> First delivery: <span>
+                                24/02/2020 </span></div>
+                        <div *ngFor="let item of mealsList" class="mt-2 p-1" style="align-items: center;">
+                            <img [src]="item.img" style="margin-right: 1rem;width: 32px;height: 32px;" alt="">
+                            <span class="general-font">{{item.text}}</span>
+                            <span class="general-font fw-bold"
+                                style="color: #848790;float: right;">x{{item.count}}</span>
+                        </div>
+                        <div class="mt-4 fw-bold" style="color: #5D5D66;font-size: 0.857rem;"> First delivery: <span>
+                                24/02/2020 </span></div>
+                        <div *ngFor="let item of mealsList" class="mt-2 p-1" style="align-items: center;">
+                            <img [src]="item.img" style="margin-right: 1rem;width: 32px;height: 32px;" alt="">
+                            <span class="general-font">{{item.text}}</span>
+                            <span class="general-font fw-bold"
+                                style="color: #848790;float: right;">x{{item.count}}</span>
+                        </div>
+                    </div>
+                    <p-divider></p-divider>
+                    <div style="color: #5D5D66;font-size: 1.143rem;">
+                        <img src="../../../../assets/images/pencil.png" style="height: 14px;width: 14px;" alt="">
+                        <span class="mx-2">edit</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card mt-2 w-100 p-0 mb-5" style="border-radius: 24px;">
+                <div class="card-header fw-bold py-3" style="background-color: #DFDFEF;border-top-left-radius:
+                    23px;border-top-right-radius: 23px;border: none;font-size: 1.143rem;color: #5D5D66;">
+                    <span class="fm-prompt">Adds on</span>
+                </div>
+                <div class="card-body m-2">
+                    <div class="web-left" style="width: 85%;">
+                        <div *ngFor="let item of mealsList" class="mt-2 p-1" style="align-items: center;">
+                            <img [src]="item.img" style="margin-right: 1rem;width: 32px;height: 32px;" alt="">
+                            <span class="general-font">{{item.text}}</span>
+                            <span class="general-font fw-bold"
+                                style="color: #848790;float: right;">x{{item.count}}</span>
+                        </div>
+                    </div>
+
+                    <p-divider></p-divider>
+                    <div style="color: #5D5D66;font-size: 1.143rem;">
+                        <img src="../../../../assets/images/pencil.png" style="height: 14px;width: 14px;" alt="">
+                        <span class="mx-2">edit</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4"></div>
+    </div>
+</div>

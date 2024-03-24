@@ -16,7 +16,10 @@ import { DialogModule } from 'primeng/dialog';
 import { OurShopComponent } from './pages/ourshop/ourshop.component';
 import { RatingModule } from 'primeng/rating';
 import { FormsModule } from '@angular/forms';
-
+import { OrangeButtonComponent } from './layout/components/orange-button/orange-button.component';
+import { DropdownModule } from 'primeng/dropdown';
+import { ProfileComponent } from './pages/profile/profile.component';
+import { CheckoutComponent } from './pages/checkout/checkout.component';
 
 @NgModule({
     declarations: [
@@ -28,7 +31,9 @@ import { FormsModule } from '@angular/forms';
         AboutUsComponent,
         BlogComponent,
         BlogDetailComponent,
-        OurShopComponent
+        OurShopComponent,
+        ProfileComponent,
+        CheckoutComponent
     ],
     imports: [
         CommonModule,
@@ -38,7 +43,9 @@ import { FormsModule } from '@angular/forms';
         CarouselModule,
         DialogModule,
         RatingModule,
-        FormsModule
+        FormsModule,
+        OrangeButtonComponent,
+        DropdownModule
     ],
     exports: [],
     providers: [
