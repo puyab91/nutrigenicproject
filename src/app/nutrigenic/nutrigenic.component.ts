@@ -7,13 +7,13 @@ import { Router } from '@angular/router';
   styleUrls: ['./nutrigenic.component.scss']
 })
 export class NutrigenicComponent {
-  underConstruction: boolean = true;
+  underConstruction: boolean = false;
   
   constructor(private router: Router){
-    this.router
-    .navigate(['/home'])
-    .then(() => { })
-    .catch(() => { });
+    // this.router
+    // .navigate(['/home'])
+    // .then(() => { })
+    // .catch(() => { });
   }
     get containerClass(): any {
         return {

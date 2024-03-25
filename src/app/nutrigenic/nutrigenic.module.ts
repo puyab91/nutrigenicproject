@@ -20,6 +20,7 @@ import { OrangeButtonComponent } from './layout/components/orange-button/orange-
 import { DropdownModule } from 'primeng/dropdown';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { CheckoutComponent } from './pages/checkout/checkout.component';
+import { ScrollPanelModule } from 'primeng/scrollpanel';
 
 @NgModule({
     declarations: [
