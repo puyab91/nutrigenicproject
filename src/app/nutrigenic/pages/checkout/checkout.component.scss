@@ -3,3 +3,41 @@
     font-weight: bold !important;
     color: #0F0F1F;
 }
+
+.btn-apply {
+    border: 1.5px solid black;
+    border-radius: 25px;
+  }
+
+  .input-promo {
+    border-radius: 10px;
+    border: none;
+    background-color: #F0F4F8;
+  }
+
+  .getStartButton {
+    align-items: center;
+    background-color: #EF870A !important;
+    border: none;
+    border-radius: 15px;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    padding-top: 0.8rem;
+    padding-bottom: 0.8rem;  
+    font-weight: bold;  
+  }
+  .arrow-icon {
+    font-size: 1rem;
+    margin-left: 0.6rem;
+  }
+
+.getStartButton:hover {
+  background-color: #F8A94A !important;
+}
+
+
+.menu-img {
+    width: 24px;
+    height: 24px;
+    margin-right: 0.5rem;
+}
