@@ -21,6 +21,13 @@ import { DropdownModule } from 'primeng/dropdown';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { CheckoutComponent } from './pages/checkout/checkout.component';
 import { ScrollPanelModule } from 'primeng/scrollpanel';
+import { UserProfileComponent } from './pages/profile/user-profile/user-profile.component';
+import { ConnectCardComponent } from './pages/profile/connect-card/connect-card.component';
+import { MyOrdersComponent } from './pages/profile/my-orders/my-orders.component';
+import { UserExpertComponent } from './pages/profile/user-expert/user-expert.component';
+import { UserMealsComponent } from './pages/profile/user-meals/user-meals.component';
+import { CreditCardsComponent } from './pages/profile/credit-cards/credit-cards.component';
+import { AccountComponent } from './pages/profile/account/account.component';
 
 @NgModule({
     declarations: [
@@ -34,7 +41,14 @@ import { ScrollPanelModule } from 'primeng/scrollpanel';
         BlogDetailComponent,
         OurShopComponent,
         ProfileComponent,
-        CheckoutComponent
+        UserProfileComponent,
+        ConnectCardComponent,
+        MyOrdersComponent,
+        UserExpertComponent,
+        UserMealsComponent,
+        CheckoutComponent,
+        AccountComponent,
+        CreditCardsComponent
     ],
     imports: [
         CommonModule,

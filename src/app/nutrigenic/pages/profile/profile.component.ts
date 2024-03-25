@@ -10,30 +10,36 @@ import { MenuItem } from 'primeng/api';
 export class ProfileComponent {
     menuItems: any[] = [];
     addButtons: any[] = [];
-    selectedMenu:string = 'Profile';
+    selectedMenu:number = 1;
     constructor() { 
         this.menuItems = [
             {
+                id: 1,
                 text: 'Profile',
                 img: '../../../../assets/images/user-profile.png'
             },
             {
+                id: 2,
                 text: 'My Orders',
                 img: '../../../../assets/images/shopping-cart-02.png'
             },
             {
+                id: 3,
                 text: 'Expert',
                 img: '../../../../assets/images/mentoring.png'
             },
             {
+                id: 4,
                 text: 'My own meals',
                 img: '../../../../assets/images/apple-01.png'
             },
             {
+                id: 5,
                 text: 'Credit cards',
                 img: '../../../../assets/images/credit-card.png'
             },
             {
+                id: 6,
                 text: 'Account',
                 img: '../../../../assets/images/user-account.png'
             }
@@ -61,7 +67,7 @@ export class ProfileComponent {
                 text: 'Add sports'
             }            
         ]
-        this.selectedMenu = 'Profile';
+        this.selectedMenu = 1;
     }    
 
 }
