@@ -1,7 +1,7 @@
 <div class="web-center">
     <div style="width: 85%;">
         <div class="mt-5 mb-5 web-left d-flex">
-            <ul>
+            <ul style="padding-left: 0px;padding-right: 1rem;">
                 <li *ngFor="let item of menuItems" class="mb-2 p-2"
                     [style.background-color]="selectedMenu === item.id ? '#0F0F1F' : '#F9F9FB'"
                     (click)="selectedMenu = item.id" style="border-radius: 12px;width: 15.143rem;cursor: pointer;">
