@@ -2,11 +2,10 @@
     <div style="margin-right: 8%;">
         <img src="../../../../../assets/images/Logo.png" style="height: 10rem;width: 16rem;object-fit: contain;" />
     </div>
-    <div class="d-flex mx-auto">
+    <div class="d-flex w-100" style="position: relative;margin-left: 15%;">
         <div>
             <ul class="horizontal-menu">
-                <li *ngFor="let item of items" [class.selected]="selectedItem === item.url"
-                    (click)="onItemClick(item)">
+                <li *ngFor="let item of items" [class.selected]="selectedItem === item.url" (click)="onItemClick(item)">
                     <span style="font-size: 1.143rem;font-weight: 500;" *ngIf="item.url !== 'login'">
                         {{ item.label }}
                     </span>
@@ -16,12 +15,14 @@
                 <p-menubar [model]="items"></p-menubar>
             </div>
         </div>
-        <div class="user-icon" style="cursor: pointer;" (click)="goToCheckOut()">
-            <img src="../../../../../assets/images/shopping-basket.png" alt="User Icon">
-        </div>
-        <div class="user-icon" style="cursor: pointer;margin-left: 1.5rem;" (click)="loginPopupManager()">
-            <img src="assets/images/user.png" alt="User Icon">
-            <span>Login</span>
+        <div class="d-flex" style="position: absolute;right: 0;">
+            <div class="user-icon" style="cursor: pointer;" (click)="goToCheckOut()">
+                <img src="../../../../../assets/images/shopping-basket.png" alt="User Icon">
+            </div>
+            <div class="user-icon" style="cursor: pointer;margin-left: 1.5rem;" (click)="loginPopupManager()">
+                <img src="assets/images/user.png" alt="User Icon">
+                <span>Login</span>
+            </div>
         </div>
     </div>
 </div>
@@ -65,14 +66,15 @@
         </div>
         <div class="mt-1 p-2" style="text-align: center;">
             <button class="btn w-100 fm-prompt-bold"
-                style="color: white;background-color: #EF870A;font-size: 1.2rem;border-radius: 12px;padding-top: 0.8rem;padding-bottom: 0.8rem;">Log in</button>
+                style="color: white;background-color: #EF870A;font-size: 1.2rem;border-radius: 12px;padding-top: 0.8rem;padding-bottom: 0.8rem;">Log
+                in</button>
         </div>
         <div class="my-1 p-2 fm-rubik" style="text-align: center;">
             <span style="font-size: 0.9rem;font-weight: bold;">
                 You dont't have an account
             </span>
             <span class="fm-rubik-bold" style="color: #EF870A;font-size: 1rem;font-weight: 300;cursor: pointer;"
-            (click)="signInLinkToSignUp()">
+                (click)="signInLinkToSignUp()">
                 Sign up
             </span>
         </div>
@@ -133,14 +135,15 @@
         </div>
         <div class="mt-1 p-2" style="text-align: center;">
             <button class="btn w-100 fm-prompt-bold"
-                style="color: white;background-color: #EF870A;font-size: 1.2rem;border-radius: 12px;padding-top: 0.8rem;padding-bottom: 0.8rem;">Sign up</button>
+                style="color: white;background-color: #EF870A;font-size: 1.2rem;border-radius: 12px;padding-top: 0.8rem;padding-bottom: 0.8rem;">Sign
+                up</button>
         </div>
         <div class="my-1 p-2 fm-rubik" style="text-align: center;">
             <span style="font-size: 0.9rem;font-weight: 600;">
                 You dont't have an account
             </span>
             <span class="fm-rubik-bold" style="color: #EF870A;font-size: 1rem;font-weight: 300;cursor: pointer;"
-            (click)="signUpLinkToSignIn()">
+                (click)="signUpLinkToSignIn()">
                 Sign in
             </span>
         </div>

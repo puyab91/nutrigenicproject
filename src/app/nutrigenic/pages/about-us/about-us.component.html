@@ -52,14 +52,14 @@
             <img src="../../../../assets/images/about-us-cakes.png" class="w-50" alt="">
         </div>
     </div>
-    <div class="secondDiv">
+    <div class="secondDiv shadow">
         <p class="mt-4 t-color">CORE VALUES</p>
         <div class="web-center mt-5">
-            <div *ngFor="let item of coreValues" class="d-flex mt-3 web-left coreValuesmargin fm-rubik text-color"
+            <div *ngFor="let item of coreValues" class="d-flex web-left coreValuesmargin fm-rubik text-color"
                 style="width: 65%;opacity: 1;cursor: pointer;" (mouseover)="hoveredCoreValue = item.title"
                 (mouseout)="hoveredCoreValue = null"
                 [style.opacity]="hoveredCoreValue === item.title ? '1' : (hoveredCoreValue === null ? '1' : '0.3')">
-                <img [src]="item.imgUrl" style="width: 110px;height: 110px;" alt="">
+                <img [src]="item.imgUrl" style="width: 80px;height: 80px;" alt="">
                 <div class="responsiveFont coreValuesItem">
                     <span>{{item.title}}</span>
                     <br />
@@ -93,7 +93,7 @@
             <img src="../../../../assets/images/about-us-replace.png" class="w-100" />
         </div>
     </div>
-    <div class="thirdDiv" style="z-index: 0;">
+    <div class="thirdDiv shadow" style="z-index: 0;">
         <div class="d-flex w-50">
             <div class="mt-5" style="width: 80px;height: 80px;margin-left: 5rem;margin-right: 2rem;"><img
                     src="../../../../assets/images/about-us-quote.png" class="w-100" /></div>

@@ -22,8 +22,8 @@
   }
 
   .ourMission {
-    margin-top: 3rem;
-    font-size: 1rem;
+    margin-top: 1.5rem;
+    font-size: 1.2rem;
   }
 
   .fs08 {
@@ -215,8 +215,8 @@
 }
 
 .partner-icon img {
-  width: 50px;
-  height: 50px;
+  width: 70px;
+  height: 40px;
   margin-right: 0px;
   object-fit: contain;
 }
@@ -266,6 +266,7 @@
   text-align: center;
   position: relative;
   text-align: -webkit-center;
+  box-shadow: 0px -10px 10px -10px #A9A9C6;
 }
 
 .helpButton {
@@ -275,6 +276,9 @@
   border-radius: 10px;
   padding: 0.5rem;
   box-shadow: 0rem 0.7rem 1.2rem #edba7b !important;
+}
+.helpButton:hover {
+  background-color: #F8A94A !important;
 }
 
 .horizontal-menu {
@@ -311,6 +315,20 @@
   color: white;
 }
 
+::ng-deep .p-carousel-indicators {
+  display: none !important;
+}
+
+
+
 .shadow {
-  box-shadow: 0.7rem 0.7rem 1.2rem #1111 !important;
+  box-shadow: 0.5rem 0.25rem 1rem #A9A9C6  !important;
+}
+
+.black-shadow{
+  box-shadow: -0.1rem 0.1rem 1.2rem #444141  !important;
+}
+
+.master-plan-item-shadow {
+  box-shadow: 0.5rem 0.25rem 1rem #A9A9C6  !important;
 }
