@@ -275,7 +275,7 @@
   border: none;
   border-radius: 10px;
   padding: 0.5rem;
-  box-shadow: 0rem 0.7rem 1.2rem #edba7b !important;
+  box-shadow: 0px 0px 80px 0px #A9A9C64D !important;
 }
 .helpButton:hover {
   background-color: #F8A94A !important;
@@ -322,13 +322,13 @@
 
 
 .shadow {
-  box-shadow: 0.5rem 0.25rem 1rem #A9A9C6  !important;
+  box-shadow: 0 0 80px 0 rgba(169, 169, 198, 0.3);
 }
 
 .black-shadow{
-  box-shadow: -0.1rem 0.1rem 1.2rem #444141  !important;
+  box-shadow: 0 -20px 20px 0 rgba(0, 0, 0, 0.03);
 }
 
 .master-plan-item-shadow {
-  box-shadow: 0.5rem 0.25rem 1rem #A9A9C6  !important;
+  box-shadow: 0px 10px 30px 0px #6363B11A  !important;
 }
