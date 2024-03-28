@@ -31,6 +31,7 @@ import { AccountComponent } from './pages/profile/account/account.component';
 import { AuthService } from './services/auth/auth.service';
 import { JwtTokenService } from './services/auth/jwt-token.service';
 import { ApiServiceCall } from './services/global.apiServicecall';
+import { PasswordModule } from 'primeng/password';
 
 @NgModule({
     declarations: [
@@ -63,7 +64,8 @@ import { ApiServiceCall } from './services/global.apiServicecall';
         RatingModule,
         FormsModule,
         OrangeButtonComponent,
-        DropdownModule
+        DropdownModule,
+        PasswordModule
     ],
     exports: [],
     providers: [

@@ -160,7 +160,6 @@ export class HeaderComponent {
                  error: this.handleError.bind(this),
              }
          )
-        // this.handleSignupResponse(this);
     }
 
 
@@ -177,6 +176,12 @@ export class HeaderComponent {
             this.loginPopupVisibility = !this.loginPopupVisibility;
             this.handleBlurFilter();
         });
+    }
+
+    hidePassword = true;
+
+    togglePasswordVisibility() {
+        this.hidePassword = !this.hidePassword;
     }
 
     handleSignupResponse(response: any) {
