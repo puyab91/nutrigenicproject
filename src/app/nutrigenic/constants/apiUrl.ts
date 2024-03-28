@@ -1,6 +1,6 @@
 export class ApiUrl {
   private static get baseUrl(): string {
-    return 'https://92.205.191.225/api/';
+    return 'https://nutrigenic.co.uk/api/';
   }
 
   static get basrUrl(): string {
