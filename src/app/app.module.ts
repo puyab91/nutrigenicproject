@@ -4,6 +4,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NutrigenicModule } from './nutrigenic/nutrigenic.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -12,7 +13,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
   imports: [
     BrowserAnimationsModule,
     AppRoutingModule,
-    NutrigenicModule
+    NutrigenicModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

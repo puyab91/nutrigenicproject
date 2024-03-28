@@ -1,4 +1,4 @@
-<div id="layoutHome"  class="web-center">
+<div id="layoutHome" class="web-center">
     <div class="w-75 mt-5">
         <div class="row">
             <div class="col-md-8 web-left">
@@ -55,17 +55,19 @@
     <div class="secondDiv shadow">
         <p class="mt-4 t-color">CORE VALUES</p>
         <div class="web-center mt-5">
-            <div *ngFor="let item of coreValues" class="d-flex web-left coreValuesmargin fm-rubik text-color"
+            <div *ngFor="let item of coreValues" class="row web-left coreValuesmargin fm-rubik text-color"
                 style="width: 65%;opacity: 1;cursor: pointer;" (mouseover)="hoveredCoreValue = item.title"
                 (mouseout)="hoveredCoreValue = null"
                 [style.opacity]="hoveredCoreValue === item.title ? '1' : (hoveredCoreValue === null ? '1' : '0.3')">
-                <img [src]="item.imgUrl" style="width: 80px;height: 80px;" alt="">
-                <div class="responsiveFont coreValuesItem">
-                    <span>{{item.title}}</span>
-                    <br />
-                    <span>{{item.subTitle}}</span>
+                <div class="col-md-3 d-flex">
+                    <img [src]="item.imgUrl" style="width: 80px;height: 80px;" alt="">
+                    <div class="responsiveFont coreValuesItem">
+                        <span>{{item.title}}</span>
+                        <br />
+                        <span>{{item.subTitle}}</span>
+                    </div>
                 </div>
-                <div class="web-left responsiveFont">{{item.description}}</div>
+                <div class="col-md-9 web-left responsiveFont">{{item.description}}</div>
             </div>
             <div class="mt-2 mb-2">
                 <app-orange-button></app-orange-button>
@@ -106,8 +108,7 @@
             </div>
         </div>
         <div class="my-5 mt-5 web-left" style="margin-left: 7rem;">
-            <img src="../../../../assets/images/Taoufik-Hannachi.png" 
-            style="width: 18.929rem;height: 3.214rem;" alt="">
+            <img src="../../../../assets/images/Taoufik-Hannachi.png" style="width: 18.929rem;height: 3.214rem;" alt="">
         </div>
     </div>
     <div class="row z-1 justify-content-center our-team">

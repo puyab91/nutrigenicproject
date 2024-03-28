@@ -82,8 +82,4 @@ export class AboutUsComponent {
         this.currentIndex = (this.currentIndex + 1) % this.images.length;
     }
 
-    hoverCoreValues(title: string) {
-        debugger;
-        var x = title;
-    }
 }

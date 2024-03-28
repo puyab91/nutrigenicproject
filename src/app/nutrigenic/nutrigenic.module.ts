@@ -28,6 +28,9 @@ import { UserExpertComponent } from './pages/profile/user-expert/user-expert.com
 import { UserMealsComponent } from './pages/profile/user-meals/user-meals.component';
 import { CreditCardsComponent } from './pages/profile/credit-cards/credit-cards.component';
 import { AccountComponent } from './pages/profile/account/account.component';
+import { AuthService } from './services/auth/auth.service';
+import { JwtTokenService } from './services/auth/jwt-token.service';
+import { ApiServiceCall } from './services/global.apiServicecall';
 
 @NgModule({
     declarations: [
@@ -64,7 +67,9 @@ import { AccountComponent } from './pages/profile/account/account.component';
     ],
     exports: [],
     providers: [
-
+        ApiServiceCall,
+        AuthService,
+        JwtTokenService
     ]
 })
 export class NutrigenicModule { }

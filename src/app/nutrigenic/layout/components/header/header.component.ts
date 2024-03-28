@@ -1,6 +1,10 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import notiflix from 'notiflix';
 import { MenuItem } from 'primeng/api';
+import { LoginModel } from 'src/app/nutrigenic/models/auth/login-model';
+import { AuthService } from 'src/app/nutrigenic/services/auth/auth.service';
+import { JwtTokenService } from 'src/app/nutrigenic/services/auth/jwt-token.service';
 
 @Component({
     selector: 'app-header',
@@ -8,38 +12,22 @@ import { MenuItem } from 'primeng/api';
     styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent {
-    menuItems = [
-        {
-            name: 'Home',
-            url: 'home'
-        },
-        {
-            name: 'About us',
-            url: 'about-us'
-        },
-        {
-            name: 'Blog',
-            url: 'blog'
-        },
-        {
-            name: 'Plans',
-            url: 'plans'
-        },
-        {
-            name: 'Our shop',
-            url: 'our-shop'
-        }
-    ];
+    loginModel: LoginModel = new LoginModel();
+    menuItems: any[] = [];
     selectedItem?: string | null;
     items: MenuItem[] = [];
     loginPopupVisibility = false;
     signUpPopupVisibility = false;
+    isLogin: boolean = false;
+    userName: string = 'Login';
 
-    constructor(private router: Router) {
-
-        //this.selectedItem = this.menuItems[0].name;
+    constructor(private router: Router,
+        private authService: AuthService,
+        private jwtTokenService: JwtTokenService) {
     }
     ngOnInit(): void {
+        this.checkUser();
+
         this.selectedItem = this.router.url.replace('/', '');
 
         this.items = [
@@ -90,23 +78,31 @@ export class HeaderComponent {
 
     onItemClick(item: any): void {
         this.selectedItem = item.url;
-       
-            this.router
-                .navigate(['/' + item.url])
-                .then(() => { })
-                .catch(() => { });
+
+        this.router
+            .navigate(['/' + item.url])
+            .then(() => { })
+            .catch(() => { });
     }
 
-    goToCheckOut(){
+    goToCheckOut() {
         this.router
-        .navigate(['/checkout'])
-        .then(() => { })
-        .catch(() => { });
+            .navigate(['/checkout'])
+            .then(() => { })
+            .catch(() => { });
     }
 
     loginPopupManager() {
-        this.loginPopupVisibility = !this.loginPopupVisibility;
-        this.handleBlurFilter();
+        if (this.isLogin) {
+            this.router
+                .navigate(['/profile'])
+                .then(() => { })
+                .catch(() => { });
+        }
+        else {
+            this.loginPopupVisibility = !this.loginPopupVisibility;
+            this.handleBlurFilter();
+        }
     }
 
     signUpLinkToSignIn() {
@@ -134,5 +130,46 @@ export class HeaderComponent {
             document.getElementById('layoutHome')?.classList.remove('p-dialog-blur');
             document.getElementById('layoutHeader')?.classList.remove('p-dialog-blur');
         }
+    }
+
+    checkUser() {
+        this.jwtTokenService.getIsLogin().subscribe((data: any) => {
+            this.isLogin = data;
+            if (this.isLogin) {
+                this.userName = this.jwtTokenService.getUserName();
+            }
+        });
+    }
+
+    login() {
+        this.authService.login(this.loginModel).subscribe(
+            {
+                next: this.handleLoginResponse.bind(this),
+                error: this.handleError.bind(this),
+            }
+        );;
+    }
+
+
+    handleLoginResponse(response: any) {
+        const token = response.body.tokens.access_token;
+        const userName = response.body.user.first_name + ' ' + response.body.user.last_name;
+
+        this.jwtTokenService.setToken(token);
+        this.jwtTokenService.setUserName(userName);
+
+        this.jwtTokenService.getIsLogin().subscribe((data: any) => {
+            this.isLogin = data;
+            this.userName = this.jwtTokenService.getUserName();
+            this.loginPopupVisibility = !this.loginPopupVisibility;
+            this.handleBlurFilter();
+        });
+    }
+
+    handleError(error: any): void {
+        notiflix.Notify.failure(error.message + '- Operation unsuccessful', {
+            position: 'right-top',
+            timeout: 3000
+        });
     }
 }

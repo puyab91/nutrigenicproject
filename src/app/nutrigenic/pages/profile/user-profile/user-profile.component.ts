@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { MenuItem } from 'primeng/api';
+import { JwtTokenService } from 'src/app/nutrigenic/services/auth/jwt-token.service';
 
 @Component({
     selector: 'app-user-profile',
@@ -9,7 +10,8 @@ import { MenuItem } from 'primeng/api';
 })
 export class UserProfileComponent {
     addButtons: any[] = [];
-    constructor() { 
+    userName: string = 'User Name';
+    constructor(private router: Router, private jwtTokenService: JwtTokenService) {
         this.addButtons = [
             {
                 id: 'weight',
@@ -30,8 +32,21 @@ export class UserProfileComponent {
             {
                 id: 'sports',
                 text: 'Add sports'
-            }            
+            }
         ]
-    }    
+    }
 
+    ngOnInit() {
+        this.jwtTokenService.getIsLogin().subscribe((data: any) => {
+            if (data) {
+                this.userName = this.jwtTokenService.getUserName();
+            }
+            else
+                this.router
+                    .navigate(['/home'])
+                    .then(() => { })
+                    .catch(() => { });
+
+        });
+    }
 }

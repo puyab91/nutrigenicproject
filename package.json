@@ -46,7 +46,7 @@
     "jwt-decode": "^4.0.0",
     "long-timeout": "0.1.1",
     "ngx-webcam": "0.4.1",
-    "notiflix": "3.2.6",
+    "notiflix": "^3.2.6",
     "primeicons": "^6.0.1",
     "primeng": "^15.4.0",
     "query-string": "^8.2.0",
