@@ -113,30 +113,35 @@
         <div class="mt-3 p-2 fm-rubik" style="text-align: left;">
             <span style="font-size: 0.8rem;color: #848790;">Name</span>
             <input type="text" class="p-2 w-100 input-promo" style="font-size: 0.9rem;font-weight: bold;"
-                placeholder="Name" />
+                placeholder="Name" [(ngModel)] = "signupModel.first_name"/>
         </div>
         <div class="mt-3 p-1 fm-rubik" style="text-align: left;">
             <span style="font-size: 0.8rem;color: #848790;">Last name</span>
             <input type="text" class="p-2 w-100 input-promo" style="font-size: 0.9rem;font-weight: bold;"
-                placeholder="Last name" />
+                placeholder="Last name" [(ngModel)] = "signupModel.last_name"/>
         </div>
         <div class="mt-3 p-1 fm-rubik" style="text-align: left;">
             <span style="font-size: 0.8rem;color: #848790;">Phone number</span>
             <input type="text" class="p-2 w-100 input-promo" style="font-size: 0.9rem;font-weight: bold;"
-                placeholder="Phone number" />
+                placeholder="Phone number" [(ngModel)] = "signupModel.phone_number"/>
         </div>
         <div class="mt-1 p-2 fm-rubik" style="text-align: left;">
             <span style="font-size: 0.8rem;color: #848790;">Email</span>
             <input type="email" class="p-2 w-100 input-promo" style="font-size: 0.9rem;font-weight: bold;"
-                placeholder="Name@example.com" />
+                placeholder="Name@example.com" [(ngModel)] = "signupModel.email"/>
         </div>
         <div class="mt-1 p-2 fm-rubik" style="text-align: left;">
             <span style="font-size: 0.8rem;color: #848790;">Password</span>
-            <input type="password" class="p-2 w-100 input-promo" style="font-size: 0.9rem;font-weight: bold;" />
+            <input type="password" class="p-2 w-100 input-promo" style="font-size: 0.9rem;font-weight: bold;" [(ngModel)] = "signupModel.password"/>
+        </div>
+        <div class="mt-1 p-2 fm-rubik" style="text-align: left;">
+            <span style="font-size: 0.8rem;color: #848790;">Conferma password</span>
+            <input type="password" class="p-2 w-100 input-promo" style="font-size: 0.9rem;font-weight: bold;" [(ngModel)] = "signupModel.password_confirmation"/>
         </div>
         <div class="mt-1 p-2" style="text-align: center;">
             <button class="btn w-100 fm-prompt fw-bold"
-                style="color: white;background-color: #EF870A;font-size: 1.143rem;border-radius: 12px;padding-top: 0.8rem;padding-bottom: 0.8rem;">Sign
+                style="color: white;background-color: #EF870A;font-size: 1.143rem;border-radius: 12px;padding-top: 0.8rem;padding-bottom: 0.8rem;"
+                (click)="signUp()">Sign
                 up</button>
         </div>
         <div class="my-1 p-2 fm-rubik" style="text-align: center;">
@@ -148,5 +153,18 @@
                 Sign in
             </span>
         </div>
+    </div>
+</p-dialog>
+
+<p-dialog [(visible)]="signupDone" [style]="{ width: '25.4375rem', height: '17rem' }" (onHide)="onDialogHide()">
+    <div class="text-center signup-done">
+        We sent you an email!
+    </div>
+    <div class="mt-3 p-1 fm-rubik" style="text-align: left;">
+        Please click on the link we sent you at your email to verify your identity and activate your account
+    </div>
+    <p-divider></p-divider>
+    <div class="text-center fm-prompt">
+        If you didn’t get any email:<div>Send confirmation email again</div>
     </div>
 </p-dialog>

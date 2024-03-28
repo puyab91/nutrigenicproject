@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import notiflix from 'notiflix';
 import { MenuItem } from 'primeng/api';
 import { LoginModel } from 'src/app/nutrigenic/models/auth/login-model';
+import { SignUpModel } from 'src/app/nutrigenic/models/auth/signup-model';
 import { AuthService } from 'src/app/nutrigenic/services/auth/auth.service';
 import { JwtTokenService } from 'src/app/nutrigenic/services/auth/jwt-token.service';
 
@@ -13,6 +14,7 @@ import { JwtTokenService } from 'src/app/nutrigenic/services/auth/jwt-token.serv
 })
 export class HeaderComponent {
     loginModel: LoginModel = new LoginModel();
+    signupModel: SignUpModel = new SignUpModel();
     menuItems: any[] = [];
     selectedItem?: string | null;
     items: MenuItem[] = [];
@@ -20,6 +22,7 @@ export class HeaderComponent {
     signUpPopupVisibility = false;
     isLogin: boolean = false;
     userName: string = 'Login';
+    signupDone: boolean = false;
 
     constructor(private router: Router,
         private authService: AuthService,
@@ -150,6 +153,16 @@ export class HeaderComponent {
         );;
     }
 
+    signUp() {
+        this.authService.signUp(this.signupModel).subscribe(
+             {
+                 next: this.handleSignupResponse.bind(this),
+                 error: this.handleError.bind(this),
+             }
+         )
+        // this.handleSignupResponse(this);
+    }
+
 
     handleLoginResponse(response: any) {
         const token = response.body.tokens.access_token;
@@ -164,6 +177,16 @@ export class HeaderComponent {
             this.loginPopupVisibility = !this.loginPopupVisibility;
             this.handleBlurFilter();
         });
+    }
+
+    handleSignupResponse(response: any) {
+        console.log('RESPONSE ', response);
+        this.signUpPopupVisibility = false;
+        this.signupDone = true;
+        // if(response) {
+
+        // }
+
     }
 
     handleError(error: any): void {
