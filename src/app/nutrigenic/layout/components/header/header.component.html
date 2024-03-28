@@ -63,7 +63,7 @@
         <div class="mt-1 p-2 fm-rubik" style="text-align: left;">
             <span style="font-size: 0.8rem;color: #848790;">Password</span>
             <br>
-            <p-password [(ngModel)]="loginModel.password" [toggleMask]="true"></p-password>
+            <p-password [(ngModel)]="loginModel.password" [toggleMask]="true" [ngClass]="'input-promo'"></p-password>
         </div>
         <div class="mt-1 p-2" style="text-align: center;">
             <button [disabled]="!loginModel.email || !loginModel.password" class="btn w-100 fm-prompt fw-bold"
@@ -117,12 +117,12 @@
             <input type="text" class="p-2 w-100 input-promo" style="font-size: 0.9rem;font-weight: bold;"
                 placeholder="Name" [(ngModel)] = "signupModel.first_name"/>
         </div>
-        <div class="mt-3 p-1 fm-rubik" style="text-align: left;">
+        <div class="mt-3 p-2 fm-rubik" style="text-align: left;">
             <span style="font-size: 0.8rem;color: #848790;">Last name</span>
             <input type="text" class="p-2 w-100 input-promo" style="font-size: 0.9rem;font-weight: bold;"
                 placeholder="Last name" [(ngModel)] = "signupModel.last_name"/>
         </div>
-        <div class="mt-3 p-1 fm-rubik" style="text-align: left;">
+        <div class="mt-3 p-2 fm-rubik" style="text-align: left;">
             <span style="font-size: 0.8rem;color: #848790;">Phone number</span>
             <input type="text" class="p-2 w-100 input-promo" style="font-size: 0.9rem;font-weight: bold;"
                 placeholder="Phone number" [(ngModel)] = "signupModel.phone_number"/>
