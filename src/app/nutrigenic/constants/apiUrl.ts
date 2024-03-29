@@ -16,4 +16,8 @@ export class ApiUrl {
     return this.baseUrl + 'auth/signup';
   }
 
+  static get loginWithGoogle(): string {
+    return this.baseUrl + 'auth/google';
+  }
+
 }

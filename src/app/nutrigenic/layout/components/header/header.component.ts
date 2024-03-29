@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import notiflix from 'notiflix';
 import { MenuItem } from 'primeng/api';
@@ -6,6 +6,10 @@ import { LoginModel } from 'src/app/nutrigenic/models/auth/login-model';
 import { SignUpModel } from 'src/app/nutrigenic/models/auth/signup-model';
 import { AuthService } from 'src/app/nutrigenic/services/auth/auth.service';
 import { JwtTokenService } from 'src/app/nutrigenic/services/auth/jwt-token.service';
+import { SocialAuthService, SocialUser } from '@abacritt/angularx-social-login';
+import { GoogleSigninButtonDirective } from '@abacritt/angularx-social-login';
+
+//declare const gapi: any;
 
 @Component({
     selector: 'app-header',
@@ -26,10 +30,21 @@ export class HeaderComponent {
 
     constructor(private router: Router,
         private authService: AuthService,
-        private jwtTokenService: JwtTokenService) {
+        private jwtTokenService: JwtTokenService,
+        private authService1: SocialAuthService) {
     }
     ngOnInit(): void {
         this.checkUser();
+        this.authService1.authState.subscribe((user) => {
+            var user = user;
+            console.log(user)
+            debugger;
+            this.authService.loginWithGoogle({access_token: user.idToken}).subscribe({
+                next: this.handleSignInWithGoogle.bind(this),
+                error: this.handleError.bind(this)
+            });
+        });
+
 
         this.selectedItem = this.router.url.replace('/', '');
 
@@ -153,13 +168,16 @@ export class HeaderComponent {
         );;
     }
 
+    loginWithGoogle() {
+    }
+
     signUp() {
         this.authService.signUp(this.signupModel).subscribe(
-             {
-                 next: this.handleSignupResponse.bind(this),
-                 error: this.handleError.bind(this),
-             }
-         )
+            {
+                next: this.handleSignupResponse.bind(this),
+                error: this.handleError.bind(this),
+            }
+        )
     }
 
 
@@ -192,6 +210,11 @@ export class HeaderComponent {
 
         // }
 
+    }
+
+    handleSignInWithGoogle(response: any){
+        debugger;
+        var x = response;
     }
 
     handleError(error: any): void {

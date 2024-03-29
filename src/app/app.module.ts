@@ -5,6 +5,7 @@ import { AppComponent } from './app.component';
 import { NutrigenicModule } from './nutrigenic/nutrigenic.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
+import { SocialLoginModule } from '@abacritt/angularx-social-login';
 
 @NgModule({
   declarations: [
@@ -15,6 +16,8 @@ import { HttpClientModule } from '@angular/common/http';
     AppRoutingModule,
     NutrigenicModule,
     HttpClientModule,
+    SocialLoginModule,
+
   ],
   providers: [],
   bootstrap: [AppComponent]

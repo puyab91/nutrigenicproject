@@ -25,4 +25,9 @@ export class AuthService {
     return this.serviceCall.Post(_url, false, signupModel);    
   }
 
+  loginWithGoogle(access_token: any): Observable<OperationResult<any>> {
+    let _url = ApiUrl.loginWithGoogle;
+    return this.serviceCall.Post(_url, false, access_token);    
+  }
+
 }

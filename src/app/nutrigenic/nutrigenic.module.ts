@@ -3,10 +3,10 @@ import { NgModule } from '@angular/core';
 import { NutrigenicRoutingModule } from './nutrigenic-routing.module';
 import { NutrigenicComponent } from './nutrigenic.component';
 import { HeaderComponent } from './layout/components/header/header.component';
-import {MenubarModule} from 'primeng/menubar';
+import { MenubarModule } from 'primeng/menubar';
 import { HomeComponent } from './pages/home/home.component';
 import { DividerModule } from 'primeng/divider';
-import {CarouselModule} from 'primeng/carousel';
+import { CarouselModule } from 'primeng/carousel';
 import { PlanComponent } from './pages/plan/plan.component';
 import { FooterComponent } from './layout/components/footer/footer.component';
 import { AboutUsComponent } from './pages/about-us/about-us.component';
@@ -32,6 +32,7 @@ import { AuthService } from './services/auth/auth.service';
 import { JwtTokenService } from './services/auth/jwt-token.service';
 import { ApiServiceCall } from './services/global.apiServicecall';
 import { PasswordModule } from 'primeng/password';
+import { GoogleLoginProvider, GoogleSigninButtonDirective, GoogleSigninButtonModule,SocialAuthServiceConfig, SocialLoginModule } from '@abacritt/angularx-social-login';
 
 @NgModule({
     declarations: [
@@ -65,10 +66,28 @@ import { PasswordModule } from 'primeng/password';
         FormsModule,
         OrangeButtonComponent,
         DropdownModule,
-        PasswordModule
+        PasswordModule,
+        GoogleSigninButtonModule
     ],
-    exports: [],
+    exports: [GoogleSigninButtonDirective],
     providers: [
+        {
+            provide: 'SocialAuthServiceConfig',
+            useValue: {
+                autoLogin: false,
+                providers: [
+                    {
+                        id: GoogleLoginProvider.PROVIDER_ID,
+                        provider: new GoogleLoginProvider(
+                            '1083792866672-i9ss790f42nf1kb4on2e1j2lh9hf31kc.apps.googleusercontent.com'
+                        )
+                    }
+                ],
+                onError: (err) => {
+                    console.error(err);
+                }
+            } as SocialAuthServiceConfig,
+        },
         ApiServiceCall,
         AuthService,
         JwtTokenService
