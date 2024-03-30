@@ -6,7 +6,7 @@ import { LoginModel } from 'src/app/nutrigenic/models/auth/login-model';
 import { SignUpModel } from 'src/app/nutrigenic/models/auth/signup-model';
 import { AuthService } from 'src/app/nutrigenic/services/auth/auth.service';
 import { JwtTokenService } from 'src/app/nutrigenic/services/auth/jwt-token.service';
-import { SocialAuthService, SocialUser } from '@abacritt/angularx-social-login';
+import { GoogleLoginProvider, SocialAuthService, SocialUser } from '@abacritt/angularx-social-login';
 import { GoogleSigninButtonDirective } from '@abacritt/angularx-social-login';
 
 //declare const gapi: any;
@@ -27,24 +27,21 @@ export class HeaderComponent {
     isLogin: boolean = false;
     userName: string = 'Login';
     signupDone: boolean = false;
+    accessToken: string = '';
+    GoogleLoginProvider = GoogleLoginProvider;
 
     constructor(private router: Router,
         private authService: AuthService,
         private jwtTokenService: JwtTokenService,
-        private authService1: SocialAuthService) {
+        private googleAuthService: SocialAuthService) {
     }
     ngOnInit(): void {
         this.checkUser();
-        this.authService1.authState.subscribe((user) => {
-            var user = user;
-            console.log(user)
-            debugger;
-            this.authService.loginWithGoogle({access_token: user.idToken}).subscribe({
-                next: this.handleSignInWithGoogle.bind(this),
-                error: this.handleError.bind(this)
-            });
-        });
 
+        // this.authService1.authState.subscribe((user: SocialUser) => {
+        //     var user = user;
+        //     console.log(user)
+        // });
 
         this.selectedItem = this.router.url.replace('/', '');
 
@@ -81,6 +78,7 @@ export class HeaderComponent {
             },
         ];
     }
+
     get containerClass(): any {
         return {
             'layout-theme-light': 'light',
@@ -169,6 +167,18 @@ export class HeaderComponent {
     }
 
     loginWithGoogle() {
+        this.googleAuthService.getAccessToken(GoogleLoginProvider.PROVIDER_ID)
+            .then((res) => {
+                this.loginPopupVisibility = !this.loginPopupVisibility;
+                this.handleBlurFilter();
+                this.authService.loginWithGoogle(res).subscribe({
+                    next: this.handleSignInWithGoogleResponse.bind(this),
+                    error: this.handleError.bind(this)
+                });
+                console.log(res)
+            }).catch((error) => {
+                console.log(error);
+            });
     }
 
     signUp() {
@@ -212,13 +222,14 @@ export class HeaderComponent {
 
     }
 
-    handleSignInWithGoogle(response: any){
+    handleSignInWithGoogleResponse(response: any) {
         debugger;
         var x = response;
     }
 
     handleError(error: any): void {
-        notiflix.Notify.failure(error.message + '- Operation unsuccessful', {
+        debugger;
+        notiflix.Notify.failure(error.error.message + '- Operation unsuccessful', {
             position: 'right-top',
             timeout: 3000
         });

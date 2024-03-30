@@ -1,7 +1,7 @@
 export class ApiUrl {
   private static get baseUrl(): string {
-    // return 'https://admin.nutrigenic.co.uk/api';
-    return 'https://92.205.191.225/api/';
+   return 'https://admin.nutrigenic.co.uk/api/';
+    //  return 'https://92.205.191.225/api/';
   }
 
   static get basrUrl(): string {
@@ -20,4 +20,11 @@ export class ApiUrl {
     return this.baseUrl + 'auth/google';
   }
 
+  static get userProfile(): string {
+    return this.baseUrl + 'profile';
+  }
+
+  static get setWeight(): string {
+    return this.baseUrl + 'biometrics/weight';
+  }
 }

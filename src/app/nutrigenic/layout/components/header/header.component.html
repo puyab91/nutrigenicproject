@@ -35,11 +35,11 @@
         <div class="fm-rubik" style="font-size: 0.9rem;font-weight: bold;">
             Log In To Your Account To Continue
         </div>
-        <div class="web-center mt-4">
+        <!-- <div class="web-center mt-4">
             <asl-google-signin-button text='signin_with' type='standard' width='300' shape='rectangular'
                 logo_alignment='center' size='large' theme='outline'></asl-google-signin-button>
-        </div>
-        <!-- <button class="mt-4 btn"
+        </div> -->
+        <button class="mt-4 btn"
             style="border: 1px solid #D0D5DD;width: 95%;padding-top: 0.714rem;padding-bottom: 0.714rem;"
             (click)="loginWithGoogle()">
             <img src="../../../../../assets/images/login-google.png"
@@ -47,13 +47,7 @@
             <span class="fm-rubik" style="font-size: 0.857rem;font-weight: 400;color: #344054;">
                 Log in with Google
             </span>
-        </button> -->
-        <div id="g_id_onload" data-client_id="1083792866672-i9ss790f42nf1kb4on2e1j2lh9hf31kc.apps.googleusercontent.com"
-            data-context="signin" data-ux_mode="redirect" data-login_uri="localhost:4200" data-auto_prompt="false">
-        </div>
-        <div class="g_id_signin" data-type="standard" data-shape="rectangular" data-theme="outline"
-            data-text="signin_with" data-size="large" data-logo_alignment="center" data-width="300">
-        </div>
+        </button>
         <button class="mt-2 btn"
             style="border: 1px solid #D0D5DD;width: 95%;padding-top: 0.714rem;padding-bottom: 0.714rem;">
             <img src="../../../../../assets/images/login-apple.png"
@@ -105,18 +99,18 @@
         <div class="fm-rubik" style="font-size: 0.9rem;font-weight: bold;">
             Log In To Your Account To Continue
         </div>
-        <div class="web-center mt-4">
+        <!-- <div class="web-center mt-4">
             <asl-google-signin-button text='signup_with' type='standard' width='290' shape='rectangular'
                 logo_alignment='center' size='large' theme='outline'></asl-google-signin-button>
-        </div>
-        <!-- <button class="mt-4 btn"
+        </div> -->
+        <button class="mt-4 btn"
             style="border: 1px solid #D0D5DD;width: 95%;padding-top: 0.714rem;padding-bottom: 0.714rem;">
             <img src="../../../../../assets/images/login-google.png"
                 style="height: 24px;width: 24px;margin-right: 0.5rem;" alt="">
             <span class="fm-rubik" style="font-size: 0.857rem;font-weight: 400;color: #344054;">
                 Sign up with Google
             </span>
-        </button> -->
+        </button>
         <button class="mt-2 btn"
             style="border: 1px solid #D0D5DD;width: 95%;padding-top: 0.714rem;padding-bottom: 0.714rem;">
             <img src="../../../../../assets/images/login-apple.png"
@@ -181,15 +175,21 @@
     </div>
 </p-dialog>
 
-<p-dialog [(visible)]="signupDone" [style]="{ width: '25.4375rem', height: '17rem' }" (onHide)="onDialogHide()">
-    <div class="text-center signup-done">
-        We sent you an email!
-    </div>
-    <div class="mt-3 p-1 fm-rubik" style="text-align: left;">
-        Please click on the link we sent you at your email to verify your identity and activate your account
-    </div>
-    <p-divider></p-divider>
-    <div class="text-center fm-prompt">
-        If you didn’t get any email:<div>Send confirmation email again</div>
-    </div>
+<p-dialog [(visible)]="signupDone" [style]="{ width: '29.071rem', height: '19.429rem' }" (onHide)="onDialogHide()">
+    <div class="web-center">
+        <div>
+            <img src="../../../../../assets/images/mail-sent-icon.png" style="height: 48px;width: 48px;" alt="">
+        </div>
+        <div class="signup-done mt-4">
+            We sent you an email!
+        </div>
+        <div class="mt-2 p-2 fm-rubik" style="text-align: left;font-size: 1rem;color: #5D5D66;font-weight: 400;">
+            Please click on the link we sent you at your email to verify your identity and activate your account
+        </div>
+        <p-divider></p-divider>
+        <div class="fm-rubik">
+            <span style="color: #5D5D66;font-size: 0.849rem;">If you didn’t get any email:</span>
+            <span class="fm-prompt-bold mx-2" style="color: #EF870A;font-weight: bolder;">Send confirmation email again</span>
+        </div>
+    </div>    
 </p-dialog>

@@ -33,6 +33,7 @@ import { JwtTokenService } from './services/auth/jwt-token.service';
 import { ApiServiceCall } from './services/global.apiServicecall';
 import { PasswordModule } from 'primeng/password';
 import { GoogleLoginProvider, GoogleSigninButtonDirective, GoogleSigninButtonModule,SocialAuthServiceConfig, SocialLoginModule } from '@abacritt/angularx-social-login';
+import { UserProfileService } from './services/profile/user-profile.service';
 
 @NgModule({
     declarations: [
@@ -67,7 +68,8 @@ import { GoogleLoginProvider, GoogleSigninButtonDirective, GoogleSigninButtonMod
         OrangeButtonComponent,
         DropdownModule,
         PasswordModule,
-        GoogleSigninButtonModule
+        GoogleSigninButtonModule,
+        ScrollPanelModule
     ],
     exports: [GoogleSigninButtonDirective],
     providers: [
@@ -79,7 +81,9 @@ import { GoogleLoginProvider, GoogleSigninButtonDirective, GoogleSigninButtonMod
                     {
                         id: GoogleLoginProvider.PROVIDER_ID,
                         provider: new GoogleLoginProvider(
-                            '1083792866672-i9ss790f42nf1kb4on2e1j2lh9hf31kc.apps.googleusercontent.com'
+                            '1083792866672-i9ss790f42nf1kb4on2e1j2lh9hf31kc.apps.googleusercontent.com', {
+                                scopes: 'profile email'
+                              }
                         )
                     }
                 ],
@@ -90,7 +94,8 @@ import { GoogleLoginProvider, GoogleSigninButtonDirective, GoogleSigninButtonMod
         },
         ApiServiceCall,
         AuthService,
-        JwtTokenService
+        JwtTokenService,
+        UserProfileService
     ]
 })
 export class NutrigenicModule { }
