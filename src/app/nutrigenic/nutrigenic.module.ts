@@ -34,6 +34,7 @@ import { ApiServiceCall } from './services/global.apiServicecall';
 import { PasswordModule } from 'primeng/password';
 import { GoogleLoginProvider, GoogleSigninButtonDirective, GoogleSigninButtonModule,SocialAuthServiceConfig, SocialLoginModule } from '@abacritt/angularx-social-login';
 import { UserProfileService } from './services/profile/user-profile.service';
+import { ResizeDetectionService } from './services/resize-detection.service';
 
 @NgModule({
     declarations: [
@@ -95,7 +96,8 @@ import { UserProfileService } from './services/profile/user-profile.service';
         ApiServiceCall,
         AuthService,
         JwtTokenService,
-        UserProfileService
+        UserProfileService,
+        ResizeDetectionService
     ]
 })
 export class NutrigenicModule { }
