@@ -8,6 +8,7 @@ import { AuthService } from 'src/app/nutrigenic/services/auth/auth.service';
 import { JwtTokenService } from 'src/app/nutrigenic/services/auth/jwt-token.service';
 import { GoogleLoginProvider, SocialAuthService, SocialUser } from '@abacritt/angularx-social-login';
 import { GoogleSigninButtonDirective } from '@abacritt/angularx-social-login';
+import { ResizeDetectionService } from 'src/app/nutrigenic/services/resize-detection.service';
 
 //declare const gapi: any;
 
@@ -29,13 +30,24 @@ export class HeaderComponent {
     signupDone: boolean = false;
     accessToken: string = '';
     GoogleLoginProvider = GoogleLoginProvider;
+    isTablet: boolean = false;
+    isMobile: boolean = false;
+    isDesktop: boolean = false;
 
     constructor(private router: Router,
         private authService: AuthService,
         private jwtTokenService: JwtTokenService,
-        private googleAuthService: SocialAuthService) {
+        private googleAuthService: SocialAuthService,
+        private sizedetection: ResizeDetectionService) {
     }
     ngOnInit(): void {
+        this.sizedetection.refreshSize();
+        this.sizedetection.sizeCondition$.subscribe(data => {
+            this.isDesktop = data.isDesktop;
+            this.isTablet = data.isTablet;
+            this.isMobile = data.isMobile;
+        });
+
         this.checkUser();
 
         // this.authService1.authState.subscribe((user: SocialUser) => {
@@ -223,12 +235,10 @@ export class HeaderComponent {
     }
 
     handleSignInWithGoogleResponse(response: any) {
-        debugger;
         var x = response;
     }
 
     handleError(error: any): void {
-        debugger;
         notiflix.Notify.failure(error.error.message + '- Operation unsuccessful', {
             position: 'right-top',
             timeout: 3000

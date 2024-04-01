@@ -38,8 +38,9 @@
   .user-icon {
     display: flex;
     align-items: center;
-    min-width: 190px;
-    justify-content: center;
+    //min-width: 500px;
+    //justify-content: center;
+    margin-left: 25%;
   }
 
   .masterPlanCard {
@@ -111,6 +112,10 @@
     top: 0px;
     position: absolute;
     right: 0px;
+  }
+
+  .plan-detail {
+    font-size: 0.8rem;
   }
 }
 

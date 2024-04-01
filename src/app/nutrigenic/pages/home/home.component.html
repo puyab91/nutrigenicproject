@@ -266,7 +266,7 @@
     </div>
 </div>
 
-<!-- Tablet -->
+<!-- Tablet And Mobile -->
 
 <div id="layoutHome" class="web-center" *ngIf="isTablet || isMobile">
     <div class="">
@@ -530,8 +530,6 @@
     </div>
 </div>
 
-<!-- Mobile -->
-
 <!-- templates -->
 <ng-template #masterPlanCard let-item>
     <div class="card master-plan-item-shadow text-center mx-3 p-0 masterPlanCard">
@@ -546,7 +544,7 @@
                 <div class="mt-2 fm-rubik">
                     <span style="color: #5D5D66;font-size: 1rem;font-weight: 300;">{{ item.description }}</span>
                 </div>
-                <div class="d-flex mt-2 fm-rubik">
+                <div class="d-flex mt-2 fm-rubik plan-detail">
                     <div style="margin-right: 0.5rem;">
                         <span>Calories:</span>
                         <br />

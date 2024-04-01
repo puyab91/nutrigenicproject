@@ -60,11 +60,21 @@
     padding: 20px;
     position: absolute;
     width: 100%;
-    margin-top: -5%;
+    margin-top: -3%;
     border-radius: 15%;
     background-color: white;
     text-align: center;
   }
+
+  .rightDish {
+    width: 90%;
+    min-width: 90%;
+    right: 0px;
+    height: auto;
+    display: block;
+    margin-top: 55%;
+  }
+  
 
   .leftDish {
     width: 90%;

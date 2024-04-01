@@ -1,8 +1,9 @@
-<div id="layoutHeader" class="layout-topbar topbar-content" style="background-color: #F9F9FB;">
-    <div style="margin-right: 8%;">
+<!-- Desktop -->
+<div id="layoutHeader" class="layout-topbar topbar-content" style="background-color: #F9F9FB;" *ngIf="isDesktop">
+    <div style="margin-right: 20%;">
         <img src="../../../../../assets/images/Logo.png" style="height: 10rem;width: 16rem;object-fit: contain;" />
     </div>
-    <div class="d-flex w-100" style="position: relative;margin-left: 15%;">
+    <div class="d-flex w-100 mx-auto" style="position: relative;">
         <div>
             <ul class="horizontal-menu">
                 <li *ngFor="let item of items" [class.selected]="selectedItem === item.url" (click)="onItemClick(item)">
@@ -11,15 +12,35 @@
                     </span>
                 </li>
             </ul>
-            <div class="menuBar">
-                <p-menubar [model]="items"></p-menubar>
-            </div>
+        </div>        
+    </div>
+    <div class="d-flex">
+        <div class="user-icon" style="cursor: pointer;" (click)="goToCheckOut()">
+            <img src="../../../../../assets/images/shopping-basket.png" alt="User Icon">
         </div>
-        <div class="d-flex" style="position: absolute;right: 15px;">
-            <div class="user-icon" style="cursor: pointer;" (click)="goToCheckOut()">
+        <div class="user-icon" style="cursor: pointer;margin-left: 1.5rem;" (click)="loginPopupManager()">
+            <img src="assets/images/user.png" alt="User Icon">
+            <span>{{userName}}</span>
+        </div>
+    </div>
+</div>
+
+<!-- Tablet And Mobile -->
+<div id="layoutHeader" class="layout-topbar topbar-content" style="background-color: #F9F9FB;" *ngIf="isTablet || isMobile">
+    <div>
+        <div class="menuBar">
+            <p-menubar [model]="items"></p-menubar>
+        </div>
+    </div>
+    <div class="mx-auto">
+        <img src="../../../../../assets/images/Logo.png" style="height: 1.714rem;width: 14.326rem;object-fit: contain;" />
+    </div>
+    <div class="" style="position: relative;">
+        <div class="d-flex">
+            <div class="user-icon" style="cursor: pointer;margin-right: 1rem;" (click)="goToCheckOut()">
                 <img src="../../../../../assets/images/shopping-basket.png" alt="User Icon">
             </div>
-            <div class="user-icon" style="cursor: pointer;margin-left: 1.5rem;" (click)="loginPopupManager()">
+            <div class="user-icon" style="cursor: pointer;" (click)="loginPopupManager()">
                 <img src="assets/images/user.png" alt="User Icon">
                 <span>{{userName}}</span>
             </div>
@@ -27,6 +48,7 @@
     </div>
 </div>
 
+<!-- Dialogs -->
 <p-dialog [(visible)]="loginPopupVisibility" [style]="{ width: '330px', height: '61%%' }" (onHide)="onDialogHide()">
     <div class="text-center fm-prompt">
         <div class=" fw-bold text-black" style="font-size: 1.429rem;">

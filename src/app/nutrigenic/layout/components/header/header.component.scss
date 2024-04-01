@@ -29,41 +29,29 @@
   display: none;
 }
 
-@media screen and (max-width: 1030px) {
-  .menuBar {
-    display: block;
-    display: inline-block;
-    margin-right: 2rem;
-    cursor: pointer;
-    font-family: Prompt;
-    font-size: 1.3rem;
-    width: 100%;
-  }
+// @media screen and (max-width: 1030px) {
+//   .horizontal-menu {
+//     display: none;
+//   }
 
-  .horizontal-menu {
-    display: none;
-  }
 
-  .user-icon {
-    display: flex;
-    align-items: center;
-    display: none;
-  }
-}
+// }
 
-@media screen and (min-width: 1031px) {
+@media screen and (min-width: 980px) {
   .user-icon {
     display: flex;
     align-items: center;
   }
+
+  .user-icon img {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    margin-right: 10px;
+  }
 }
 
-.user-icon img {
-  width: 24px;
-  height: 24px;
-  border-radius: 50%;
-  margin-right: 10px;
-}
+
 
 .user-icon span {
   font-family: Prompt;
@@ -133,4 +121,59 @@
     font-size: 1.429rem; 
     line-height: 1.875rem;    
     font-weight: bold;
+}
+
+@media screen and (max-width: 979px) {
+  .layout-topbar{
+    height: 4.5rem;
+  }
+
+  .user-icon {
+    display: flex;
+    align-items: center;
+    //display: none;
+  }
+
+  .user-icon img {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    margin-right: 5px;
+  }
+}
+
+.menuBar {
+  display: block;
+  display: inline-block;
+  margin-right: 2rem;
+  cursor: pointer;
+  font-family: Prompt;
+  font-size: 1.3rem;
+  width: 100%;
+}
+
+::ng-deep .p-menubar {
+  padding: 0.5rem;
+  background: #f8f9fa;
+  color: #495057;
+  border: none;
+  border-radius: 6px;
+}
+
+::ng-deep .p-menubar .p-menubar-button {
+  display: flex;
+  width: 2rem;
+  height: 2rem;
+  color: #000000;
+  border-radius: 50%;
+  transition: background-color 0.2s, color 0.2s, box-shadow 0.2s;
+}
+
+::ng-deep .p-menubar.p-menubar-mobile-active .p-menubar-root-list {
+  display: flex;
+  flex-direction: column;
+  top: 100%;
+  left: 0;
+  z-index: 1;
+  width: 115px;
 }

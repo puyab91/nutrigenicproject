@@ -21,9 +21,30 @@
   margin-top: 5rem;
 }
 
+.secondDiv {
+  padding: 20px;
+  position: absolute;
+  width: 100%;
+  margin-top: -9%;
+  border-radius: 15%;
+  background-color: white;
+  text-align: center;
+  z-index: 2;
 }
 
-@media screen and (max-width: 1699px) {
+.thirdDiv {
+  padding: 20px;
+  position: absolute;
+  width: 100%;
+  margin-top: -15%;
+  border-radius: 15%;
+  background-color: white;
+  text-align: center;
+  z-index: 2;
+}
+}
+
+@media screen and (min-width: 980px) and (max-width: 1699px)  {
 
   .text-color {
     color: #5D5D66;
@@ -40,7 +61,6 @@
 }
 .our-team{
   margin-top: 10rem;
-}
 }
 
 .secondDiv {
@@ -64,6 +84,9 @@
   text-align: center;
   z-index: 2;
 }
+}
+
+
 
 
 .shadow {
