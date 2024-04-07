@@ -119,8 +119,8 @@
 
   .overlayMasterPlan {
     position: absolute;
-    bottom: 8%;
-    width: 90%;
+    bottom: 0;
+    width: 100%;
     height: 77%;
     opacity: 0.8;
     pointer-events: none;
@@ -129,6 +129,15 @@
 
   .who-made-us-margin{
     margin-top: 450px;
+  }
+  .plan-detail {
+    font-size: 1rem !important;
+  }
+  .masterPlanImg {
+    min-width: 120px;
+    max-width: 140px;
+    max-height: 140px;
+    min-height: 120px;
   }
 }
 
@@ -255,8 +264,21 @@
   .who-made-us-margin{
     margin-top: 400px;
   }
+  .plan-detail {
+    font-size: 1rem !important;
+  }
+
+  .masterPlanImg {
+    min-width: 120px;
+    max-width: 140px;
+    max-height: 140px;
+    min-height: 120px;
+  }
 }
 
+.plan-detail-margin{
+  margin-right: auto;
+}
 
 .overlay {
   position: absolute;
@@ -352,13 +374,6 @@
   max-width: 18px;
   min-height: 18px;
   margin: auto;
-}
-
-.masterPlanImg {
-  min-width: 120px;
-  max-width: 140px;
-  max-height: 140px;
-  min-height: 120px;
 }
 
 

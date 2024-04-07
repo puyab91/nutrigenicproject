@@ -57,7 +57,7 @@
     }
 
     .leftDish {
-        height: 29.429rem;
+        height: 20rem;
         width: 100%;
         display: block;
     }
@@ -98,13 +98,23 @@
 
     .overlayMasterPlan {
         position: absolute;
-        bottom: 5%;
-        width: 90%;
-        height: 77%;
+        bottom: 0;
+        width: 100%;
+        height: 25%;
         opacity: 0.8;
         pointer-events: none;
         background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 60%, rgba(255, 255, 255, 1) 90%);
     }
+
+    .plan-detail {
+        font-size: 0.857rem;
+      }
+      .masterPlanImg {
+        min-width: 120px;
+        max-width: 140px;
+        max-height: 140px;
+        min-height: 120px;
+      }
 }
 
 .overlay-banner-Tablet {
