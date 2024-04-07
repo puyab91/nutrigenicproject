@@ -38,7 +38,7 @@
             </div>
             <div class="col-md-7 negativeMarginOurMission">
                 <div class="w-75 web-left ourMission">
-                    <span class="fm-prompt" style="color: #2C2C30;font-weight: 300;font-size: 2rem;">OUR MISSION</span>
+                    <span class="fm-prompt ourMission-title">OUR MISSION</span>
                     <p class="mt-3 fm-rubik" style="color: #848790;font-weight: 400;">
                         We are dedicated to revolutionising the meal delivery experience<br /> by offering exquisitely
                         crafted
@@ -65,7 +65,7 @@
             </div>
         </div>
         <div class="secondDiv shadow111">
-            <p class="mt-4" style="color: #5D5D66;font-size: 2.571rem;font-weight: 300;">Why choose Nutrigenic?</p>
+            <p class="mt-4 cardTitles">Why choose Nutrigenic?</p>
             <div class="row justify-content-center my-5 responsiveFont" style="color: #2C2C30;">
                 <div class="user-icon col-md-2">
                     <img src="assets/images/laurel-wreath-first.png" alt="User Icon">
@@ -124,7 +124,7 @@
     </div>
     <div class="web-center who-made-us-margin">
         <div>
-            <p class="mt-4" style="color:#5D5D66;font-size: 2.571rem;font-weight: 300;">Who made us?</p>
+            <p class="mt-4 cardTitles">Who made us?</p>
         </div>
         <div class="d-flex justify-content-center">
             <div class="m-3" style="width: 15%;">
@@ -176,7 +176,7 @@
         </div>
     </div>
     <div class="mt-5 p-2 mastrPlan shadow">
-        <p class="mt-5 fs-3" style="color: #5D5D66;font-size: 2.571rem;font-weight: 300;">Master Plan</p>
+        <p class="mt-5 fs-3 cardTitles">Master Plan</p>
         <button *ngFor="let item of tabItems"
             [style.background-color]="selectedMasterTab === item ? '#dfdfef' : 'white'"
             (click)="selectedMasterTab = item" class="btn btn-primary mt-2 mx-2">
@@ -301,7 +301,7 @@
                     <img class="d-block object-fit-contain w-50" src="../../../../assets/images/plan-top-line.png">
                 </div>
                 <div class="w-100 web-left ourMission">
-                    <span class="fm-prompt" style="color: #2C2C30;font-weight: 300;font-size: 2rem;">OUR MISSION</span>
+                    <span class="fm-prompt ourMission-title">OUR MISSION</span>
                     <p class="mt-3 fm-rubik" style="color: #848790;font-weight: 400;">
                         We are dedicated to revolutionising the meal delivery experience<br /> by offering exquisitely
                         crafted
@@ -329,7 +329,7 @@
         </div>
     </div>
     <div class="secondDiv mt-5"> 
-        <p class="mt-4" style="color: #5D5D66;font-size: 2.571rem;font-weight: 300;">Why choose Nutrigenic?</p>
+        <p class="mt-4 cardTitles">Why choose Nutrigenic?</p>
         <div class="justify-content-center my-5 responsiveFont" [ngClass]="isTablet ? 'd-flex' : ''" style="color: #2C2C30;">
             <div class="user-icon col-md-3" [class.mb-5]="isMobile">
                 <img src="assets/images/laurel-wreath-first.png" alt="User Icon">
@@ -388,11 +388,11 @@
     </div>
     <div class="web-center mt-5">
         <div>
-            <p class="mt-4" style="color:#5D5D66;font-size: 2.571rem;font-weight: 300;">Who made us?</p>
+            <p class="mt-4 cardTitles">Who made us?</p>
         </div>
         <div class="justify-content-center" [class.d-flex] = "isTablet">
             <div class="m-3">
-                <span class="mb-3" style="color:#5D5D66;font-size: 1.429rem;font-weight: 300;">OUR CHEFS</span>
+                <span class="mb-3 responsiveFont" style="color:#5D5D66;font-weight: 300;">OUR CHEFS</span>
                 <div class="card p-0 black-shadow">
                     <div class="card-body">
                         <img class="d-block mb-2 w-100 object-fit-contain" src="../../../../assets/images/chef-tablet.png">
@@ -405,7 +405,7 @@
                 </div>
             </div>
             <div class="m-3">
-                <span class="mb-3" style="color:#5D5D66;font-size: 1.429rem;font-weight: 300;">OUR EXPERTS</span>
+                <span class="mb-3 responsiveFont" style="color:#5D5D66;font-weight: 300;">OUR EXPERTS</span>
                 <div class="card p-0 black-shadow">
                     <div class="card-body">
                         <img class="d-block mb-2 w-100 object-fit-contain" src="../../../../assets/images/chef-tablet.png">
@@ -421,7 +421,7 @@
     </div>
 
     <div class="mt-5 web-center">
-        <span style="color:#5D5D66;font-size: 1.429rem;font-weight: 300;">OUR PARTENERS</span>
+        <span class="responsiveFont" style="color:#5D5D66;font-weight: 300;">OUR PARTENERS</span>
         <div class="card mt-2 p-0 black-shadow" ngClass="isTablet ? 'w-100' : 'w-75'">
             <div class="card-body">
                 <span class="fm-rubik" style="color: #494646;font-size: 1.429rem;font-weight: 300;">Those who help us to
@@ -440,7 +440,7 @@
         </div>
     </div>
     <div class="mt-5 p-2 mastrPlan shadow">
-        <p class="mt-5 fs-3" style="color: #5D5D66;font-size: 2.571rem;font-weight: 300;">Master Plan</p>
+        <p class="mt-5 fs-3 cardTitles">Master Plan</p>
         <button *ngFor="let item of tabItems"
             [style.background-color]="selectedMasterTab === item ? '#dfdfef' : 'white'"
             (click)="selectedMasterTab = item" class="btn btn-primary mt-2 mx-2">
@@ -539,10 +539,11 @@
             </div>
             <div class="mx-4 mb-3 web-left">
                 <div class="fw-bold mt-3 fs-4 fm-rubik">
-                    <span style="color: #5D5D66;font-size: 1.571rem;font-weight: 400;">{{ item.title }}</span>
+                    <span [style]="isMobile ? 'font-size: 1rem;font-weight: bold;' : 'font-size: 1.571rem;font-weight: 300;'" style="color: #5D5D66;font-weight: 400;">{{ item.title }}</span>
                 </div>
                 <div class="mt-2 fm-rubik">
-                    <span style="color: #5D5D66;font-size: 1rem;font-weight: 300;">{{ item.description }}</span>
+                    <span [style]="isMobile ? 'font-size: 0.857rem;' : 'font-size: 1rem;'" 
+                    style="color: #5D5D66;">{{ item.description }}</span>
                 </div>
                 <div class="d-flex mt-2 fm-rubik plan-detail">
                     <div class="plan-detail-margin">

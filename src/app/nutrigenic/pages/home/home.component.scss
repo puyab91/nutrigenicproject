@@ -11,7 +11,7 @@
     right: 0;
     float: right;
   }
-  
+
 
   .textbox {
     position: absolute;
@@ -33,6 +33,12 @@
 
   .ourMission {
     font-size: 1.1rem;
+  }
+
+  .ourMission-title {
+    color: #2C2C30;
+    font-weight: 300;
+    font-size: 2rem;
   }
 
   .negativeMarginOurMission {
@@ -74,7 +80,7 @@
     display: block;
     margin-top: 55%;
   }
-  
+
 
   .leftDish {
     width: 90%;
@@ -127,17 +133,25 @@
     background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 60%, rgba(255, 255, 255, 1) 90%);
   }
 
-  .who-made-us-margin{
+  .who-made-us-margin {
     margin-top: 450px;
   }
+
   .plan-detail {
     font-size: 1rem !important;
   }
+
   .masterPlanImg {
     min-width: 120px;
     max-width: 140px;
     max-height: 140px;
     min-height: 120px;
+  }
+
+  .cardTitles {
+    color: #5D5D66;
+    font-size: 2.571rem;
+    font-weight: 300;
   }
 }
 
@@ -155,7 +169,7 @@
     right: 0;
     float: right;
   }
-  
+
 
   .responsiveFont {
     font-size: 1.429rem;
@@ -180,6 +194,12 @@
 
   .ourMission {
     font-size: 1.429rem;
+  }
+
+  .ourMission-title {
+    color: #2C2C30;
+    font-weight: 300;
+    font-size: 2rem;
   }
 
   .negativeMarginOurMission {
@@ -261,9 +281,10 @@
     background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 60%, rgba(255, 255, 255, 1) 90%);
   }
 
-  .who-made-us-margin{
+  .who-made-us-margin {
     margin-top: 400px;
   }
+
   .plan-detail {
     font-size: 1rem !important;
   }
@@ -274,9 +295,15 @@
     max-height: 140px;
     min-height: 120px;
   }
+
+  .cardTitles {
+    color: #5D5D66;
+    font-size: 2.571rem;
+    font-weight: 300;
+  }
 }
 
-.plan-detail-margin{
+.plan-detail-margin {
   margin-right: auto;
 }
 
