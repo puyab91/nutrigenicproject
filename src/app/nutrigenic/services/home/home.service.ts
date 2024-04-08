@@ -16,7 +16,7 @@ export class HomeService {
 
     getMeals(): Observable<OperationResult<any>> {
         let _url = ApiUrl.meals;
-        return this.serviceCall.GET(_url, true, null);
+        return this.serviceCall.GET(_url, false, null);
     }
 
 }

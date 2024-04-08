@@ -37,6 +37,6 @@ export class ApiUrl {
   }
 
   static get meals(): string {
-    return this.baseUrl + 'meals';
+    return this.baseUrl + 'public/meals';
   }
 }
