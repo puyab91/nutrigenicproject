@@ -31,4 +31,8 @@ export class ApiUrl {
   static get setWeight(): string {
     return this.baseUrl + 'biometrics/weight';
   }
+
+  static get blogs(): string {
+    return this.baseUrl + 'articles';
+  }
 }

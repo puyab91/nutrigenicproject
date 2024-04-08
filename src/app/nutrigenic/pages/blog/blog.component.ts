@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { MenuItem } from 'primeng/api';
 import { ResizeDetectionService } from '../../services/resize-detection.service';
+import { BlogService } from '../../services/blog/blog.service';
+import { BlogModel } from '../../models/blog/blog-model';
 
 @Component({
     selector: 'app-blog',
@@ -11,21 +13,24 @@ import { ResizeDetectionService } from '../../services/resize-detection.service'
 export class BlogComponent {
     tabItems = ['Home', 'Health & Nutrition', 'Recipes', 'Fitness', 'Lifestyle', 'Supplements'];
     selectedMasterTab: string | null = 'Home';
+    blogsModel: BlogModel[] = [];
     listCardData: any[] = [];
     isTablet: boolean = false;
     isMobile: boolean = false;
     isDesktop: boolean = false;
     constructor(private router: Router,
-        private sizedetection: ResizeDetectionService) {}
+        private sizedetection: ResizeDetectionService,
+        private blogService: BlogService) { }
 
-    ngOnInit(){
+    ngOnInit() {
         this.sizedetection.refreshSize();
         this.sizedetection.sizeCondition$.subscribe(data => {
             this.isDesktop = data.isDesktop;
             this.isTablet = data.isTablet;
             this.isMobile = data.isMobile;
+        });
 
-          });
+        this.getBlogs();
 
         this.listCardData = [
             {
@@ -67,10 +72,26 @@ export class BlogComponent {
         ];
     }
 
-    navigateToBlogDetail(){
+
+    getBlogs(){
+        this.blogService.getBlogs().subscribe((response) => {
+            console.log(response);
+            response.body.data.forEach((item: any) => {
+                var blogModel = new BlogModel();
+                blogModel.id = item.id;
+                blogModel.title = item.title;
+                blogModel.titleImage = item.title_image;
+                blogModel.content = blogModel.RemoveHtmlTags(item.content);
+                blogModel.date = new Date(item.date);
+                blogModel.hashtags = item.hashtags;
+                this.blogsModel.push(blogModel);
+            });
+        });
+    }
+    navigateToBlogDetail() {
         this.router
-        .navigate(['/blogDetail'])
-        .then(() => { })
-        .catch(() => { });
+            .navigate(['/blogDetail'])
+            .then(() => { })
+            .catch(() => { });
     }
 }

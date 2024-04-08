@@ -36,6 +36,7 @@ import { GoogleLoginProvider, GoogleSigninButtonDirective, GoogleSigninButtonMod
 import { UserProfileService } from './services/profile/user-profile.service';
 import { ResizeDetectionService } from './services/resize-detection.service';
 import { ActivateComponent } from './pages/activate/activate.component';
+import { BlogService } from './services/blog/blog.service';
 
 @NgModule({
     declarations: [
@@ -57,7 +58,7 @@ import { ActivateComponent } from './pages/activate/activate.component';
         CheckoutComponent,
         AccountComponent,
         CreditCardsComponent,
-        ActivateComponent
+        ActivateComponent,
     ],
     imports: [
         CommonModule,
@@ -99,7 +100,8 @@ import { ActivateComponent } from './pages/activate/activate.component';
         AuthService,
         JwtTokenService,
         UserProfileService,
-        ResizeDetectionService
+        ResizeDetectionService,
+        BlogService
     ]
 })
 export class NutrigenicModule { }
