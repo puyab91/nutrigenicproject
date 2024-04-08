@@ -38,6 +38,7 @@ import { ResizeDetectionService } from './services/resize-detection.service';
 import { ActivateComponent } from './pages/activate/activate.component';
 import { BlogService } from './services/blog/blog.service';
 import { HomeService } from './services/home/home.service';
+import { OurShopService } from './services/our-shop/our-shop.service';
 
 @NgModule({
     declarations: [
@@ -103,7 +104,8 @@ import { HomeService } from './services/home/home.service';
         UserProfileService,
         ResizeDetectionService,
         BlogService,
-        HomeService
+        HomeService,
+        OurShopService
     ]
 })
 export class NutrigenicModule { }

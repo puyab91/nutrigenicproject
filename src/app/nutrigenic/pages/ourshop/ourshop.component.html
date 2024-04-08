@@ -12,11 +12,11 @@
         </div>
         <div class="mt-4 web-left row">
             <div [class]="isDesktop ? 'col-md-9' : 'col-md-12'">
-                <button *ngFor="let item of tabItems"
-                    [style.background-color]="selectedMasterTab === item ? '#dfdfef' : 'white'"
-                    (click)="selectedMasterTab = item" class="btn btn-primary mt-2 mx-2 categoriesButton"
+                <button *ngFor="let item of tabItems" (click)="shopCategoryChange(item.id)"
+                    [style.background-color]="selectedMasterTab === item.id ? '#dfdfef' : 'white'"
+                    (click)="selectedMasterTab = item.id" class="btn btn-primary mt-2 mx-2 categoriesButton"
                     style="font-size: 1.143rem;">
-                    {{ item }}
+                    {{ item.name }}
                 </button>
             </div>
             <div class="col-md-3" *ngIf="isDesktop">
@@ -31,7 +31,7 @@
             </div>
         </div>
         <div class="w-100 row mt-4 row mb-5" style="max-width: 100%;">
-            <ng-container *ngFor="let item of listCardData">
+            <ng-container *ngFor="let item of ourShopsModel">
                 <ng-container *ngTemplateOutlet="
         listCards;
         context: { $implicit: item }
@@ -47,25 +47,25 @@
     <div class="mb-3 position-relative responsiveFont fm-rubik" [class]="isDesktop ? 'col-md-3' : isTablet ? 'col-md-6' : 'col-md-12' ">
         <div class="card shadow p-3">
             <div class="">
-                <img class="w-100" [src]="item.imgUrl" style="border-radius: 12px 12px 0 0;" />
+                <img class="w-100" [src]="item.image_path" style="border-radius: 12px 12px 0 0;" />
             </div>
             <div class="card-body web-left p-0">
                 <div class="fw-bold mt-3" style="font-size: 1.143rem;">
-                    {{item.title}}
+                    {{item.name}}
 
                     <p-rating [(ngModel)]="value" [readonly]="true" [cancel]="false" [style.float]="'right'"
                         [style.font-size]="'1rem'"></p-rating>
 
                 </div>
-                <div class="web-left mt-2" style="font-size: 1rem;"><span>{{ item.description }}</span></div>
-                <div class="fw-bold mt-3" style="font-size: 1rem;color: #311C02;"><span>{{ item.price }}</span></div>
+                <div class="web-left mt-2" style="font-size: 1rem;"><span>{{ item.description_image_path }}</span></div>
+                <div class="fw-bold mt-3" style="font-size: 1rem;color: #311C02;"><span>€{{ item.price }}</span></div>
                 <div class="fw-bold mt-4">
-                    <button class="btn btn-dec-ourshop p-0" (click)="decreaseBtnClick()" style="margin-right: 0.5rem;">
+                    <button class="btn btn-dec-ourshop p-0" (click)="item.count = item.count == 1 ? 1 : item.count - 1" style="margin-right: 0.5rem;">
                         <i class="pi pi-minus fw-bold" style="padding: 0.6rem;
                         font-size: 0.8rem;color: #EF870A;"></i>
                     </button>
-                    <span> {{this.counter}} </span>
-                    <button class="btn btn-primary btn-ourshop p-0" (click)="increaseBtnClick()"
+                    <span> {{item.count}} </span>
+                    <button class="btn btn-primary btn-ourshop p-0" (click)="item.count = item.count + 1"
                         style="margin-left: 0.5rem;">
                         <i class="pi pi-plus fw-bold" style="padding: 0.6rem;
                         font-size: 0.8rem;"></i>

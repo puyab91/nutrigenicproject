@@ -39,4 +39,20 @@ export class ApiUrl {
   static get meals(): string {
     return this.baseUrl + 'public/meals';
   }
+
+  static get vitamins(): string {
+    return this.baseUrl + 'store/vitamins';
+  }
+
+  static get fineSupplements(): string {
+    return this.baseUrl + 'store/fine_supplements';
+  }
+
+  static get healthBoostIngredients(): string {
+    return this.baseUrl + 'store/health_boost_ingredients';
+  }
+
+  static get snacks(): string {
+    return this.baseUrl + 'store/snacks';
+  }
 }
