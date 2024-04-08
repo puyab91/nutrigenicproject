@@ -181,7 +181,6 @@ export class HeaderComponent {
                     next: this.handleSignInWithGoogleResponse.bind(this),
                     error: this.handleError.bind(this)
                 });
-                console.log(res)
             }).catch((error) => {
                 console.log(error);
             });
@@ -229,7 +228,17 @@ export class HeaderComponent {
     }
 
     handleSignInWithGoogleResponse(response: any) {
-        var x = response;
+        const token = response.body.access_token;
+        const userName = response.body.user.first_name + ' ' + response.body.user.last_name;
+
+        this.jwtTokenService.setToken(token);
+        this.jwtTokenService.setUserName(userName);
+
+        this.jwtTokenService.getIsLogin().subscribe((data: any) => {
+            this.isLogin = data;
+            this.userName = this.jwtTokenService.getUserName();
+            this.handleBlurFilter();
+        });
     }
 
     handleError(error: any): void {

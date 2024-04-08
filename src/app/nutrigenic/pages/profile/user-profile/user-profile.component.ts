@@ -22,7 +22,7 @@ export class UserProfileComponent {
 
     constructor(private router: Router, private jwtTokenService: JwtTokenService,
         private userProfileService: UserProfileService) {
-            this.userProfile = new UserProfileModel();
+        this.userProfile = new UserProfileModel();
         this.addButtons = [
             {
                 id: 'weight',
@@ -48,10 +48,20 @@ export class UserProfileComponent {
     }
 
     ngOnInit() {
-        this.userProfileService.getUserProfile().subscribe({
-            next: this.handleGetUserProfileResponse.bind(this),
-            error: this.handleError.bind(this)
+        this.jwtTokenService.getIsLogin().subscribe((data: any) => {
+            if (data)
+                this.userProfileService.getUserProfile().subscribe({
+                    next: this.handleGetUserProfileResponse.bind(this),
+                    error: this.handleError.bind(this)
+                });
+            else
+                this.router
+                    .navigate(['/home'])
+                    .then(() => { })
+                    .catch(() => { });
         });
+
+
         // this.jwtTokenService.getIsLogin().subscribe((data: any) => {
         //     if (data) {
         //         this.userName = this.jwtTokenService.getUserName();
@@ -65,37 +75,37 @@ export class UserProfileComponent {
         // });        
     }
 
-    showBiometricPopup(){
+    showBiometricPopup() {
         this.addBiometricPopupVisibility = !this.addBiometricPopupVisibility;
         //this.handleBlurFilter();
     }
 
-    onDialogHide(){
+    onDialogHide() {
         //this.handleBlurFilter();
     }
 
     onDragOver(event: DragEvent) {
         event.preventDefault();
-      }
-    
-      onDrop(event: DragEvent) {
-        event.preventDefault();
-      }
+    }
 
-      onFileSelected(event: any) {
+    onDrop(event: DragEvent) {
+        event.preventDefault();
+    }
+
+    onFileSelected(event: any) {
         const file: File = event.target.files[0];
         console.log('Selected file:', file);
-      }
-    
+    }
 
-    addUserWeight(){
+
+    addUserWeight() {
         this.userProfileService.setUserWeight(parseFloat(this.value)).subscribe({
             next: this.handleSetUserWeightResponse.bind(this),
             error: this.handleError.bind(this)
         });
     }
 
-    handleSetUserWeightResponse(response: any){
+    handleSetUserWeightResponse(response: any) {
         notiflix.Notify.success(response.statusCode + '- Operation unsuccessful', {
             position: 'right-top',
             timeout: 3000
@@ -118,7 +128,7 @@ export class UserProfileComponent {
         this.userProfile.has_to_upload_photo = response.body.has_to_upload_photo;
         this.userProfile.has_to_update_weight = response.body.has_to_update_weight;
         this.userProfile.has_unseen_notes = response.body.has_unseen_notes;
-        
+
     }
 
     handleError(error: any): void {

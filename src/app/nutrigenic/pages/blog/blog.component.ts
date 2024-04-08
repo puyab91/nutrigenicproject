@@ -75,7 +75,6 @@ export class BlogComponent {
 
     getBlogs(){
         this.blogService.getBlogs().subscribe((response) => {
-            console.log(response);
             response.body.data.forEach((item: any) => {
                 var blogModel = new BlogModel();
                 blogModel.id = item.id;

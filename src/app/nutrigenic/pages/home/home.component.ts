@@ -120,8 +120,6 @@ export class HomeComponent {
 
     getMeals() {
         this.homeService.getMeals().subscribe((response: any) => {
-            console.log(response);
-
             response.body.data.forEach((item: any) => {
                 var mealModel = new MealModel();
                 mealModel.id = item.id;

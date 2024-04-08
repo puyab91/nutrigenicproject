@@ -16,7 +16,6 @@ export class BlogDetailComponent {
 
     ngOnInit(){
         this.route.queryParams.subscribe((params: any) => {
-            console.log(params); 
             this.blogModel.id = params.id;
             this.blogModel.title = params.title;
             this.blogModel.titleImage = params.titleImage;

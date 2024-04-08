@@ -50,22 +50,18 @@ export class OurShopComponent {
     shopCategoryChange(id: number) {
         if (id == 1)
             this.ourShopService.getsnacks().subscribe((response: any) => {
-                console.log(response);
                 this.addToPageModel(response.body.data);
             });
         else if (id == 2)
             this.ourShopService.getHealthBoostIngredients().subscribe((response: any) => {
-                console.log(response);
                 this.addToPageModel(response.body.data);
             });
         else if (id == 3)
             this.ourShopService.getFineSupplements().subscribe((response: any) => {
-                console.log(response);
                 this.addToPageModel(response.body.data);
             });
         else if (id == 4)
             this.ourShopService.getVitamins().subscribe((response: any) => {
-                console.log(response);
                 this.addToPageModel(response.body.data);
             });
     }
