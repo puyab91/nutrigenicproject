@@ -88,9 +88,9 @@ export class BlogComponent {
             });
         });
     }
-    navigateToBlogDetail() {
+    navigateToBlogDetail(item: any) {
         this.router
-            .navigate(['/blogDetail'])
+            .navigate(['/blogDetail'], { queryParams: item })
             .then(() => { })
             .catch(() => { });
     }

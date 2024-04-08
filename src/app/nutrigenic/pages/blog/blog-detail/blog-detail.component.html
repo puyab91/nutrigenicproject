@@ -2,62 +2,85 @@
     <div class="web-left row" style="width: 90%;">
         <div class="col-md-8 mt-5 web-left">
             <div class="w-100" style="height: 300px;">
-                <img class="w-100 h-100" src="../../../../assets/images/blog-detail.png" />
+                <img class="w-100 h-100" style="border-radius: 20px;" [src]="blogModel.titleImage" />
             </div>
             <div class="mt-4 web-left mx-2 d-flex">
                 <button [style.background-color]="'#dfdfef'" class="btn btn-primary py-1 mt-2 mx-2 tagbutton d-flex">
-                    <img src="../../../../../assets/images/skipping-rope.png" style="width: 20px;height: 20px;" class="mx-2"
-                        alt="">
+                    <img src="../../../../../assets/images/skipping-rope.png" style="width: 20px;height: 20px;"
+                        class="mx-2" alt="">
                     <span style="font-size: 1.143rem;color: #2C2C30;">Fitness</span>
                 </button>
                 <button [style.background-color]="'#dfdfef'" class="btn btn-primary py-1 mt-2 mx-2 tagbutton d-flex">
-                    <img src="../../../../../assets/images/pin.png" style="width: 20px;height: 20px;" class="mx-2" alt="">
+                    <img src="../../../../../assets/images/pin.png" style="width: 20px;height: 20px;" class="mx-2"
+                        alt="">
                     <span style="font-size: 1.143rem;color: #2C2C30;">Yoga, gym</span>
                 </button>
             </div>
-            <div class="fw-bold fs-3 mt-4 fm-rubik" 
-            style="font-size: 2.286rem;color: #2C2C30;">
-                5 Simple yoga poses for a Beggineer
+            <div class="fw-bold fs-3 mt-4 fm-rubik" style="font-size: 2.286rem;color: #2C2C30;">
+                {{ blogModel.title }}
             </div>
-            <div class="mt-4 fm-rubik"
-            style="font-size: 1.429rem;color: #5D5D66;">
-                Discover how yoga can improve your sleep quality with these easy folllow poses. Open now and read come on.
+            <div class="mt-4 fm-rubik" style="font-size: 1.429rem;color: #5D5D66;">
+               {{ blogModel.content }}
             </div>
-            <div class="mt-4 responsiveTextFont fm-rubik"
-            style="font-size: 1.143rem;color: #2C2C30;">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras magna nisl, scelerisque vitae venenatis at,
-                iaculis vitae libero. Praesent at sapien ac ante posuere auctor a sit amet nisl. Cras blandit nisl condimentum
-                nisl efficitur, quis lobortis sem gravida. Ut lectus turpis, blandit id magna ut, fringilla mollis justo. Aenean
-                consectetur laoreet mi, eu pharetra purus. Nulla sed viverra velit. Etiam a suscipit tellus. Nunc porttitor
-                interdum velit, ac pharetra felis rutrum vel. Aenean tempor molestie risus, iaculis placerat elit vestibulum at.
-                Ut sit amet eros iaculis, tempor sem ut, lobortis urna. Etiam tempor ante sed massa sodales tristique. Nam
-                molestie, turpis ut rutrum imperdiet, est mi aliquet turpis, eget elementum dolor erat ornare augue. Sed leo
-                lectus, laoreet sit amet sodales sit amet, feugiat ac mi. Cras dignissim lorem sit amet tellus sollicitudin, ut
+            <!-- <div class="mt-4 responsiveTextFont fm-rubik" style="font-size: 1.143rem;color: #2C2C30;">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras magna nisl, scelerisque vitae venenatis
+                at,
+                iaculis vitae libero. Praesent at sapien ac ante posuere auctor a sit amet nisl. Cras blandit nisl
+                condimentum
+                nisl efficitur, quis lobortis sem gravida. Ut lectus turpis, blandit id magna ut, fringilla mollis
+                justo. Aenean
+                consectetur laoreet mi, eu pharetra purus. Nulla sed viverra velit. Etiam a suscipit tellus. Nunc
+                porttitor
+                interdum velit, ac pharetra felis rutrum vel. Aenean tempor molestie risus, iaculis placerat elit
+                vestibulum at.
+                Ut sit amet eros iaculis, tempor sem ut, lobortis urna. Etiam tempor ante sed massa sodales tristique.
+                Nam
+                molestie, turpis ut rutrum imperdiet, est mi aliquet turpis, eget elementum dolor erat ornare augue. Sed
+                leo
+                lectus, laoreet sit amet sodales sit amet, feugiat ac mi. Cras dignissim lorem sit amet tellus
+                sollicitudin, ut
                 imperdiet ligula dignissim. Cras vestibulum est orci.
-                Praesent ullamcorper erat augue, in porta mi volutpat sit amet. Curabitur neque tortor, semper nec lacus nec,
-                rhoncus fringilla neque. Nulla facilisi. Donec finibus leo condimentum egestas consequat. Nulla ante libero,
-                pulvinar a purus sed, pulvinar placerat eros. Nulla nec scelerisque massa. Donec at nisl nec turpis aliquam
-                ultrices nec at augue. Nulla dapibus, metus eu iaculis vulputate, ante libero bibendum libero, nec semper sem
+                Praesent ullamcorper erat augue, in porta mi volutpat sit amet. Curabitur neque tortor, semper nec lacus
+                nec,
+                rhoncus fringilla neque. Nulla facilisi. Donec finibus leo condimentum egestas consequat. Nulla ante
+                libero,
+                pulvinar a purus sed, pulvinar placerat eros. Nulla nec scelerisque massa. Donec at nisl nec turpis
+                aliquam
+                ultrices nec at augue. Nulla dapibus, metus eu iaculis vulputate, ante libero bibendum libero, nec
+                semper sem
                 metus nec ligula.
-                Donec quis nulla urna. Cras iaculis, massa id pellentesque imperdiet, dolor odio condimentum mi, mollis congue
-                nisi risus quis mi. Integer ut arcu arcu. Nulla bibendum augue in mauris congue tristique. Nam nec hendrerit
-                nisi, vitae accumsan ipsum. Vestibulum vel semper est. Integer purus lectus, sollicitudin rutrum tempus quis,
+                Donec quis nulla urna. Cras iaculis, massa id pellentesque imperdiet, dolor odio condimentum mi, mollis
+                congue
+                nisi risus quis mi. Integer ut arcu arcu. Nulla bibendum augue in mauris congue tristique. Nam nec
+                hendrerit
+                nisi, vitae accumsan ipsum. Vestibulum vel semper est. Integer purus lectus, sollicitudin rutrum tempus
+                quis,
                 sollicitudin sit amet velit. Vestibulum pulvinar dui eget aliquam lacinia.
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam molestie odio ac sapien hendrerit, ut ultrices
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam molestie odio ac sapien hendrerit, ut
+                ultrices
                 sapien congue. Quisque quis arcu iaculis urna imperdiet lobortis. In finibus dui rutrum sapien vulputate
-                molestie. Nullam eu tincidunt risus. Integer consectetur ante eget malesuada dignissim. In placerat viverra
+                molestie. Nullam eu tincidunt risus. Integer consectetur ante eget malesuada dignissim. In placerat
+                viverra
                 ipsum, sed dapibus velit tincidunt id. Etiam ligula eros, consequat quis elit eget, varius posuere quam.
-                Maecenas id dolor at diam lacinia vulputate. In auctor sit amet eros interdum consequat. Integer lacinia lacinia
-                ex vel lobortis. Aliquam bibendum nibh enim, vel semper lorem maximus eget. Praesent et quam ac velit finibus
+                Maecenas id dolor at diam lacinia vulputate. In auctor sit amet eros interdum consequat. Integer lacinia
+                lacinia
+                ex vel lobortis. Aliquam bibendum nibh enim, vel semper lorem maximus eget. Praesent et quam ac velit
+                finibus
                 convallis.
-                Maecenas fringilla hendrerit lacus, placerat sollicitudin lorem feugiat ut. Vestibulum at suscipit nulla, eget
-                dictum tellus. Sed in tincidunt justo. Etiam elementum elit sit amet nisl pellentesque, et varius diam luctus.
-                Duis nec dui neque. Pellentesque lacinia sodales eros, sit amet blandit libero faucibus sed. Vivamus lectus
-                lectus, ornare sed gravida vitae, volutpat a lectus. Proin vitae risus scelerisque mauris feugiat tristique.
-                Nullam sed commodo est. Maecenas vel tempor justo. Quisque ornare tortor risus, sit amet interdum diam egestas
-                quis. Aenean pulvinar metus mauris, malesuada vehicula metus viverra pellentesque. Praesent ac est finibus,
+                Maecenas fringilla hendrerit lacus, placerat sollicitudin lorem feugiat ut. Vestibulum at suscipit
+                nulla, eget
+                dictum tellus. Sed in tincidunt justo. Etiam elementum elit sit amet nisl pellentesque, et varius diam
+                luctus.
+                Duis nec dui neque. Pellentesque lacinia sodales eros, sit amet blandit libero faucibus sed. Vivamus
+                lectus
+                lectus, ornare sed gravida vitae, volutpat a lectus. Proin vitae risus scelerisque mauris feugiat
+                tristique.
+                Nullam sed commodo est. Maecenas vel tempor justo. Quisque ornare tortor risus, sit amet interdum diam
+                egestas
+                quis. Aenean pulvinar metus mauris, malesuada vehicula metus viverra pellentesque. Praesent ac est
+                finibus,
                 ultrices felis quis, mattis est.
-            </div>
+            </div> -->
             <div class="mt-5 fm-rubik" style="font-size: 1rem;color: #2C2C30;">
                 Nome autore
             </div>
@@ -66,14 +89,15 @@
             </div>
         </div>
         <div class="col-md-4 mt-5">
-            <div class="mx-5 fm-rubik" style="font-size: 1.286rem;font-weight: 400;color: #2C2C30;">Articles you might like:</div>
+            <div class="mx-5 fm-rubik" style="font-size: 1.286rem;font-weight: 400;color: #2C2C30;">Articles you might
+                like:</div>
             <ng-container *ngFor="let item of listCardData">
                 <ng-container *ngTemplateOutlet="
             listCards;
             context: { $implicit: item }
           "></ng-container>
             </ng-container>
-        </div>        
+        </div>
     </div>
 </div>
 
@@ -81,8 +105,7 @@
     <div class="mb-3 mx-5 position-relative responsiveCardFont fm-rubik" style="width: 85%;">
         <div class="card shadow w-100 p-0 z-2">
             <div class="w-100 z-1">
-                <img class="w-100" [src]="item.imgUrl"
-                    style="border-radius: 4% 4% 0 0;" />
+                <img class="w-100" [src]="item.imgUrl" style="border-radius: 4% 4% 0 0;" />
             </div>
             <div class="card-body">
                 <div style="font-size: 1.286rem;font-weight: 600;color: #2C2C30;">
@@ -90,12 +113,12 @@
                 </div>
                 <div class="web-left mt-2"><span style="font-size: 1rem;">{{ item.description }}</span></div>
                 <div class="d-flex mt-4">
-                    <button [style.background-color]="'#dfdfef'"
-                        class="btn btn-primary py-1 mt-2 mx-2 categoriesButton"
+                    <button [style.background-color]="'#dfdfef'" class="btn btn-primary py-1 mt-2 mx-2 categoriesButton"
                         style="font-size: 0.857rem;font-weight: 300;">
                         {{item.tag}}
                     </button>
-                    <span class="fw-bold  mt-2" style="position: absolute;right: 5%;cursor: pointer;font-size: 1rem;" (click)="navigateToBlogDetail()">
+                    <span class="fw-bold  mt-2" style="position: absolute;right: 5%;cursor: pointer;font-size: 1rem;"
+                        (click)="navigateToBlogDetail()">
                         Read more
                     </span>
                 </div>

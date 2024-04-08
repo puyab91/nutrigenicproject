@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { MenuItem } from 'primeng/api';
+import { BlogModel } from 'src/app/nutrigenic/models/blog/blog-model';
 
 @Component({
     selector: 'app-blog-detail',
@@ -9,10 +10,20 @@ import { MenuItem } from 'primeng/api';
 })
 export class BlogDetailComponent {
     listCardData: any[] = [];
+    blogModel: BlogModel = new BlogModel();
 
-    constructor(private router: Router) {}
+    constructor(private router: Router,private route: ActivatedRoute) {}
 
     ngOnInit(){
+        this.route.queryParams.subscribe((params: any) => {
+            console.log(params); 
+            this.blogModel.id = params.id;
+            this.blogModel.title = params.title;
+            this.blogModel.titleImage = params.titleImage;
+            this.blogModel.date = params.date;
+            this.blogModel.content = params.content;
+            this.blogModel.hashtags = params.hashtags;
+          });
         this.listCardData = [
             {
                 imgUrl: '../../../../assets/images/blog-list-1.png',
