@@ -37,6 +37,7 @@ import { UserProfileService } from './services/profile/user-profile.service';
 import { ResizeDetectionService } from './services/resize-detection.service';
 import { ActivateComponent } from './pages/activate/activate.component';
 import { BlogService } from './services/blog/blog.service';
+import { HomeService } from './services/home/home.service';
 
 @NgModule({
     declarations: [
@@ -101,7 +102,8 @@ import { BlogService } from './services/blog/blog.service';
         JwtTokenService,
         UserProfileService,
         ResizeDetectionService,
-        BlogService
+        BlogService,
+        HomeService
     ]
 })
 export class NutrigenicModule { }

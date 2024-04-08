@@ -35,4 +35,8 @@ export class ApiUrl {
   static get blogs(): string {
     return this.baseUrl + 'articles';
   }
+
+  static get meals(): string {
+    return this.baseUrl + 'meals';
+  }
 }
