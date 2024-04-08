@@ -139,7 +139,8 @@
                         <div *ngFor="let i of [ 3, 5, 6]" class="m-1" style="width: 15%;">
                             <button class="btn btn-primary mt-2 fw-bold btn-planMeal"
                                 [class.selectedButtonList]="selectedCommitWeekmealButton === i"
-                                (click)="selectButton('commitWeek',i)">{{ i
+                                (click)="selectButton('commitWeek',i)"
+                                [disabled]="selectedCommitDaymealButton === 2 && i === 5">{{ i
                                 }}</button>
                         </div>
                     </div>
@@ -164,7 +165,9 @@
                         </button>
                     </div>
                     <p-divider></p-divider>
-                    <div><span>Deliveries Per Week</span><span style="float: right;">01</span></div>
+                    <div><span>Deliveries Per Week</span>
+                        <span style="float: right;">{{ selectedCommitWeekmealButton === 3 ? '01' : '02' }}</span>
+                    </div>
                     <p-divider></p-divider>
                     <div><i class="pi pi-angle-down mx-1 fs08"></i><span class="fw-bold">You will pay</span><span
                             class="fw-bold" style="float: right;">£206.60</span></div>
