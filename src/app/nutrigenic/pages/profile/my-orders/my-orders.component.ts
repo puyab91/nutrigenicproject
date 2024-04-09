@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { MenuItem } from 'primeng/api';
+import { UserProfileService } from 'src/app/nutrigenic/services/profile/user-profile.service';
 
 @Component({
     selector: 'app-my-orders',
@@ -9,7 +10,7 @@ import { MenuItem } from 'primeng/api';
 })
 export class MyOrdersComponent {
     orders: any[] = [];
-    constructor() {
+    constructor(private userProfileService: UserProfileService) {
         this.orders = [
             {
                 title: 'Flexi',
@@ -48,6 +49,12 @@ export class MyOrdersComponent {
             },
             
         ];
+    }
+
+    ngOnInit(){
+        this.userProfileService.getUserOrders().subscribe((response: any) => {
+            console.log(response);
+        })
     }
 
 }

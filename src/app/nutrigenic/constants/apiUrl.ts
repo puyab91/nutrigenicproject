@@ -1,6 +1,6 @@
 export class ApiUrl {
   private static get baseUrl(): string {
-   return 'https://admin.nutrigenic.co.uk/api/';
+    return 'https://admin.nutrigenic.co.uk/api/';
     //  return 'https://92.205.191.225/api/';
   }
 
@@ -40,6 +40,18 @@ export class ApiUrl {
     return this.baseUrl + 'public/meals';
   }
 
+  static get publicExperts(): string {
+    return this.baseUrl + 'public/experts';
+  }
+
+  static get userExpert(): string {
+    return this.baseUrl + 'user/expert';
+  }
+
+  static get experts(): string {
+    return this.baseUrl + 'experts';
+  }
+
   static get vitamins(): string {
     return this.baseUrl + 'store/vitamins';
   }
@@ -54,5 +66,13 @@ export class ApiUrl {
 
   static get snacks(): string {
     return this.baseUrl + 'store/snacks';
+  }
+
+  static get userOrders(): string {
+    return this.baseUrl + 'orders/show';
+  }
+
+  static get userCreditCards(): string {
+    return this.baseUrl + 'credit_cards';
   }
 }

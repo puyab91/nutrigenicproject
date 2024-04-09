@@ -39,6 +39,8 @@ import { ActivateComponent } from './pages/activate/activate.component';
 import { BlogService } from './services/blog/blog.service';
 import { HomeService } from './services/home/home.service';
 import { OurShopService } from './services/our-shop/our-shop.service';
+import { ConnectExpertComponent } from './pages/connect-expert/connect-expert.component';
+import { PlanService } from './services/plan/plan.service';
 
 @NgModule({
     declarations: [
@@ -61,6 +63,7 @@ import { OurShopService } from './services/our-shop/our-shop.service';
         AccountComponent,
         CreditCardsComponent,
         ActivateComponent,
+        ConnectExpertComponent
     ],
     imports: [
         CommonModule,
@@ -105,7 +108,8 @@ import { OurShopService } from './services/our-shop/our-shop.service';
         ResizeDetectionService,
         BlogService,
         HomeService,
-        OurShopService
+        OurShopService,
+        PlanService
     ]
 })
 export class NutrigenicModule { }

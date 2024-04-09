@@ -4,12 +4,12 @@
         <div class="mx-5">
             <span style="font-size: 2rem;">Your expert</span>
             <br />
-            <span style="font-size: 2rem;font-weight: bold;">Laura J. Shan</span>
+            <span style="font-size: 2rem;font-weight: bold;">{{expertModel.first_name + ' ' + expertModel.last_name}}</span>
             <br />
-            <span style="font-size: 1.143rem;">Nutritionist</span>
+            <span style="font-size: 1.143rem;">{{expertModel.profession}}</span>
             <br />
             <br />
-            <p-rating [(ngModel)]="value" [readonly]="true" [cancel]="false" [style.font-size]="'1rem'"></p-rating>
+            <p-rating [(ngModel)]="expertModel.average_star_review" [readonly]="true" [cancel]="false" [style.font-size]="'1rem'"></p-rating>
             <br />
             <img src="../../../../../assets/images/expert-facebook.png" style="height: 16px;width: 16px;margin-right: 1rem;" alt="">
             <img src="../../../../../assets/images/expert instagram.png" style="height: 16px;width: 16px;margin-right: 1rem;" alt="">

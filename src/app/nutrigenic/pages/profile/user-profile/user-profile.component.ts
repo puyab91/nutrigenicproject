@@ -16,6 +16,7 @@ export class UserProfileComponent {
     userName: string = 'User Name';
     userProfile: UserProfileModel;
     addBiometricPopupVisibility = false;
+    connectCardVisibility: boolean = true;
     value: string = '00.00';
     tabItems = ['Weight', 'BMI', 'Pictures', 'Blood test'];
     selectedTab: string | null = 'Weight';
@@ -61,7 +62,12 @@ export class UserProfileComponent {
                     .catch(() => { });
         });
 
-
+        this.userProfileService.getUserExpert().subscribe((response: any) => {
+            debugger;
+            if(response.body)
+                this.connectCardVisibility = false;
+            
+        });
         // this.jwtTokenService.getIsLogin().subscribe((data: any) => {
         //     if (data) {
         //         this.userName = this.jwtTokenService.getUserName();

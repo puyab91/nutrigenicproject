@@ -203,7 +203,8 @@
                             step-by-step support to meet your unique
                             wellness goals. Start your tailored health journey today!</span></div>
                     <div class="mt-5">
-                        <button class="btn btn-primary mt-2 fw-bold btn-plan" style="font-size: 1.143rem;">Connect with
+                        <button class="btn btn-primary mt-2 fw-bold btn-plan" style="font-size: 1.143rem;"
+                        (click)="showOnnectToExpertPopUp()">Connect with
                             an expert
                         </button>
                     </div>
@@ -222,3 +223,5 @@
         </div>
     </div>
 </div>
+
+<app-connect-expert [popupVisibility] = "connectExpertPopUp"></app-connect-expert>

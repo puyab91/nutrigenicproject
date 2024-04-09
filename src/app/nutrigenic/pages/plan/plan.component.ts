@@ -13,6 +13,7 @@ export class PlanComponent {
     selectedCommitDaymealButton: number = 2;
     selectedCommitWeekmealButton: number = 3;
     selectedCommitWeeksButton: string = '4w';
+    connectExpertPopUp: boolean = false;
     isTablet: boolean = false;
     isMobile: boolean = false;
     isDesktop: boolean = false;
@@ -44,5 +45,9 @@ export class PlanComponent {
 
     selectWeeksNumber(buttonNumber: string) {
         this.selectedCommitWeeksButton = buttonNumber;
+    }
+
+    showOnnectToExpertPopUp(){
+       this.connectExpertPopUp = !this.connectExpertPopUp;
     }
 }

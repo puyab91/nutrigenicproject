@@ -63,9 +63,11 @@ export class JwtTokenService {
     sessionStorage.removeItem('token');
   }
 
-  setUserName(userName: string): void {
+  setUserName(userName: string, id: number): void {
     this.removeUserName();
+    this.removeId();
     localStorage.setItem('userName', userName);
+    localStorage.setItem('id', id.toString());
   }
 
   getUserName(): string {
@@ -80,8 +82,24 @@ export class JwtTokenService {
     return '';
   }
 
+  getId(): string {
+    const localToken = localStorage.getItem('token')
+    const id = localStorage.getItem('id')
+
+    if (localToken && !this.jwtHelper.isTokenExpired(localToken)) {
+      return id!;
+    }
+
+    this.removeId();
+    return '';
+  }
+
   removeUserName(): void {
     sessionStorage.removeItem('userName');
+  }
+
+  removeId(): void {
+    sessionStorage.removeItem('id');
   }
 
 }

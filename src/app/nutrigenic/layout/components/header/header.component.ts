@@ -199,9 +199,10 @@ export class HeaderComponent {
     handleLoginResponse(response: any) {
         const token = response.body.tokens.access_token;
         const userName = response.body.user.first_name + ' ' + response.body.user.last_name;
+        const id = response.body.user.id;
 
         this.jwtTokenService.setToken(token);
-        this.jwtTokenService.setUserName(userName);
+        this.jwtTokenService.setUserName(userName, id);
 
         this.jwtTokenService.getIsLogin().subscribe((data: any) => {
             this.isLogin = data;
@@ -230,9 +231,10 @@ export class HeaderComponent {
     handleSignInWithGoogleResponse(response: any) {
         const token = response.body.access_token;
         const userName = response.body.user.first_name + ' ' + response.body.user.last_name;
+        const id = response.body.user.id;
 
         this.jwtTokenService.setToken(token);
-        this.jwtTokenService.setUserName(userName);
+        this.jwtTokenService.setUserName(userName, id);
 
         this.jwtTokenService.getIsLogin().subscribe((data: any) => {
             this.isLogin = data;

@@ -17,6 +17,23 @@ export class UserProfileService {
         return this.serviceCall.GET(_url, true, null);
     }
 
+    getUserExpert(): Observable<OperationResult<any>> {
+        let _url = ApiUrl.userExpert;
+        return this.serviceCall.GET(_url, true, null);
+    }
+
+    getUserOrders(): Observable<OperationResult<any>> {
+        const id = this.jwtTokenservice.getId();
+        let _url = ApiUrl.userOrders + '/' + id;
+        return this.serviceCall.GET(_url, true, null);
+    }
+
+    getUserCreditCards(): Observable<OperationResult<any>> {
+        const id = this.jwtTokenservice.getId();
+        let _url = ApiUrl.userCreditCards + '/' + id;
+        return this.serviceCall.GET(_url, true, null);
+    }
+
     setUserWeight(weight: number): Observable<OperationResult<any>> {
         let _url = ApiUrl.setWeight;
         return this.serviceCall.Post(_url, true, { weight: weight });
