@@ -11,12 +11,15 @@ import { UserProfileService } from 'src/app/nutrigenic/services/profile/user-pro
 })
 export class UserExpertComponent {
     value: number = 4;
+    popupVisibility: boolean = false;
+    expertRate: number = 0;
+    expertReview: string = '';
     expertModel: ExpertModel = new ExpertModel();
-    constructor(private userProfileService: UserProfileService) { 
+    constructor(private userProfileService: UserProfileService) {
 
-    }    
+    }
 
-    ngOnInit(){
+    ngOnInit() {
         this.userProfileService.getUserExpert().subscribe((response: any) => {
             this.expertModel.id = response.body.id;
             this.expertModel.first_name = response.body.first_name;
@@ -31,4 +34,15 @@ export class UserExpertComponent {
         })
     }
 
+    addReviewPopup() {
+        this.popupVisibility = !this.popupVisibility;
+    }
+
+    submitExpertReview() {
+        debugger;
+        this.userProfileService.submitExpertReview({
+            'review': this.expertReview,
+            'star': this.expertRate
+        }, this.expertModel.id);
+    }
 }

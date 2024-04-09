@@ -14,13 +14,13 @@ export class MyOrdersComponent {
     }
 
     ngOnInit(){
-        this.userProfileService.getUserOrders().subscribe((response: any) => {
-            console.log(response);
+        this.userProfileService.getUserOrders().subscribe((response: any) => {            
             response.body.data.forEach((item: any) => {
                 var userOrder = new UserOrderModel();
                 userOrder.id = item.id;
                 userOrder.order_type = item.order_type;
                 userOrder.order_num = item.order_num;
+                userOrder.order_date = userOrder.GetDate(new Date(item.order_date));
                 userOrder.total_amount = item.total_amount;
                 userOrder.discount_amount = item.discount_amount;
                 userOrder.shipment_amount = item.shipment_amount;

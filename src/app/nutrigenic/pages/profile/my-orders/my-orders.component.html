@@ -1,7 +1,7 @@
 <div style="margin-left: 3rem;">
     <div class="fw-bold fm-prompt" style="font-size: 1.429rem;color: #0F0F1F;">Order history</div>
     <div *ngFor="let item of userOrders" class="mt-4 fm-rubik p-4 order-font" style="border: 1.5px solid #DFDFEF; border-radius: 4px;position: relative;">
-        <div class="overlay">12.02.2032 - Order #12345</div>
+        <div class="overlay">{{item.order_date}} - <span>Order #{{item.id}}</span></div>
         <span class="fw-bold mr4">{{item.order_type}}</span>
         <span class="mr05">Week</span><span class="fw-bold mr4">{{item.weeks}}</span>
         <span class="mr05">Days</span><span class="fw-bold mr4">{{item.days_per_week}}</span>

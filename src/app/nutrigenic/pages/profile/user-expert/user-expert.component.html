@@ -4,33 +4,76 @@
         <div class="mx-5">
             <span style="font-size: 2rem;">Your expert</span>
             <br />
-            <span style="font-size: 2rem;font-weight: bold;">{{expertModel.first_name + ' ' + expertModel.last_name}}</span>
+            <span style="font-size: 2rem;font-weight: bold;">{{expertModel.first_name + ' ' +
+                expertModel.last_name}}</span>
             <br />
             <span style="font-size: 1.143rem;">{{expertModel.profession}}</span>
             <br />
             <br />
-            <p-rating [(ngModel)]="expertModel.average_star_review" [readonly]="true" [cancel]="false" [style.font-size]="'1rem'"></p-rating>
+            <p-rating [(ngModel)]="expertModel.average_star_review" [readonly]="true" [cancel]="false"
+                [style.font-size]="'1rem'"></p-rating>
             <br />
-            <img src="../../../../../assets/images/expert-facebook.png" style="height: 16px;width: 16px;margin-right: 1rem;" alt="">
-            <img src="../../../../../assets/images/expert instagram.png" style="height: 16px;width: 16px;margin-right: 1rem;" alt="">
-            <img src="../../../../../assets/images/expert-whatsapp.png" style="height: 16px;width: 16px;margin-right: 1rem;" alt="">
+            <img src="../../../../../assets/images/expert-facebook.png"
+                style="height: 16px;width: 16px;margin-right: 1rem;" alt="">
+            <img src="../../../../../assets/images/expert instagram.png"
+                style="height: 16px;width: 16px;margin-right: 1rem;" alt="">
+            <img src="../../../../../assets/images/expert-whatsapp.png"
+                style="height: 16px;width: 16px;margin-right: 1rem;" alt="">
         </div>
         <div class="web-center" style="float: right;margin-left: auto;">
-            <button class="btn mt-2 fw-bold m-auto btn-apply" style="font-size: 1.143rem;">Add Review
+            <button class="btn mt-2 fw-bold m-auto btn-apply" style="font-size: 1.143rem;"
+                (click)="addReviewPopup()">Add Review
             </button>
-            <div class="mt-2" style="font-size: 1.143rem;color: #5D5D66;">change expert</div>            
+            <div class="mt-2" style="font-size: 1.143rem;color: #5D5D66;">change expert</div>
         </div>
     </div>
     <div class="mt-4 fw-bold fm-prompt" style="font-size: 1.429rem;color: #0F0F1F;">Last messages</div>
-    <div class="mt-3 fm-rubik p-4 order-font" style="border: 1.5px solid #DFDFEF; border-radius: 4px;position: relative;">
+    <div class="mt-3 fm-rubik p-4 order-font"
+        style="border: 1.5px solid #DFDFEF; border-radius: 4px;position: relative;">
         <div class="overlay">12.02.2032 - Order #12345</div>
         <span style="font-size: 1.143rem;">Please update your pictures, I want to see how it is going.</span>
     </div>
-    <div class="mt-4 fm-rubik p-4 order-font" style="border: 1.5px solid #DFDFEF; border-radius: 4px;position: relative;">
+    <div class="mt-4 fm-rubik p-4 order-font"
+        style="border: 1.5px solid #DFDFEF; border-radius: 4px;position: relative;">
         <div class="overlay">12.02.2032 - Order #12345</div>
-        <span style="font-size: 1.143rem;">This is alonger message. please This is alonger message. please This is alonger message. please 
-            This is alonger message. please 
-            This is alonger message. please This is alonger message. please 
+        <span style="font-size: 1.143rem;">This is alonger message. please This is alonger message. please This is
+            alonger message. please
+            This is alonger message. please
+            This is alonger message. please This is alonger message. please
             This is alonger message. please </span>
     </div>
 </div>
+
+<p-dialog [(visible)]="popupVisibility" [style]="{ width: '40%', height: '70%' }">
+    <div class="d-flex p-4">
+        <img src="../../../../../assets/images/user-expert.png" style="height: 82px;width: 82px;" alt="">
+        <div class="mx-3">
+            <span style="font-size: 1.143rem;">Your expert</span>
+            <br />
+            <span style="font-size: 1.143rem;font-weight: bold;">{{expertModel.first_name + ' ' +
+                expertModel.last_name}}</span>
+            <br />
+            <span style="font-size: 1.143rem;">{{expertModel.profession}}</span>
+        </div>
+        <div style="position: absolute;right:0;padding-right: 1rem;">
+            <div style="font-size: 1.143rem;">Average:</div>
+            <p-rating [(ngModel)]="expertModel.average_star_review" [readonly]="true" [cancel]="false"
+                [style.font-size]="'1rem'"></p-rating>
+        </div>
+    </div>
+    <p-divider></p-divider>
+    <div class="web-center">
+        <div style="color: #0F0F1F;font-size: 1.429rem;font-weight: bold;">Add review to your expert</div>
+        <p-rating [(ngModel)]="expertRate" class="mt-2" [readonly]="false" [cancel]="false"></p-rating>
+        <div class="mt-2">
+            <!-- <input type="text"
+                style="width: 95%;height: 14rem;background-color: #F0F4F8;border-radius: 8px;padding: 8px;border: none;"> -->
+                <textarea [(ngModel)]="expertReview" style="width: 95%;height: 14rem;background-color: #F0F4F8;border-radius: 8px;padding: 8px;border: none;" rows="10" cols="50" placeholder="Enter your text here"></textarea>
+        </div>
+    </div>
+    <div class="web-center">
+        <button class="btn btn-primary mt-4 fw-bold getStartButton fm-prompt-button w-50" (click)="submitExpertReview()">                        
+            <span>Submit</span>
+        </button>
+    </div>
+</p-dialog>

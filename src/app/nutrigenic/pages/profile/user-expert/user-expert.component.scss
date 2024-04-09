@@ -3,7 +3,7 @@
   }
   
   ::ng-deep .p-rating .p-rating-icon {
-    color: #F2F2F2;
+    color: #DFDFEF; 
   }
   .btn-apply {
     border: 1.5px solid black;
@@ -21,3 +21,21 @@
     font-size: 0.857rem;
     color: #0F0F1F;
   }
+  :host ::ng-deep .p-rating .p-rating-star .p-rating-icon {
+    font-size: 204rem; /* Set the desired size */
+}
+.p-rating-star	{
+  color: #0F0F1F;
+}
+
+.getStartButton {
+  align-items: center;
+  background-color: #EF870A !important;
+  border: none;
+  border-radius: 15px;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;  
+  font-weight: bold;  
+}

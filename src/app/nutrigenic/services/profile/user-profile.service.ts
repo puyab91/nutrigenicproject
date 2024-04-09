@@ -4,6 +4,7 @@ import { ApiUrl } from "../../constants/apiUrl";
 import { JwtTokenService } from "../auth/jwt-token.service";
 import { Observable } from "rxjs";
 import { OperationResult } from "../../models/operation-result";
+import notiflix from "notiflix";
 
 @Injectable()
 export class UserProfileService {
@@ -39,4 +40,26 @@ export class UserProfileService {
         return this.serviceCall.Post(_url, true, { weight: weight });
     }
 
+    submitExpertReview(review: any, expertId: number): void {
+        let _url = ApiUrl.experts + '/' + expertId + '/reviews';
+         this.serviceCall.Post(_url, true, review).subscribe({
+            next: this.handleSubmitReviewResponse.bind(this),
+            error: this.handleError.bind(this)
+         });;
+    }
+
+    handleSubmitReviewResponse(response: any): void {
+        console.log(response);
+        notiflix.Notify.success(response.statusCode + '- Operation unsuccessful', {
+            position: 'right-top',
+            timeout: 3000
+        });
+    }
+
+    handleError(error: any): void {
+        notiflix.Notify.failure(error.error.message + '- Operation unsuccessful', {
+            position: 'right-top',
+            timeout: 3000
+        });
+    }
 }

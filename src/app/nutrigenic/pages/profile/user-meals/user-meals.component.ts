@@ -1,6 +1,9 @@
 import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { MenuItem } from 'primeng/api';
+import { ExpertModel } from 'src/app/nutrigenic/models/plan/expert-model';
+import { UserOrderModel } from 'src/app/nutrigenic/models/profile/user-order-model';
+import { UserProfileService } from 'src/app/nutrigenic/services/profile/user-profile.service';
 
 @Component({
     selector: 'app-user-meals',
@@ -8,36 +11,40 @@ import { MenuItem } from 'primeng/api';
     styleUrls: ['./user-meals.component.scss']
 })
 export class UserMealsComponent {
-    orders: any[] = [];
+    userOrders: UserOrderModel[] = [];
+    expertModel: ExpertModel = new ExpertModel();
 
-    constructor() { 
-        this.orders = [
-            {
-                title: 'Flexi',
-                statusId: 1,
-                status: 'See changes'
-            },
-            {
-                title: 'Flexi',
-                statusId: 2,
-                status: 'in revision'
-            },
-            {
-                title: 'Flexi',
-                statusId: 3,
-                status: 'Approved'
-            },
-            {
-                title: 'Flexi',
-                statusId: 3,
-                status: 'Approved'
-            },
-            {
-                title: 'Flexi',
-                statusId: 3,
-                status: 'Approved'
-            },
-        ];
+    constructor(private userProfileService: UserProfileService) { 
     }    
 
+    ngOnInit(){
+        this.userProfileService.getUserOrders().subscribe((response: any) => {
+            response.body.data.forEach((item: any) => {
+                var userOrder = new UserOrderModel();
+                userOrder.id = item.id;
+                userOrder.order_type = item.order_type;
+                userOrder.order_num = item.order_num;
+                userOrder.order_date = userOrder.GetDate(new Date(item.order_date));
+                userOrder.total_amount = item.total_amount;
+                userOrder.discount_amount = item.discount_amount;
+                userOrder.shipment_amount = item.shipment_amount;
+                userOrder.expert_id = item.expert_id;
+                userOrder.meals_per_day = item.meals_per_day;
+                userOrder.days_per_week = item.days_per_week;
+                userOrder.weeks = item.weeks;
+                userOrder.address = item.address;
+                userOrder.city = item.city;
+                userOrder.zip = item.zip;
+                userOrder.order_detail = item.order_detail;
+
+                this.userOrders.push(userOrder);
+            });
+        });
+
+        this.userProfileService.getUserExpert().subscribe((response: any) => {
+            this.expertModel.id = response.body.id;
+            this.expertModel.first_name = response.body.first_name;
+            this.expertModel.last_name = response.body.last_name;
+        })
+    }
 }
