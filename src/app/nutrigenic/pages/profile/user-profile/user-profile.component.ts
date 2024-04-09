@@ -17,6 +17,9 @@ export class UserProfileComponent {
     userProfile: UserProfileModel;
     addBiometricPopupVisibility = false;
     connectCardVisibility: boolean = true;
+    biometricHeader: string = '';
+    biometricField: string = '';
+    biometricUnit: string = '';
     value: string = '00.00';
     tabItems = ['Weight', 'BMI', 'Pictures', 'Blood test'];
     selectedTab: string | null = 'Weight';
@@ -30,8 +33,8 @@ export class UserProfileComponent {
                 text: 'Add weight'
             },
             {
-                id: 'BMC',
-                text: 'Add BMC'
+                id: 'BMI',
+                text: 'Add BMI'
             },
             {
                 id: 'pictures',
@@ -64,9 +67,9 @@ export class UserProfileComponent {
 
         this.userProfileService.getUserExpert().subscribe((response: any) => {
             debugger;
-            if(response.body)
+            if (response.body)
                 this.connectCardVisibility = false;
-            
+
         });
         // this.jwtTokenService.getIsLogin().subscribe((data: any) => {
         //     if (data) {
@@ -81,7 +84,17 @@ export class UserProfileComponent {
         // });        
     }
 
-    showBiometricPopup() {
+    showBiometricPopup(id: string) {
+        if (id == 'weight') {
+            this.biometricHeader = 'weight';
+            this.biometricField = 'Weight';
+            this.biometricUnit = 'Kgs';
+        }
+        if (id == 'BMI') {
+            this.biometricHeader = 'BMI';
+            this.biometricField = 'BMI';
+            this.biometricUnit = '';
+        }
         this.addBiometricPopupVisibility = !this.addBiometricPopupVisibility;
         //this.handleBlurFilter();
     }
@@ -104,11 +117,17 @@ export class UserProfileComponent {
     }
 
 
-    addUserWeight() {
-        this.userProfileService.setUserWeight(parseFloat(this.value)).subscribe({
-            next: this.handleSetUserWeightResponse.bind(this),
-            error: this.handleError.bind(this)
-        });
+    addUserWeight(id: string) {
+        if (id == 'weight')
+            this.userProfileService.setUserWeight(parseFloat(this.value)).subscribe({
+                next: this.handleSetUserWeightResponse.bind(this),
+                error: this.handleError.bind(this)
+            });
+        if (id == 'BMI')
+            this.userProfileService.setUserBMI(parseFloat(this.value)).subscribe({
+                next: this.handleSetUserWeightResponse.bind(this),
+                error: this.handleError.bind(this)
+            });
     }
 
     handleSetUserWeightResponse(response: any) {

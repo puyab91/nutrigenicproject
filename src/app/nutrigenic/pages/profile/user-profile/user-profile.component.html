@@ -14,7 +14,7 @@
             </div>
             <div class="mt-4">
                 <button *ngFor="let item of addButtons" class="btn mt-2 fw-bold btn-apply"
-                    style="font-size: 1.143rem;color: #311C02;" (click)="showBiometricPopup()">{{item.text}}
+                    style="font-size: 1.143rem;color: #311C02;" (click)="showBiometricPopup(item.id)">{{item.text}}
                 </button>
             </div>
         </div>
@@ -26,7 +26,7 @@
                     {{ item }}
                 </button>
                 <button class="btn mt-2 fw-bold btn-apply" style="font-size: 1.143rem;color: #311C02;float: right;"
-                    (click)="showBiometricPopup()">Add today weight
+                    (click)="showBiometricPopup('weight')">Add today weight
                 </button>
             </div>
             <div class="w-100 mt-4" style="height: 22rem;background-color: #D9D9D9;border-radius: 20px;"
@@ -71,26 +71,26 @@
 <p-dialog [(visible)]="addBiometricPopupVisibility" [style]="{ width: '22.857rem', height: '19.714rem' }"
     (onHide)="onDialogHide()">
     <div class="web-center">
-        <div class="fw-bold" style="font-size: 1.429rem;color: #0F0F1F;">Add your today weight</div>
+        <div class="fw-bold" style="font-size: 1.429rem;color: #0F0F1F;">Add your today {{biometricHeader}}</div>
         <div class="mt-4 row justify-content-center" style="align-items: center;">
             <div class="col-md-3">
                 <img src="../../../../../assets/images/weight-scale.png" style="height: 48px;width: 48px;" alt="">
             </div>
             <div class="col-md-5 web-left p-0">
-                <span class="input-title">Weight</span>
+                <span class="input-title">{{biometricField}}</span>
                 <div class="">
                     <input type="text" [(ngModel)]="value" class="p-2 fw-bold input-promo fm-rubik w-100"
                         style="font-size: 2.286rem;color: #5D5D66;" pattern="\d{2}\.\d{2}" />
                 </div>
             </div>
             <div class="col-md-2 mt-3" style="font-size: 1.714rem;color: #5D5D66;">
-                Kgs
+                {{biometricUnit}}
             </div>
         </div>
         <div class="mt-4 p-2" style="text-align: center;">
             <button class="btn w-100 fm-prompt fw-bold"
                 style="color: white;background-color: #EF870A;font-size: 1.143rem;border-radius: 12px;padding-top: 0.5rem;padding-bottom: 0.5rem;"
-                (click)="addUserWeight()">
+                (click)="addUserWeight(biometricHeader)">
                 Save</button>
         </div>
     </div>

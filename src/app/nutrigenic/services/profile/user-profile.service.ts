@@ -40,6 +40,11 @@ export class UserProfileService {
         return this.serviceCall.Post(_url, true, { weight: weight });
     }
 
+    setUserBMI(imc: number): Observable<OperationResult<any>> {
+        let _url = ApiUrl.setImc;
+        return this.serviceCall.Post(_url, true, { imc: imc });
+    }
+
     submitExpertReview(review: any, expertId: number): void {
         let _url = ApiUrl.experts + '/' + expertId + '/reviews';
          this.serviceCall.Post(_url, true, review).subscribe({

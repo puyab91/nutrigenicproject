@@ -32,6 +32,10 @@ export class ApiUrl {
     return this.baseUrl + 'biometrics/weight';
   }
 
+  static get setImc(): string {
+    return this.baseUrl + 'biometrics/imc';
+  }
+
   static get blogs(): string {
     return this.baseUrl + 'articles';
   }
