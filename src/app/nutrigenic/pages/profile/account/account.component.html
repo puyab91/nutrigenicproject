@@ -3,13 +3,13 @@
         <div class="col-md-2">
             <span class="input-title">First name</span>
             <div class="">
-                <input type="text" class="p-2 input-promo w-100" placeholder="type here ..." />
+                <input [(ngModel)]="userProfile.first_name" type="text" class="p-2 input-promo w-100" placeholder="type here ..." />
             </div>
         </div>
         <div class="col-md-2">
             <span class="input-title">Last name</span>
             <div class="">
-                <input type="text" class="p-2 input-promo w-100" placeholder="type here ..." />
+                <input [(ngModel)]="userProfile.last_name" type="text" class="p-2 input-promo w-100" placeholder="type here ..." />
             </div>
         </div>
     </div>
@@ -17,7 +17,7 @@
         <div class="col-md-4">
             <span class="input-title">Email</span>
             <div class="">
-                <input type="text" class="p-2 input-promo w-100" placeholder="type here ..." />
+                <input [(ngModel)]="userProfile.email" type="email" class="p-2 input-promo w-100" placeholder="type here ..." />
             </div>
         </div>
     </div>
@@ -25,7 +25,7 @@
         <div class="col-md-4">
             <span class="input-title">Phone number</span>
             <div class="">
-                <input type="text" class="p-2 input-promo w-100" placeholder="type here ..." />
+                <input [(ngModel)]="userProfile.phone_number" type="text" class="p-2 input-promo w-100" placeholder="type here ..." />
             </div>
         </div>
     </div>
