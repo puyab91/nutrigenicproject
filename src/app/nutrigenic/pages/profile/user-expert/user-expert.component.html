@@ -28,19 +28,10 @@
         </div>
     </div>
     <div class="mt-4 fw-bold fm-prompt" style="font-size: 1.429rem;color: #0F0F1F;">Last messages</div>
-    <div class="mt-3 fm-rubik p-4 order-font"
+    <div *ngFor="let item of expertNotes" class="mt-3 fm-rubik p-4 order-font"
         style="border: 1.5px solid #DFDFEF; border-radius: 4px;position: relative;">
-        <div class="overlay">12.02.2032 - Order #12345</div>
-        <span style="font-size: 1.143rem;">Please update your pictures, I want to see how it is going.</span>
-    </div>
-    <div class="mt-4 fm-rubik p-4 order-font"
-        style="border: 1.5px solid #DFDFEF; border-radius: 4px;position: relative;">
-        <div class="overlay">12.02.2032 - Order #12345</div>
-        <span style="font-size: 1.143rem;">This is alonger message. please This is alonger message. please This is
-            alonger message. please
-            This is alonger message. please
-            This is alonger message. please This is alonger message. please
-            This is alonger message. please </span>
+        <div class="overlay">{{item.created_at}} - <span>Order #{{item.id}}</span></div>
+        <span style="font-size: 1.143rem;">{{item.note}}</span>
     </div>
 </div>
 

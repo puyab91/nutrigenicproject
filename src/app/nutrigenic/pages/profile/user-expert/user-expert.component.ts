@@ -2,6 +2,7 @@ import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { MenuItem } from 'primeng/api';
 import { ExpertModel } from 'src/app/nutrigenic/models/plan/expert-model';
+import { ExpertNoteModel } from 'src/app/nutrigenic/models/profile/expert-note-model';
 import { UserProfileService } from 'src/app/nutrigenic/services/profile/user-profile.service';
 
 @Component({
@@ -15,6 +16,7 @@ export class UserExpertComponent {
     expertReview: string = '';
     selectedRateStar: number = 0;
     expertModel: ExpertModel = new ExpertModel();
+    expertNotes: ExpertNoteModel[] = [];
     constructor(private userProfileService: UserProfileService) {
 
     }
@@ -31,6 +33,20 @@ export class UserExpertComponent {
             this.expertModel.average_star_review = response.body.average_star_review;
             this.expertModel.reviews = response.body.reviews;
             this.expertModel.user_management_count = response.body.user_management_count;
+
+            this.userProfileService.getExpertNotes(this.expertModel.id).subscribe((response: any) => {
+                response.body.data.forEach((item: any) => {
+                    var expertNote = new ExpertNoteModel();
+                    expertNote.id = item.id;
+                    expertNote.note = item.note;
+                    expertNote.created_at = expertNote.GetDate(new Date(item.created_at));
+                    expertNote.seen_at = item.seen_at;
+                    expertNote.expert = item.expert;
+                    expertNote.user = item.user;
+
+                    this.expertNotes.push(expertNote);
+                });
+            });
         })
     }
 

@@ -25,7 +25,7 @@
                     class="btn btn-primary mt-2 mx-2 categoriesButton">
                     {{ item }}
                 </button>
-                <button class="btn mt-2 fw-bold btn-apply" style="font-size: 1.143rem;color: #311C02;float: right;"
+                <button *ngIf="selectedTab === 'Weight'" class="btn mt-2 fw-bold btn-apply" style="font-size: 1.143rem;color: #311C02;float: right;"
                     (click)="showBiometricPopup('weight')">Add today weight
                 </button>
             </div>

@@ -25,6 +25,12 @@ export class UserProfileService {
         return this.serviceCall.GET(_url, true, null);
     }
 
+    getExpertNotes(expertId: number): Observable<OperationResult<any>> {
+        const id = this.jwtTokenservice.getId();
+        let _url = ApiUrl.experts + '/' + expertId + '/notes' + '/' + id;
+        return this.serviceCall.GET(_url, true, null);
+    }
+
     getUserOrders(): Observable<OperationResult<any>> {
         const id = this.jwtTokenservice.getId();
         let _url = ApiUrl.userOrders + '/' + id;
