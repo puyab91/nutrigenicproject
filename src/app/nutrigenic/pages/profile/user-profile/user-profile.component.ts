@@ -66,7 +66,6 @@ export class UserProfileComponent {
         });
 
         this.userProfileService.getUserExpert().subscribe((response: any) => {
-            debugger;
             if (response.body)
                 this.connectCardVisibility = false;
 
@@ -89,13 +88,14 @@ export class UserProfileComponent {
             this.biometricHeader = 'weight';
             this.biometricField = 'Weight';
             this.biometricUnit = 'Kgs';
+            this.addBiometricPopupVisibility = !this.addBiometricPopupVisibility;
         }
         if (id == 'BMI') {
             this.biometricHeader = 'BMI';
             this.biometricField = 'BMI';
             this.biometricUnit = '';
+            this.addBiometricPopupVisibility = !this.addBiometricPopupVisibility;
         }
-        this.addBiometricPopupVisibility = !this.addBiometricPopupVisibility;
         //this.handleBlurFilter();
     }
 
@@ -113,7 +113,9 @@ export class UserProfileComponent {
 
     onFileSelected(event: any) {
         const file: File = event.target.files[0];
-        console.log('Selected file:', file);
+        if (file) {
+            this.userProfileService.setUserPicture(file);
+        }
     }
 
 

@@ -44,7 +44,7 @@
     </div>
 </div>
 
-<p-dialog [(visible)]="popupVisibility" [style]="{ width: '40%', height: '70%' }">
+<p-dialog [(visible)]="popupVisibility" [style]="{ width: '40%' }" (onHide)="resetRateStar()">
     <div class="d-flex p-4">
         <img src="../../../../../assets/images/user-expert.png" style="height: 82px;width: 82px;" alt="">
         <div class="mx-3">
@@ -64,15 +64,25 @@
     <p-divider></p-divider>
     <div class="web-center">
         <div style="color: #0F0F1F;font-size: 1.429rem;font-weight: bold;">Add review to your expert</div>
-        <p-rating [(ngModel)]="expertRate" class="mt-2" [readonly]="false" [cancel]="false"></p-rating>
+        <!-- <p-rating [(ngModel)]="expertRate" class="mt-2" style="font-size: 4rem;" [readonly]="false" [cancel]="false"></p-rating> -->
+        <div class="mt-4 mb-4">
+            <i *ngFor="let i of [1,2,3,4,5]" class="pi pi-star-fill" 
+            (click)="selectedRateStar = i"
+            [style.color]="i <= selectedRateStar ? '#FFCB45' : '#DFDFEF'"
+            style="font-size: 3rem;margin-right: 1rem;cursor: pointer;"></i>            
+        </div>
+
         <div class="mt-2">
             <!-- <input type="text"
                 style="width: 95%;height: 14rem;background-color: #F0F4F8;border-radius: 8px;padding: 8px;border: none;"> -->
-                <textarea [(ngModel)]="expertReview" style="width: 95%;height: 14rem;background-color: #F0F4F8;border-radius: 8px;padding: 8px;border: none;" rows="10" cols="50" placeholder="Enter your text here"></textarea>
+            <textarea [(ngModel)]="expertReview"
+                style="width: 95%;height: 14rem;background-color: #F0F4F8;border-radius: 8px;padding: 8px;border: none;"
+                rows="10" cols="50" placeholder="Enter your text here"></textarea>
         </div>
     </div>
     <div class="web-center">
-        <button class="btn btn-primary mt-4 fw-bold getStartButton fm-prompt-button w-50" (click)="submitExpertReview()">                        
+        <button class="btn btn-primary mt-4 fw-bold getStartButton fm-prompt-button w-50"
+            (click)="submitExpertReview()">
             <span>Submit</span>
         </button>
     </div>

@@ -36,6 +36,10 @@ export class ApiUrl {
     return this.baseUrl + 'biometrics/imc';
   }
 
+  static get setPicture(): string {
+    return this.baseUrl + 'biometrics/photo';
+  }
+
   static get blogs(): string {
     return this.baseUrl + 'articles';
   }

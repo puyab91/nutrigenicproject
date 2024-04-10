@@ -12,8 +12,8 @@ import { UserProfileService } from 'src/app/nutrigenic/services/profile/user-pro
 export class UserExpertComponent {
     value: number = 4;
     popupVisibility: boolean = false;
-    expertRate: number = 0;
     expertReview: string = '';
+    selectedRateStar: number = 0;
     expertModel: ExpertModel = new ExpertModel();
     constructor(private userProfileService: UserProfileService) {
 
@@ -39,10 +39,13 @@ export class UserExpertComponent {
     }
 
     submitExpertReview() {
-        debugger;
         this.userProfileService.submitExpertReview({
             'review': this.expertReview,
-            'star': this.expertRate
+            'star': this.selectedRateStar
         }, this.expertModel.id);
+    }
+
+    resetRateStar(){
+        this.selectedRateStar = 0;
     }
 }
