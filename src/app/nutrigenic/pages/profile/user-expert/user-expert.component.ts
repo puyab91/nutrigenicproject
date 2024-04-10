@@ -1,5 +1,6 @@
-import { Component, Input } from '@angular/core';
+import { ChangeDetectorRef, Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
+import notiflix from 'notiflix';
 import { MenuItem } from 'primeng/api';
 import { ExpertModel } from 'src/app/nutrigenic/models/plan/expert-model';
 import { ExpertNoteModel } from 'src/app/nutrigenic/models/profile/expert-note-model';
@@ -17,7 +18,10 @@ export class UserExpertComponent {
     selectedRateStar: number = 0;
     expertModel: ExpertModel = new ExpertModel();
     expertNotes: ExpertNoteModel[] = [];
-    constructor(private userProfileService: UserProfileService) {
+    connectExpertPopUp: boolean = false;
+    constructor(private userProfileService: UserProfileService,
+        private cdr: ChangeDetectorRef
+    ) {
 
     }
 
@@ -61,7 +65,21 @@ export class UserExpertComponent {
         }, this.expertModel.id);
     }
 
-    resetRateStar(){
+    resetRateStar() {
         this.selectedRateStar = 0;
+    }
+
+    changeExpert() {
+        if (this.expertModel.id == 0)
+            notiflix.Notify.failure('User is not connected to expert', {
+                position: 'right-top',
+                timeout: 3000
+            });
+        else
+            this.connectExpertPopUp = !this.connectExpertPopUp
+    }
+
+    afterChangeExpert() {
+        this.cdr.detectChanges();
     }
 }

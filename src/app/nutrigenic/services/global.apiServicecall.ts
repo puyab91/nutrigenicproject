@@ -83,6 +83,19 @@ export class ApiServiceCall {
       .pipe();
   }
 
+  Delete(url: string,
+    authorize: boolean): Observable<ArrayBuffer> {
+    if (authorize) 
+      this.addTokenToHeader();
+
+    return this.httpClient
+      .delete<ArrayBuffer>(url, {
+        headers: this.headers,
+        observe: 'response' as 'body'
+      })
+      .pipe();
+  }
+
 
   addTokenToHeader(): void {
     var jsonWebToken = localStorage.getItem('token');

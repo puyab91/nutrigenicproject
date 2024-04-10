@@ -24,8 +24,21 @@ export class PlanService {
          });
     }
 
+    unAssignExperts(id: number): Observable<ArrayBuffer> {
+        let _url = ApiUrl.experts + '/' + id + '/unassign';
+        return this.serviceCall.Delete(_url, true);
+    }
+
+    changeExpert(newId: number, oldId: number){
+        this.unAssignExperts(oldId).subscribe((response: any) => {
+            if(response)
+                //var x = newId
+                this.assignExperts(newId);
+        });        
+    }
+
     handleAssignResponse(response: any): void {
-        notiflix.Notify.success(response.statusCode + '- Operation unsuccessful', {
+        notiflix.Notify.success(response.ok + '- Operation unsuccessful', {
             position: 'right-top',
             timeout: 3000
         });

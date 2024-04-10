@@ -1,10 +1,11 @@
 
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { MenuItem } from 'primeng/api';
 import { ResizeDetectionService } from '../../services/resize-detection.service';
 import { ExpertModel } from '../../models/plan/expert-model';
 import { PlanService } from '../../services/plan/plan.service';
+import { UserProfileService } from '../../services/profile/user-profile.service';
 
 @Component({
     selector: 'app-connect-expert',
@@ -14,6 +15,8 @@ import { PlanService } from '../../services/plan/plan.service';
 
 export class ConnectExpertComponent {
     @Input() popupVisibility: boolean = false;
+    @Input() status: string = '';
+    @Output() afterChangeExpert = new EventEmitter<any>();
     value: number = 3;
     expertsModel: ExpertModel[] = [];
     mealsList: any[] = [];
@@ -21,7 +24,8 @@ export class ConnectExpertComponent {
     isMobile: boolean = false;
     isDesktop: boolean = false;
     constructor(private sizedetection: ResizeDetectionService,
-        private planService: PlanService
+        private planService: PlanService,
+        private userProfileService: UserProfileService
     ) {
         this.sizedetection.refreshSize();
         this.sizedetection.sizeCondition$.subscribe(data => {
@@ -33,7 +37,7 @@ export class ConnectExpertComponent {
 
     }
 
-    ngOnInit(){
+    ngOnInit() {
         this.planService.getExperts().subscribe((response: any) => {
             response.body.data.forEach((item: any) => {
                 var expertModel = new ExpertModel();
@@ -53,8 +57,20 @@ export class ConnectExpertComponent {
         });
     }
 
-    assignExpert(id: number){
-        this.planService.assignExperts(id);
+    assignExpert(id: number) {
+        debugger;
+        if (this.status == 'add')
+            this.planService.assignExperts(id);
+        if (this.status == 'change')
+            this.userProfileService.getUserExpert().subscribe((response: any) => {
+                if (response.body) {
+                    this.planService.changeExpert(id, response.body.id);
+                    setTimeout(() => {
+                        this.afterChangeExpert.emit(true);
+                    }, 5000);
+                }
+            });
+        this.popupVisibility = false
     }
 
     onDialogHide() {
