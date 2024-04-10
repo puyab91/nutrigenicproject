@@ -36,3 +36,28 @@
   font-size: 1.143rem;
   font-weight: 300;
 }
+
+.sport-buttons{
+  align-items: center;
+  background-color: white;
+  border: solid 1px #DFDFEF;
+  border-radius: 12px;
+  color: #190E01;
+  font-size: 1rem;
+  font-weight: bold;
+  padding: 12px;
+}
+
+.mainLoginInput {
+  border-radius: 20px;
+  border: 1.5px solid #F1F1F3;
+  background-color: #F9F9FB;
+  float: right;
+  max-width: 100%;
+  min-width: 100%;
+  height: 3.714rem;
+}
+
+.mainLoginInput::-webkit-input-placeholder {
+   padding-left: 2rem;
+}

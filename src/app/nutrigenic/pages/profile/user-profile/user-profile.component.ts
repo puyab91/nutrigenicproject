@@ -16,6 +16,7 @@ export class UserProfileComponent {
     userName: string = 'User Name';
     userProfile: UserProfileModel;
     addBiometricPopupVisibility = false;
+    addSportPopupVisibility = false;
     connectCardVisibility: boolean = true;
     biometricHeader: string = '';
     biometricField: string = '';
@@ -23,7 +24,9 @@ export class UserProfileComponent {
     value: string = '00.00';
     tabItems = ['Weight', 'BMI', 'Pictures', 'Blood test'];
     selectedTab: string | null = 'Weight';
-
+    search: string = '';
+    searchIcon = true;
+    sports: any[] = [];
     constructor(private router: Router, private jwtTokenService: JwtTokenService,
         private userProfileService: UserProfileService) {
         this.userProfile = new UserProfileModel();
@@ -49,6 +52,50 @@ export class UserProfileComponent {
                 text: 'Add sports'
             }
         ]
+
+        this.sports = [
+            {
+                sport: 'Skateboard',
+                selected: false
+            },
+            {
+                sport: 'Skateboard',
+                selected: false
+            },
+            {
+                sport: 'Skateboard',
+                selected: false
+            },
+            {
+                sport: 'Skateboard',
+                selected: false
+            },
+            {
+                sport: 'Skateboard',
+                selected: false
+            },
+            {
+                sport: 'Skateboard',
+                selected: false
+            },
+            {
+                sport: 'Skateboard',
+                selected: false
+            },
+            {
+                sport: 'Skateboard',
+                selected: false
+            },
+            {
+                sport: 'Skateboard',
+                selected: false
+            },
+            {
+                sport: 'Skateboard',
+                selected: false
+            },
+
+        ];
     }
 
     ngOnInit() {
@@ -95,6 +142,9 @@ export class UserProfileComponent {
             this.biometricField = 'BMI';
             this.biometricUnit = '';
             this.addBiometricPopupVisibility = !this.addBiometricPopupVisibility;
+        }
+        if (id == 'sports') {
+            this.addSportPopupVisibility = !this.addSportPopupVisibility;
         }
         //this.handleBlurFilter();
     }
@@ -177,5 +227,14 @@ export class UserProfileComponent {
             document.getElementById('layoutHome')?.classList.remove('p-dialog-blur');
             document.getElementById('layoutHeader')?.classList.remove('p-dialog-blur');
         }
+    }
+
+    inputTextChange(event: any) {
+        var x = event;
+        if (this.search == '')
+            this.searchIcon = true;
+        else
+            this.searchIcon = false;
+
     }
 }

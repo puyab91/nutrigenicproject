@@ -38,9 +38,9 @@
                     style="width: 13.714rem;height: 18.357rem;border-radius: 20px;border: 1.5px #848790 dashed;">
                     <div class="mt-5">
                         <img src="../../../../../assets/images/image-upload.png" style="width: 48px;height: 48px;"
-                            alt=""  *ngIf="selectedTab === 'Pictures'">
-                        <img src="../../../../../assets/images/file-upload.png" style="width: 48px;height: 48px;"
-                            alt=""  *ngIf="selectedTab === 'Blood test'">
+                            alt="" *ngIf="selectedTab === 'Pictures'">
+                        <img src="../../../../../assets/images/file-upload.png" style="width: 48px;height: 48px;" alt=""
+                            *ngIf="selectedTab === 'Blood test'">
                     </div>
                     <div class="fm-rubik mt-3" style="font-size: 1rem;color: #0F0F1F;">Drag and drop</div>
                     <div class="d-flex align-items-center" style="width: 70%;">
@@ -95,3 +95,35 @@
         </div>
     </div>
 </p-dialog>
+
+<p-dialog header="Header" [(visible)]="addSportPopupVisibility" [style]="{ width: '60%' }">
+    <ng-template pTemplate="header">
+        <div class="mt-4 align-items-center justify-content-center w-100 text-center">
+            <img src="../../../../../assets/images/arm.png" style="width: 43px;height: 43px;" alt="">
+            <br>
+            <br>
+            <span class="fm-prompt fw-bold" style="font-size: 1.429rem;color: #0F0F1F;">Add your sports</span>
+        </div>
+    </ng-template>
+    <p-divider></p-divider>
+    <div class="align-items-center web-center w-100">
+        <div class="w-50">
+            <span class="p-input-icon-left w-100">
+                <i class="pi pi-search" style="font-size: 1rem;font-weight: bold;color: #5D5D66;"
+                    *ngIf="searchIcon"></i>
+                <input type="text" class="p-2 input-promo mainLoginInput fm-rubik"
+                    placeholder="Search meal or ingredient..." style="font-size: 1rem;font-weight: bold;color: #5D5D66;"
+                    (input)="inputTextChange($event)" [(ngModel)]="search" />
+            </span>
+        </div>
+    </div>
+    <div class="mt-3 p-4">
+        <button *ngFor="let sport of sports"
+            class="btn btn-primary mt-2 fm-rubik mx-2 sport-buttons"
+            (click)="sport.selected = true"
+            [style.background-color] = "sport.selected ? '#DFDFEF' : 'white'">
+            {{sport.sport}}
+            <img *ngIf="sport.selected" src="../../../../../assets/images/selectedSport.png" style="margin-left: 0.7rem;width: 21.5px;height: 21.5px;" alt="">
+        </button>
+    </div>
+    <p-dialog>
