@@ -40,6 +40,10 @@ export class ApiUrl {
     return this.baseUrl + 'biometrics/photo';
   }
 
+  static get setBlood(): string {
+    return this.baseUrl + 'biometrics/blood';
+  }
+
   static get blogs(): string {
     return this.baseUrl + 'articles';
   }

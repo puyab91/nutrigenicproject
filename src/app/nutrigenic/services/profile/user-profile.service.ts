@@ -69,7 +69,7 @@ export class UserProfileService {
         });
     }
 
-    setUserPicture(photo: File): void {
+    setUserPicture(file: File, isPhoto: boolean): void {
         let headers = new HttpHeaders();
 
         var jsonWebToken = localStorage.getItem('token');
@@ -81,15 +81,23 @@ export class UserProfileService {
                 `Bearer ${jsonWebToken}`
             );
         const formData = new FormData();
-        // Append the file to the FormData object
-        formData.append('photo', photo);
+
+        if (isPhoto)
+            formData.append('photo', file);
+        else
+            formData.append('blood', file);
+
         formData.append('user_id', id.toString());
 
-        let _url = ApiUrl.setPicture;
+        let _url = '';
+        if (isPhoto)
+            _url = ApiUrl.setPicture;
+        else
+            _url = ApiUrl.setBlood;
         this.http.post(_url, formData, {
             headers: headers,
             observe: 'response' as 'body'
-          }).subscribe({
+        }).subscribe({
             next: this.handleSubmitReviewResponse.bind(this),
             error: this.handleError.bind(this)
         });;

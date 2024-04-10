@@ -114,7 +114,10 @@ export class UserProfileComponent {
     onFileSelected(event: any) {
         const file: File = event.target.files[0];
         if (file) {
-            this.userProfileService.setUserPicture(file);
+            if (this.selectedTab == 'Blood test')
+                this.userProfileService.setUserPicture(file, false);
+            if (this.selectedTab == 'Pictures')
+                this.userProfileService.setUserPicture(file, true);
         }
     }
 
