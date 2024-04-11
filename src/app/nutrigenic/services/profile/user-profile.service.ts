@@ -75,6 +75,18 @@ export class UserProfileService {
         });
     }
 
+    getPhotos(): Observable<OperationResult<any>>{
+        const id = this.jwtTokenservice.getId();
+        let _url = ApiUrl.biometrics + '/' + id + '/photos';
+        return this.serviceCall.GET(_url, true, null);
+    }
+
+    getBloods(): Observable<OperationResult<any>>{
+        const id = this.jwtTokenservice.getId();
+        let _url = ApiUrl.biometrics + '/' + id + '/bloods';
+        return this.serviceCall.GET(_url, true, null);
+    }
+
     setUserPicture(file: File, isPhoto: boolean): void {
         let headers = new HttpHeaders();
 

@@ -2,6 +2,7 @@ import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import notiflix from 'notiflix';
 import { MenuItem } from 'primeng/api';
+import { FileModel } from 'src/app/nutrigenic/models/profile/file-model';
 import { UserProfileModel } from 'src/app/nutrigenic/models/profile/user-profile-model';
 import { JwtTokenService } from 'src/app/nutrigenic/services/auth/jwt-token.service';
 import { UserProfileService } from 'src/app/nutrigenic/services/profile/user-profile.service';
@@ -15,6 +16,8 @@ export class UserProfileComponent {
     addButtons: any[] = [];
     userName: string = 'User Name';
     userProfile: UserProfileModel;
+    photos: FileModel[] = [];
+    bloods: FileModel[] = [];
     addBiometricPopupVisibility = false;
     addSportPopupVisibility = false;
     connectCardVisibility: boolean = true;
@@ -96,6 +99,32 @@ export class UserProfileComponent {
             },
 
         ];
+
+        this.userProfileService.getPhotos().subscribe((response: any) => {
+            response.body.data.forEach((item:any) => {
+                var file = new FileModel();
+                file.id = item.id;
+                file.path = item.photo_path;
+                file.created_at = item.created_at;
+                file.date = item.data;
+
+                this.photos.push(file);
+
+            });
+        });
+
+        this.userProfileService.getBloods().subscribe((response: any) => {
+            response.body.data.forEach((item:any) => {
+                var file = new FileModel();
+                file.id = item.id;
+                file.path = item.blood_path;
+                file.created_at = item.created_at;
+                file.date = file.GetDate(new Date(item.date));
+
+                this.bloods.push(file);
+
+            });
+        });
     }
 
     ngOnInit() {
@@ -117,17 +146,7 @@ export class UserProfileComponent {
                 this.connectCardVisibility = false;
 
         });
-        // this.jwtTokenService.getIsLogin().subscribe((data: any) => {
-        //     if (data) {
-        //         this.userName = this.jwtTokenService.getUserName();
-        //     }
-        //     else
-        //         this.router
-        //             .navigate(['/home'])
-        //             .then(() => { })
-        //             .catch(() => { });
-
-        // });        
+       
     }
 
     showBiometricPopup(id: string) {
@@ -236,5 +255,15 @@ export class UserProfileComponent {
         else
             this.searchIcon = false;
 
+    }
+
+    downloadFile(path: string){
+        debugger;
+        const downloadLink = document.createElement('a');
+        downloadLink.href = path;
+        downloadLink.download = path; 
+        downloadLink.click();
+    
+        window.URL.revokeObjectURL(path);
     }
 }

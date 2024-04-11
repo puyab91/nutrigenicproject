@@ -21,12 +21,13 @@
         <div *ngIf="userProfile.weight > 0 || userProfile.photo_path !== ''">
             <div class="mt-5">
                 <button *ngFor="let item of tabItems"
-                    [style.background-color]="selectedTab === item ? '#dfdfef' : 'white'" (click)="selectedTab = item"
-                    class="btn btn-primary mt-2 mx-2 categoriesButton">
+                    [style.background-color]="selectedTab === item ? '#dfdfef' : 'white'"
+                    (click)="selectedTab = item" class="btn btn-primary mt-2 mx-2 categoriesButton">
                     {{ item }}
                 </button>
-                <button *ngIf="selectedTab === 'Weight'" class="btn mt-2 fw-bold btn-apply" style="font-size: 1.143rem;color: #311C02;float: right;"
-                    (click)="showBiometricPopup('weight')">Add today weight
+                <button *ngIf="selectedTab === 'Weight'" class="btn mt-2 fw-bold btn-apply"
+                    style="font-size: 1.143rem;color: #311C02;float: right;" (click)="showBiometricPopup('weight')">Add
+                    today weight
                 </button>
             </div>
             <div class="w-100 mt-4" style="height: 22rem;background-color: #D9D9D9;border-radius: 20px;"
@@ -56,8 +57,28 @@
                         </button>
                     </div>
                 </div>
-                <div class="web-center mx-1"
-                    style="width: 13.714rem;height: 18.357rem;border-radius: 20px;border: 1.5px #848790 dashed;">
+                <div style="width: 80%;" *ngIf="selectedTab === 'Pictures'">
+                    <p-carousel [value]="photos" [numVisible]="2" [numScroll]="1" [circular]="false"
+                        [style.width]="'100%'">
+                        <ng-template let-item pTemplate="item">
+                            <div class="web-center mx-1" (click)="downloadFile(item.path)"
+                                style="height: 18.357rem;border-radius: 20px;border: 1.5px #848790 dashed;cursor: pointer;">
+                                <img [src]="item.path" style="width: 100%;height: 100%;object-fit: contain;" alt="">
+                            </div>
+                        </ng-template>
+                    </p-carousel>
+                </div>
+                <div style="width: 80%;" *ngIf="selectedTab === 'Blood test'">
+                    <p-carousel [value]="bloods" [numVisible]="2" [numScroll]="1" [circular]="false"
+                        [style.width]="'100%'">
+                        <ng-template let-item pTemplate="item">
+                            <div class="web-center mx-1" (click)="downloadFile(item.path)"
+                                style="height: 18.357rem;border-radius: 20px;border: 1.5px #ECECEE solid;align-content: center;cursor: pointer;">
+                                <img src="../../../../../assets/images/document-attachment.png" style="width: 84px;height: 84px;object-fit: contain;" alt="">
+                                <div class="fm-rubik mt-5" style="font-size: 1rem;color: #5D5D66;">{{item.date}}</div>
+                            </div>
+                        </ng-template>
+                    </p-carousel>
                 </div>
             </div>
             <div class="fm-rubik mt-3" style="color: #5D5D66;font-size: 1rem;">
@@ -118,12 +139,11 @@
         </div>
     </div>
     <div class="mt-3 p-4">
-        <button *ngFor="let sport of sports"
-            class="btn btn-primary mt-2 fm-rubik mx-2 sport-buttons"
-            (click)="sport.selected = true"
-            [style.background-color] = "sport.selected ? '#DFDFEF' : 'white'">
+        <button *ngFor="let sport of sports" class="btn btn-primary mt-2 fm-rubik mx-2 sport-buttons"
+            (click)="sport.selected = true" [style.background-color]="sport.selected ? '#DFDFEF' : 'white'">
             {{sport.sport}}
-            <img *ngIf="sport.selected" src="../../../../../assets/images/selectedSport.png" style="margin-left: 0.7rem;width: 21.5px;height: 21.5px;" alt="">
+            <img *ngIf="sport.selected" src="../../../../../assets/images/selectedSport.png"
+                style="margin-left: 0.7rem;width: 21.5px;height: 21.5px;" alt="">
         </button>
     </div>
     <p-dialog>

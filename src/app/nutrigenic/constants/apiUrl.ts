@@ -44,6 +44,10 @@ export class ApiUrl {
     return this.baseUrl + 'biometrics/blood';
   }
 
+  static get biometrics(): string {
+    return this.baseUrl + 'biometrics';
+  }
+
   static get blogs(): string {
     return this.baseUrl + 'articles';
   }

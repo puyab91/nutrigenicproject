@@ -61,3 +61,7 @@
 .mainLoginInput::-webkit-input-placeholder {
    padding-left: 2rem;
 }
+
+::ng-deep .p-carousel-indicators {
+  display: none !important;
+}
