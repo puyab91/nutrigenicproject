@@ -13,7 +13,7 @@ export class PlanComponent {
     selectedCommitDaymealButton: number = 2;
     selectedCommitWeekmealButton: number = 3;
     selectedCommitWeeksButton: string = '4w';
-    connectExpertPopUp: boolean = false;
+    connectExpertPopUpVisibility: boolean = false;
     isTablet: boolean = false;
     isMobile: boolean = false;
     isDesktop: boolean = false;
@@ -22,14 +22,14 @@ export class PlanComponent {
 
     constructor(private sizedetection: ResizeDetectionService) { }
 
-    ngOnInit(){
+    ngOnInit() {
         this.sizedetection.refreshSize();
         this.sizedetection.sizeCondition$.subscribe(data => {
             this.isDesktop = data.isDesktop;
             this.isTablet = data.isTablet;
             this.isMobile = data.isMobile;
 
-          });
+        });
     }
 
     selectButton(buttonList: string, buttonNumber: number) {
@@ -47,7 +47,22 @@ export class PlanComponent {
         this.selectedCommitWeeksButton = buttonNumber;
     }
 
-    showOnnectToExpertPopUp(){
-       this.connectExpertPopUp = !this.connectExpertPopUp;
+    showOnnectToExpertPopUp() {
+        this.connectExpertPopUpVisibility = !this.connectExpertPopUpVisibility;
+        this.handleBlurFilter();
+    }
+
+
+    handleBlurFilter() {
+        if (this.connectExpertPopUpVisibility) {
+            document.getElementsByClassName('layoutHomeClass')[0]?.classList.add('p-dialog-blur');
+            document.getElementById('layoutHome')?.classList.add('p-dialog-blur');
+            document.getElementById('layoutHeader')?.classList.add('p-dialog-blur');
+        }
+        else {
+            document.getElementsByClassName('layoutHomeClass')[0]?.classList.remove('p-dialog-blur');
+            document.getElementById('layoutHome')?.classList.remove('p-dialog-blur');
+            document.getElementById('layoutHeader')?.classList.remove('p-dialog-blur');
+        }
     }
 }

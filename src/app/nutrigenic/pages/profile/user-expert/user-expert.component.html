@@ -1,4 +1,4 @@
-<div style="margin-left: 3rem;color: #0F0F1F;">
+<div id="layoutHome" style="margin-left: 3rem;color: #0F0F1F;">
     <div class="d-flex">
         <img src="../../../../../assets/images/user-expert.png" style="height: 12.357rem;width: 8.857rem;" alt="">
         <div class="mx-5">
@@ -35,9 +35,9 @@
     </div>
 </div>
 
-<app-connect-expert (afterChangeExpert) = "afterChangeExpert()" [status]="'change'" [popupVisibility] = "connectExpertPopUp"></app-connect-expert>
+<app-connect-expert (afterChangeExpert) = "afterChangeExpert()" [status]="'change'" [popupVisibility] = "connectExpertPopUpVisibility"></app-connect-expert>
 
-<p-dialog [(visible)]="popupVisibility" [style]="{ width: '40%' }" (onHide)="resetRateStar()">
+<p-dialog [(visible)]="reviewPopupVisibility" [style]="{ width: '40%' }" (onHide)="resetRateStar()">
     <div class="d-flex p-4">
         <img src="../../../../../assets/images/user-expert.png" style="height: 82px;width: 82px;" alt="">
         <div class="mx-3">

@@ -1,4 +1,4 @@
-<div class="d-flex" style="margin-left: 3rem">
+<div id="layoutHome" class="d-flex" style="margin-left: 3rem">
     <div class="">
         <div class="d-flex">
             <img src="../../../../assets/images/about-us-our-team.png" style="width: 134px;height: 134px;" alt="">
@@ -8,7 +8,7 @@
                 <span class="fw-bold">{{userProfile.first_name + ' ' + userProfile.last_name}}</span>
             </div>
         </div>
-        <div *ngIf="userProfile.weight === 0 && userProfile.photo_path === ''">
+        <div *ngIf="apiLoaded && userProfile.weight === 0 && userProfile.photo_path === ''">
             <div class="mt-4">
                 Add those information to help your Expert to track your progress and propose the best solution for you
             </div>
@@ -89,7 +89,7 @@
     <app-connect-card *ngIf="connectCardVisibility"></app-connect-card>
 </div>
 
-<p-dialog [(visible)]="addBiometricPopupVisibility" [style]="{ width: '22.857rem', height: '19.714rem' }"
+<p-dialog [(visible)]="addBiometricPopupVisibility" [style]="{ width: '23.857rem' }"
     (onHide)="onDialogHide()">
     <div class="web-center">
         <div class="fw-bold" style="font-size: 1.429rem;color: #0F0F1F;">Add your today {{biometricHeader}}</div>
@@ -117,7 +117,7 @@
     </div>
 </p-dialog>
 
-<p-dialog header="Header" [(visible)]="addSportPopupVisibility" [style]="{ width: '60%' }">
+<p-dialog header="Header" [(visible)]="addSportPopupVisibility" [style]="{ width: '60%' }" (onHide)="onDialogHide()">
     <ng-template pTemplate="header">
         <div class="mt-4 align-items-center justify-content-center w-100 text-center">
             <img src="../../../../../assets/images/arm.png" style="width: 43px;height: 43px;" alt="">

@@ -20,11 +20,12 @@ export class UserProfileComponent {
     bloods: FileModel[] = [];
     addBiometricPopupVisibility = false;
     addSportPopupVisibility = false;
-    connectCardVisibility: boolean = true;
+    connectCardVisibility: boolean = false;
     biometricHeader: string = '';
     biometricField: string = '';
     biometricUnit: string = '';
     value: string = '00.00';
+    apiLoaded: boolean = false;
     tabItems = ['Weight', 'BMI', 'Pictures', 'Blood test'];
     selectedTab: string | null = 'Weight';
     search: string = '';
@@ -101,7 +102,7 @@ export class UserProfileComponent {
         ];
 
         this.userProfileService.getPhotos().subscribe((response: any) => {
-            response.body.data.forEach((item:any) => {
+            response.body.data.forEach((item: any) => {
                 var file = new FileModel();
                 file.id = item.id;
                 file.path = item.photo_path;
@@ -114,7 +115,7 @@ export class UserProfileComponent {
         });
 
         this.userProfileService.getBloods().subscribe((response: any) => {
-            response.body.data.forEach((item:any) => {
+            response.body.data.forEach((item: any) => {
                 var file = new FileModel();
                 file.id = item.id;
                 file.path = item.blood_path;
@@ -144,9 +145,12 @@ export class UserProfileComponent {
         this.userProfileService.getUserExpert().subscribe((response: any) => {
             if (response.body)
                 this.connectCardVisibility = false;
+            else
+                this.connectCardVisibility = true;
+
 
         });
-       
+
     }
 
     showBiometricPopup(id: string) {
@@ -165,12 +169,10 @@ export class UserProfileComponent {
         if (id == 'sports') {
             this.addSportPopupVisibility = !this.addSportPopupVisibility;
         }
-        //this.handleBlurFilter();
+        this.handleBlurFilter();
     }
 
-    onDialogHide() {
-        //this.handleBlurFilter();
-    }
+
 
     onDragOver(event: DragEvent) {
         event.preventDefault();
@@ -220,14 +222,14 @@ export class UserProfileComponent {
         this.userProfile.birth_date = response.body.birth_date;
         this.userProfile.is_active = response.body.is_active;
         this.userProfile.gender = response.body.gender;
-        this.userProfile.weight = response.body.weight;
+        this.userProfile.weight = 0;
         this.userProfile.height = response.body.height;
         this.userProfile.imc = response.body.imc;
-        this.userProfile.photo_path = response.body.photo_path;
+        this.userProfile.photo_path = '';
         this.userProfile.has_to_upload_photo = response.body.has_to_upload_photo;
         this.userProfile.has_to_update_weight = response.body.has_to_update_weight;
         this.userProfile.has_unseen_notes = response.body.has_unseen_notes;
-
+        this.apiLoaded = true;
     }
 
     handleError(error: any): void {
@@ -237,12 +239,18 @@ export class UserProfileComponent {
         });
     }
 
+    onDialogHide() {
+        this.handleBlurFilter();
+    }
+
     handleBlurFilter() {
-        if (this.addBiometricPopupVisibility) {
+        if (this.addBiometricPopupVisibility || this.addSportPopupVisibility) {
+            document.getElementsByClassName('layoutHomeClass')[0]?.classList.add('p-dialog-blur');
             document.getElementById('layoutHome')?.classList.add('p-dialog-blur');
             document.getElementById('layoutHeader')?.classList.add('p-dialog-blur');
         }
         else {
+            document.getElementsByClassName('layoutHomeClass')[0]?.classList.remove('p-dialog-blur');
             document.getElementById('layoutHome')?.classList.remove('p-dialog-blur');
             document.getElementById('layoutHeader')?.classList.remove('p-dialog-blur');
         }
@@ -257,13 +265,13 @@ export class UserProfileComponent {
 
     }
 
-    downloadFile(path: string){
+    downloadFile(path: string) {
         debugger;
         const downloadLink = document.createElement('a');
         downloadLink.href = path;
-        downloadLink.download = path; 
+        downloadLink.download = path;
         downloadLink.click();
-    
+
         window.URL.revokeObjectURL(path);
     }
 }

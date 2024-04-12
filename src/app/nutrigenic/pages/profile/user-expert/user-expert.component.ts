@@ -13,12 +13,12 @@ import { UserProfileService } from 'src/app/nutrigenic/services/profile/user-pro
 })
 export class UserExpertComponent {
     value: number = 4;
-    popupVisibility: boolean = false;
+    reviewPopupVisibility: boolean = false;
     expertReview: string = '';
     selectedRateStar: number = 0;
     expertModel: ExpertModel = new ExpertModel();
     expertNotes: ExpertNoteModel[] = [];
-    connectExpertPopUp: boolean = false;
+    connectExpertPopUpVisibility: boolean = false;
     constructor(private userProfileService: UserProfileService,
         private cdr: ChangeDetectorRef
     ) {
@@ -55,7 +55,8 @@ export class UserExpertComponent {
     }
 
     addReviewPopup() {
-        this.popupVisibility = !this.popupVisibility;
+        this.reviewPopupVisibility = !this.reviewPopupVisibility;
+        this.handleBlurFilter();
     }
 
     submitExpertReview() {
@@ -67,6 +68,7 @@ export class UserExpertComponent {
 
     resetRateStar() {
         this.selectedRateStar = 0;
+        this.handleBlurFilter();
     }
 
     changeExpert() {
@@ -75,11 +77,30 @@ export class UserExpertComponent {
                 position: 'right-top',
                 timeout: 3000
             });
-        else
-            this.connectExpertPopUp = !this.connectExpertPopUp
+        else{
+            this.connectExpertPopUpVisibility = !this.connectExpertPopUpVisibility
+        this.handleBlurFilter();
+        }
     }
 
     afterChangeExpert() {
         this.cdr.detectChanges();
+    }
+
+    onDialogHide() {
+        this.handleBlurFilter();
+    }
+
+    handleBlurFilter() {
+        if (this.connectExpertPopUpVisibility || this.reviewPopupVisibility) {
+            document.getElementsByClassName('layoutHomeClass')[0]?.classList.add('p-dialog-blur');
+            document.getElementById('layoutHome')?.classList.add('p-dialog-blur');
+            document.getElementById('layoutHeader')?.classList.add('p-dialog-blur');
+        }
+        else {
+            document.getElementsByClassName('layoutHomeClass')[0]?.classList.remove('p-dialog-blur');
+            document.getElementById('layoutHome')?.classList.remove('p-dialog-blur');
+            document.getElementById('layoutHeader')?.classList.remove('p-dialog-blur');
+        }
     }
 }

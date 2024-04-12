@@ -25,3 +25,8 @@ ul li::marker {
     margin-right: 1rem;
     margin-bottom: 1rem;
   }
+
+  ::ng-deep .p-dialog {
+    z-index: 1001 !important;
+    filter: none;
+  }
