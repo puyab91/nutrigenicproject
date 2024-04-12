@@ -16,10 +16,10 @@
                 <button class="btn btn-primary mt-2 btn-plan p-1 w-100" style="font-size: 1.143rem;">To Start
                 </button>
             </div>
-            <div class="w-100 z-1" style="margin-bottom: -20%;">
+            <div class="w-100 z-1 top-img-margin">
                 <img class="w-100" src="../../../../assets/images/flexi-back-image.png" />
             </div>
-            <div class="card shadow mt-2 w-100 p-0 z-2">
+            <div class="card animation mt-2 z-2">
                 <div class="card-body m-3">
                     <div class="mb-3">
                         <img class="d-block object-fit-contain w-75" src="../../../../assets/images/plan-top-line.png">
@@ -68,9 +68,9 @@
                 </div>
                 <div class="mt-3 p-3" style="text-align: left;">
                     <span style="font-size: 0.714rem;color: #848790;">Promo code</span>
-                    <div class="d-flex">
+                    <div class="d-flex position-relative" (mouseover)="applyFlexi = 'Connect with a professional'" (mouseout)="applyFlexi = 'Apply'">
                         <input type="text" class="p-2 input-promo" placeholder="type here ..." />
-                        <button class="btn mt-2 fw-bold m-auto btn-apply">Apply
+                        <button class="btn mt-2 fw-bold m-auto btn-apply">{{applyFlexi}}
                         </button>
                     </div>
                     <p-divider></p-divider>
@@ -85,7 +85,7 @@
                     <div class="web-center mt-3">
                         <button class="btn btn-primary mt-2 fw-bold btn-orderNow fm-prompt"
                             style="font-size: 1.143rem;">Order now
-                            <i class="pi pi-arrow-right text-white fs08"></i>
+                            <i class="pi pi-arrow-right text-white fs08 arrow-icon"></i>
                         </button>
                     </div>
 
@@ -101,7 +101,7 @@
             <div class="w-100 z-1" style="margin-bottom: -20%;">
                 <img class="w-100" src="../../../../assets/images/commit-back-image.png" />
             </div>
-            <div class="card shadow mt-2 w-100 p-0 z-2">
+            <div class="card animation mt-2 z-2">
                 <div class="card-body m-3">
                     <div class="mb-3">
                         <img class="d-block object-fit-contain w-75" src="../../../../assets/images/plan-top-line.png">
@@ -159,9 +159,9 @@
                 </div>
                 <div class="mt-3 p-3" style="text-align: left;">
                     <span style="font-size: 0.714rem;color: #848790;">Promo code</span>
-                    <div class="d-flex">
+                    <div class="d-flex position-relative"  (mouseover)="applyCommit = 'Connect with a professional'" (mouseout)="applyCommit = 'Apply'">
                         <input type="text" class="p-2 input-promo" placeholder="type here ..." />
-                        <button class="btn mt-2 fw-bold m-auto btn-apply">Apply
+                        <button class="btn mt-2 fw-bold m-auto btn-apply">{{applyCommit}}
                         </button>
                     </div>
                     <p-divider></p-divider>
@@ -174,7 +174,7 @@
                     <div class="web-center mt-3">
                         <button class="btn btn-primary mt-2 fw-bold btn-orderNow fm-prompt"
                             style="font-size: 1.143rem;">Order now
-                            <i class="pi pi-arrow-right text-white fs08"></i>
+                            <i class="pi pi-arrow-right text-white fs08 arrow-icon"></i>
                         </button>
                     </div>
 
@@ -186,7 +186,7 @@
             <div class="w-100 z-1" style="margin-bottom: -20%;">
                 <img class="w-100" src="../../../../assets/images/custom-back-image.png" />
             </div>
-            <div class="card shadow mt-2 w-100 p-0 z-2">
+            <div class="card animation mt-2 z-2">
                 <div class="card-body m-3">
                     <div class="mb-3">
                         <img class="d-block object-fit-contain w-75" src="../../../../assets/images/plan-top-line.png">
@@ -214,8 +214,7 @@
                     </div>
                     <div><span style="font-size: 1rem;font-weight: 400;">Already connected?</span></div>
                     <div class="mt-1">
-                        <button class="btn mt-2 fw-bold px-5 py-3 btn-apply"
-                            style="font-size: 1.143rem;color: #311C02;">Select your guide
+                        <button class="btn mt-2 fw-bold px-5 py-3 btn-select-guid">Select your guide
                         </button>
                     </div>
                 </div>

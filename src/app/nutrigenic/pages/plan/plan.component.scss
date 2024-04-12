@@ -19,6 +19,26 @@ ul li::marker {
   padding-bottom: 0.8rem;
 }
 
+@keyframes slideBackground2 {
+  0% {
+    background-position: 0 0;
+  }
+
+  100% {
+    background-position: -100% 0;
+  }
+
+}
+
+.btn-plan:hover {
+  background-color: #F8A94A !important;
+  background-image: linear-gradient(to right, #EF870A, #F8A94A);
+  background-size: 200% 100%;
+  animation: slideBackground2 1s ease forwards;
+  object-fit: contain;
+  background-repeat: no-repeat;
+}
+
 .btn-planMeal {
   border: 2px solid #FAC381;
   background-color: #F9F9FB;
@@ -48,6 +68,39 @@ ul li::marker {
   padding-bottom: 0.8rem;
 }
 
+.btn-orderNow:hover {
+  background-color: #F8A94A !important;
+  background-image: linear-gradient(to right, #EF870A, #F8A94A);
+  background-size: 200% 100%;
+  animation: slideBackground 1s ease forwards;
+  object-fit: contain;
+  background-repeat: no-repeat;
+
+  .arrow-icon {
+    margin-left: 1rem;
+  }
+}
+
+.arrow-icon {
+  font-size: 1rem;
+  margin-left: 0.6rem;
+  transition: margin-left 1s ease;
+}
+
+@keyframes slideBackground {
+  0% {
+    padding-right: 2rem;
+    background-position: 0 0;
+  }
+
+  100% {
+    background-position: -100% 0;
+    padding-right: 1.6rem;
+
+  }
+
+}
+
 .cardTitle {
   color: #EF870A;
   //font-weight: 1000;
@@ -61,13 +114,32 @@ ul li::marker {
   background-color: #F0F4F8;
 }
 
+.btn-select-guid {
+  border: 2px solid black;
+  border-radius: 25px;
+  font-size: 1.143rem;
+  color: #311C02;
+  transition: all 1s ease;
+}
+
+.btn-select-guid:hover {
+  background-color: #311C02;
+  color: white;
+}
+
 .btn-apply {
   border: 2px solid black;
   border-radius: 25px;
+  transition: all 2s ease;
 }
 
-.shadow {
-  box-shadow: 0.1rem 0.3rem  1rem rgba(169, 169, 198, 0.2)  !important;
+.btn-apply:hover {
+position: absolute;
+  width: 100%;
+  background-color: #311C02;
+  color: white;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
 }
 
 .categoriesButton {
@@ -78,4 +150,21 @@ ul li::marker {
   color: #5D5D66;
   font-size: 1.1rem;
   font-weight: 300;
+}
+
+.top-img-margin {
+  margin-bottom: -20%;
+}
+
+.animation {
+  width: 100%;
+  padding: 0;
+  box-shadow: 0.1rem 0.3rem 1rem rgba(169, 169, 198, 0.2);
+  margin-top: -20%;
+  transition: margin-top 2s ease;
+}
+
+.animation:hover {
+  margin-top: -30% !important;
+  box-shadow: 0.3rem 0.5rem 1.2rem rgba(72, 72, 80, 0.2);
 }

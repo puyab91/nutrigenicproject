@@ -16,6 +16,26 @@
   border-radius: 25px;
 }
 
+@keyframes slideBackground {
+  0% {
+    background-position: 0 0;
+  }
+
+  100% {
+    background-position: -100% 0;
+  }
+
+}
+
+.btn-ourshop:hover {
+  background-color: #F8A94A !important;
+  background-image: linear-gradient(to right, #EF870A, #F8A94A);
+  background-size: 200% 100%;
+  animation: slideBackground 1s ease forwards;
+  object-fit: contain;
+  background-repeat: no-repeat;
+}
+
 .btn-dec-ourshop {
   align-items: center;
   background-color: white !important;
@@ -52,8 +72,6 @@
   }
 }
 
-.input-promo {}
-
 .mainLoginInput {
   border-radius: 20px;
   border: 1.5px solid #F1F1F3;
@@ -77,4 +95,8 @@
 }
 .shadow {
   box-shadow: 0px 10px 30px 0px #6363B11A  !important;
+}
+
+::ng-deep .p-tooltip .p-tooltip-items	{
+  background-color: red;
 }

@@ -1,26 +1,55 @@
+.arrow-icon {
+  font-size: 1rem;
+  margin-left: 0.6rem;
+  transition: margin-left 1s ease;
+  /* Add transition for smooth animation */
+}
+
+
+.fm-prompt-button {
+  font-family: Prompt;
+  font-size: 1.143rem;
+  font-weight: 600;
+  line-height: 1.728;
+  letter-spacing: 0.04rem;
+  text-align: center;
+}
+
+
 .getStartButton {
-    align-items: center;
-    background-color: #EF870A !important;
-    border: none;
-    border-radius: 15px;
-    padding-left: 2rem;
-    padding-right: 2rem;
-    padding-top: 0.6rem;
-    padding-bottom: 0.6rem;    
-  }
-  .arrow-icon {
-    font-size: 1rem;
-    margin-left: 0.6rem;
-  }
-  .fm-prompt-button {
-    font-family: Prompt;
-    font-size: 1.143rem;
-    font-weight: 600;
-    line-height: 1.728;
-    letter-spacing: 0.04rem;
-    text-align: center;
-  }
+  align-items: center;
+  background-color: #EF870A !important;
+  border: none;
+  border-radius: 15px;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  padding-top: 0.6rem;
+  padding-bottom: 0.6rem;
+}
 
 .getStartButton:hover {
   background-color: #F8A94A !important;
+  background-image: linear-gradient(to right, #EF870A, #F8A94A);
+  background-size: 200% 100%;
+  animation: slideBackground 1s ease forwards;
+  object-fit: contain;
+  background-repeat: no-repeat;
+
+  .arrow-icon {
+    margin-left: 1rem;
+  }
+}
+
+@keyframes slideBackground {
+  0% {
+    padding-right: 2rem;
+    background-position: 0 0;
+  }
+
+  100% {
+    background-position: -100% 0;
+    padding-right: 1.6rem;
+
+  }
+
 }

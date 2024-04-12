@@ -19,6 +19,8 @@ export class PlanComponent {
     isDesktop: boolean = false;
     tabItems = ['Flexi', 'Commit', 'Expert'];
     selectedMasterTab: string | null = 'Flexi';
+    applyFlexi: string = 'Apply';
+    applyCommit: string = 'Apply';
 
     constructor(private sizedetection: ResizeDetectionService) { }
 
