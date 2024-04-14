@@ -1,13 +1,25 @@
-<div style="margin-left: 3rem;">
-    <div class="fw-bold fm-prompt" style="font-size: 1.429rem;color: #0F0F1F;">Order history</div>
-    <div *ngFor="let item of userOrders" class="mt-4 fm-rubik p-4 order-font" style="border: 1.5px solid #DFDFEF; border-radius: 4px;position: relative;">
+<div [style]="isDesktop ? 'margin-left: 3rem;' : 'width: 100%'">
+    <div class="fw-bold fm-prompt" style="font-size: 1.429rem;color: hsl(240, 35%, 9%);">Order history</div>
+    <div *ngFor="let item of userOrders" class="mt-4 fm-rubik p-4 order-font d-flex"
+        style="border: 1.5px solid #DFDFEF; border-radius: 4px;position: relative;flex-wrap: wrap;">
         <div class="overlay">{{item.order_date}} - <span>Order #{{item.id}}</span></div>
-        <span class="fw-bold mr4">{{item.order_type}}</span>
-        <span class="mr05">Week</span><span class="fw-bold mr4">{{item.weeks}}</span>
-        <span class="mr05">Days</span><span class="fw-bold mr4">{{item.days_per_week}}</span>
-        <span class="mr05">Meals per day</span><span class="fw-bold mr4">{{item.meals_per_day}}</span>
-        <span class="mr05">Total</span><span class="fw-bold mr4">{{item.total_amount}}</span>
-        <img src="../../../../../assets/images/details.png" style="width: 16px;height: 16px;" class="mr05" alt="">
-        <span style="color: #5D5D66;">details</span>
+        <div class="fw-bold mr-auto">{{item.order_type}}</div>
+        <div class="mr-auto">
+            <span class="mr05">Week</span><span class="fw-bold">{{item.weeks}}</span>
+        </div>
+        <div class="mr-auto">
+            <span class="mr05">Days</span><span class="fw-bold">{{item.days_per_week}}</span>
+        </div>
+        <div class="mr-auto">
+            <span class="mr05">Meals per day</span><span class="fw-bold">{{item.meals_per_day}}</span>
+        </div>
+        <div class="mr-auto">
+            <span class="mr05">Total</span><span class="fw-bold">{{item.total_amount}}</span>
+        </div>
+        <div class="mr-auto">
+            <img src="../../../../../assets/images/details.png" style="width: 16px;height: 16px;" class="mr05" alt="">
+            <span style="color: #5D5D66;">details</span>
+        </div>
+
     </div>
 </div>

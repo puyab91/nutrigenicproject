@@ -96,3 +96,17 @@
   transform: translate(-50%, -50%);
   text-align: center;
 }
+
+.menu-container {
+  width: 100vw;
+  overflow-x: auto; 
+  white-space: nowrap; 
+}
+
+.menu-list {
+  padding-left: 0px;
+  padding-right: 1rem;
+  display: flex;
+  list-style-type: none;
+  margin: 0; 
+}

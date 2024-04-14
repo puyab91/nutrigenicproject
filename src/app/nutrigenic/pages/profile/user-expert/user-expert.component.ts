@@ -5,6 +5,7 @@ import { MenuItem } from 'primeng/api';
 import { ExpertModel } from 'src/app/nutrigenic/models/plan/expert-model';
 import { ExpertNoteModel } from 'src/app/nutrigenic/models/profile/expert-note-model';
 import { UserProfileService } from 'src/app/nutrigenic/services/profile/user-profile.service';
+import { ResizeDetectionService } from 'src/app/nutrigenic/services/resize-detection.service';
 
 @Component({
     selector: 'app-user-expert',
@@ -19,13 +20,25 @@ export class UserExpertComponent {
     expertModel: ExpertModel = new ExpertModel();
     expertNotes: ExpertNoteModel[] = [];
     connectExpertPopUpVisibility: boolean = false;
+    isTablet: boolean = false;
+    isMobile: boolean = false;
+    isDesktop: boolean = false;
     constructor(private userProfileService: UserProfileService,
-        private cdr: ChangeDetectorRef
+        private cdr: ChangeDetectorRef,
+        private sizedetection: ResizeDetectionService
     ) {
 
     }
 
     ngOnInit() {
+        this.sizedetection.refreshSize();
+        this.sizedetection.sizeCondition$.subscribe(data => {
+            this.isDesktop = data.isDesktop;
+            this.isTablet = data.isTablet;
+            this.isMobile = data.isMobile;
+
+        });
+
         this.userProfileService.getUserExpert().subscribe((response: any) => {
             this.expertModel.id = response.body.id;
             this.expertModel.first_name = response.body.first_name;

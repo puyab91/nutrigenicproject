@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { MenuItem } from 'primeng/api';
 import { UserCreditCard } from 'src/app/nutrigenic/models/profile/user-credit-card-model';
 import { UserProfileService } from 'src/app/nutrigenic/services/profile/user-profile.service';
+import { ResizeDetectionService } from 'src/app/nutrigenic/services/resize-detection.service';
 
 @Component({
     selector: 'app-credit-cards',
@@ -11,11 +12,24 @@ import { UserProfileService } from 'src/app/nutrigenic/services/profile/user-pro
 })
 export class CreditCardsComponent {
     creditCards: UserCreditCard[] = []
-    constructor(private userProfileService: UserProfileService) {
+    isTablet: boolean = false;
+    isMobile: boolean = false;
+    isDesktop: boolean = false;
+
+    constructor(private userProfileService: UserProfileService,
+        private sizedetection: ResizeDetectionService) {
       
     }
 
     ngOnInit() {
+        this.sizedetection.refreshSize();
+        this.sizedetection.sizeCondition$.subscribe(data => {
+            this.isDesktop = data.isDesktop;
+            this.isTablet = data.isTablet;
+            this.isMobile = data.isMobile;
+
+        });
+
         this.userProfileService.getUserCreditCards().subscribe((response: any) => {
 
             response.body.data.forEach((item: any) => {

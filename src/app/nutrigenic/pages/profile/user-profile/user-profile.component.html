@@ -1,4 +1,4 @@
-<div id="layoutHome" class="d-flex" style="margin-left: 3rem">
+<div id="layoutHome" class="d-flex" [style]="isDesktop ? 'margin-left: 3rem;' : ''">
     <div class="">
         <div class="d-flex">
             <img src="../../../../assets/images/about-us-our-team.png" style="width: 134px;height: 134px;" alt="">
@@ -133,7 +133,7 @@
                 <i class="pi pi-search" style="font-size: 1rem;font-weight: bold;color: #5D5D66;"
                     *ngIf="searchIcon"></i>
                 <input type="text" class="p-2 input-promo mainLoginInput fm-rubik"
-                    placeholder="Search meal or ingredient..." style="font-size: 1rem;font-weight: bold;color: #5D5D66;"
+                    placeholder="Search for the sport you practice" style="font-size: 1rem;font-weight: bold;color: #5D5D66;"
                     (input)="inputTextChange($event)" [(ngModel)]="search" />
             </span>
         </div>

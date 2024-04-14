@@ -108,7 +108,7 @@
   .mastrPlan {
     width: 100%;
     min-height: 320px;
-    border-radius: 15%;
+    border-radius: 200px;
     background-color: white;
     text-align: center;
     position: relative;
@@ -127,10 +127,10 @@
     position: absolute;
     bottom: 0;
     width: 100%;
-    height: 77%;
+    height: 200px;
     opacity: 0.8;
     pointer-events: none;
-    background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 60%, rgba(255, 255, 255, 1) 90%);
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 20%, rgba(255, 255, 255, 1) 50%);
   }
 
   .who-made-us-margin {
@@ -256,7 +256,7 @@
   .mastrPlan {
     width: 100%;
     min-height: 320px;
-    border-radius: 15%;
+    border-radius: 200px;
     background-color: white;
     text-align: center;
     position: relative;
@@ -273,12 +273,12 @@
 
   .overlayMasterPlan {
     position: absolute;
-    bottom: 8%;
-    width: 90%;
-    height: 77%;
+    bottom: 0;
+    width: 100%;
+    height: 200px;
     opacity: 0.8;
     pointer-events: none;
-    background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 60%, rgba(255, 255, 255, 1) 90%);
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 20%, rgba(255, 255, 255, 1) 50%);
   }
 
   .who-made-us-margin {

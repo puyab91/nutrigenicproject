@@ -1,58 +1,58 @@
-<div style="margin-left: 3rem;">
-    <div class="fm-rubik row">
-        <div class="col-md-2">
+<div class="w-100" [style]="isDesktop ? 'margin-left: 3rem;' : ''">
+    <div class="fm-rubik d-flex">
+        <div class="col-md-6 mx-1">
             <span class="input-title">First name</span>
             <div class="">
                 <input [(ngModel)]="userProfile.first_name" type="text" class="p-2 input-promo w-100" placeholder="type here ..." />
             </div>
         </div>
-        <div class="col-md-2">
+        <div class="col-md-6 mx-1">
             <span class="input-title">Last name</span>
             <div class="">
                 <input [(ngModel)]="userProfile.last_name" type="text" class="p-2 input-promo w-100" placeholder="type here ..." />
             </div>
         </div>
     </div>
-    <div class="fm-rubik row mt-3">
-        <div class="col-md-4">
+    <div class="fm-rubik d-flex mt-3">
+        <div class="col-md-12 w-100 mx-2">
             <span class="input-title">Email</span>
             <div class="">
                 <input [(ngModel)]="userProfile.email" type="email" class="p-2 input-promo w-100" placeholder="type here ..." />
             </div>
         </div>
     </div>
-    <div class="fm-rubik row mt-3">
-        <div class="col-md-4">
+    <div class="fm-rubik d-flex mt-3">
+        <div class="col-md-12 w-100 mx-2">
             <span class="input-title">Phone number</span>
             <div class="">
                 <input [(ngModel)]="userProfile.phone_number" type="text" class="p-2 input-promo w-100" placeholder="type here ..." />
             </div>
         </div>
     </div>
-    <div class="fm-rubik row mt-3">
-        <div class="col-md-4">
+    <div class="fm-rubik d-flex mt-3">
+        <div class="col-md-12 w-100 mx-2">
             <span class="input-title">Password</span>
             <div class="">
                 <input type="password" class="p-2 input-promo w-100" placeholder="type here ..." />
             </div>
         </div>
     </div>
-    <div class="fm-rubik row mt-3">
-        <div class="col-md-4">
+    <div class="fm-rubik d-flex mt-3">
+        <div class="col-md-12 w-100 mx-2">
             <span class="input-title">address</span>
             <div class="">
                 <input type="text" class="p-2 input-promo w-100" placeholder="type here ..." />
             </div>
         </div>
     </div>
-    <div class="fm-rubik row mt-3">
-        <div class="col-md-2">
+    <div class="fm-rubik d-flex mt-3">
+        <div class="col-md-6 mx-1">
             <span class="input-title">City</span>
             <div class="">
                 <input type="text" class="p-2 input-promo w-100" placeholder="type here ..." />
             </div>
         </div>
-        <div class="col-md-2">
+        <div class="col-md-6 mx-1">
             <span class="input-title">Postal code</span>
             <div class="">
                 <input type="text" class="p-2 input-promo w-100" placeholder="type here ..." />

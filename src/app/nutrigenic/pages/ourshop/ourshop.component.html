@@ -1,17 +1,32 @@
 <div id="layoutHome" class="web-center">
     <div style="width: 85%;">
-        <div class="title fm-prompt web-left" *ngIf="isTablet || isMobile">Our shop</div>
-        <div class="mt-4" *ngIf="isTablet || isMobile">
-            <span class="p-input-icon-left w-100">
-                <i class="pi pi-search" style="font-size: 1rem;font-weight: bold;color: #5D5D66;"
-                    *ngIf="searchIcon"></i>
-                <input type="text" class="p-2 input-promo mainLoginInput fm-rubik"
-                    placeholder="Search meal or ingredient..." style="font-size: 1rem;font-weight: bold;color: #5D5D66;"
-                    (input)="inputTextChange($event)" [(ngModel)]="search" />
-            </span>
+        <div *ngIf="isTablet || isMobile">
+            <div class="title fm-prompt web-left">Our shop</div>
+            <div class="mt-4">
+                <span class="p-input-icon-left w-100">
+                    <i class="pi pi-search" style="font-size: 1rem;font-weight: bold;color: #5D5D66;"
+                        *ngIf="searchIcon"></i>
+                    <input type="text" class="p-2 input-promo mainLoginInput fm-rubik"
+                        placeholder="Search meal or ingredient..."
+                        style="font-size: 1rem;font-weight: bold;color: #5D5D66;" (input)="inputTextChange($event)"
+                        [(ngModel)]="search" />
+                </span>
+            </div>
+            <div class="menu-container">
+                <ul class="menu-list">
+                    <li *ngFor="let item of tabItems" class="mb-2 p-2"
+                        style="cursor: pointer; list-style-type: none;">
+                        <button 
+                        [style.background-color]="selectedMasterTab === item.id ? '#dfdfef' : 'white'"
+                        (click)="selectedMasterTab = item.id" class="btn btn-primary mt-2 mx-2 categoriesButton">
+                        {{ item.name }}
+                    </button>
+                    </li>
+                </ul>
+            </div>
         </div>
-        <div class="mt-4 web-left row">
-            <div [class]="isDesktop ? 'col-md-9' : 'col-md-12'">
+        <div class="mt-4 web-left row"  *ngIf="isDesktop">
+            <div class="col-md-9">
                 <button *ngFor="let item of tabItems" (click)="shopCategoryChange(item.id)"
                     [style.background-color]="selectedMasterTab === item.id ? '#dfdfef' : 'white'"
                     (click)="selectedMasterTab = item.id" class="btn btn-primary mt-2 mx-2 categoriesButton"
@@ -19,7 +34,7 @@
                     {{ item.name }}
                 </button>
             </div>
-            <div class="col-md-3" *ngIf="isDesktop">
+            <div class="col-md-3">
                 <span class="p-input-icon-left w-100">
                     <i class="pi pi-search" style="font-size: 1rem;font-weight: bold;color: #5D5D66;"
                         *ngIf="searchIcon"></i>
@@ -44,7 +59,8 @@
 </div>
 
 <ng-template #listCards let-item>
-    <div class="mb-3 position-relative responsiveFont fm-rubik" [class]="isDesktop ? 'col-md-3' : isTablet ? 'col-md-6' : 'col-md-12' ">
+    <div class="mb-3 position-relative responsiveFont fm-rubik"
+        [class]="isDesktop ? 'col-md-3' : isTablet ? 'col-md-6' : 'col-md-12' ">
         <div class="card shadow p-3">
             <div class="">
                 <img class="w-100" [src]="item.image_path" style="border-radius: 12px 12px 0 0;" />
@@ -60,7 +76,8 @@
                 <div class="web-left mt-2" style="font-size: 1rem;"><span>{{ item.description_image_path }}</span></div>
                 <div class="fw-bold mt-3" style="font-size: 1rem;color: #311C02;"><span>€{{ item.price }}</span></div>
                 <div class="fw-bold mt-4">
-                    <button class="btn btn-dec-ourshop p-0" (click)="item.count = item.count == 1 ? 1 : item.count - 1" style="margin-right: 0.5rem;">
+                    <button class="btn btn-dec-ourshop p-0" (click)="item.count = item.count == 1 ? 1 : item.count - 1"
+                        style="margin-right: 0.5rem;">
                         <i class="pi pi-minus fw-bold" style="padding: 0.6rem;
                         font-size: 0.8rem;color: #EF870A;"></i>
                     </button>

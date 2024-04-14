@@ -58,7 +58,6 @@ export class ConnectExpertComponent {
     }
 
     assignExpert(id: number) {
-        debugger;
         if (this.status == 'add')
             this.planService.assignExperts(id);
         if (this.status == 'change')

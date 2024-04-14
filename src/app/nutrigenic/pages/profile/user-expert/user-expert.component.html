@@ -1,30 +1,36 @@
-<div id="layoutHome" style="margin-left: 3rem;color: #0F0F1F;">
-    <div class="d-flex">
-        <img src="../../../../../assets/images/user-expert.png" style="height: 12.357rem;width: 8.857rem;" alt="">
-        <div class="mx-5">
-            <span style="font-size: 2rem;">Your expert</span>
-            <br />
-            <span style="font-size: 2rem;font-weight: bold;">{{expertModel.first_name + ' ' +
-                expertModel.last_name}}</span>
-            <br />
-            <span style="font-size: 1.143rem;">{{expertModel.profession}}</span>
-            <br />
-            <br />
-            <p-rating [(ngModel)]="expertModel.average_star_review" [readonly]="true" [cancel]="false"
-                [style.font-size]="'1rem'"></p-rating>
-            <br />
-            <img src="../../../../../assets/images/expert-facebook.png"
-                style="height: 16px;width: 16px;margin-right: 1rem;" alt="">
-            <img src="../../../../../assets/images/expert instagram.png"
-                style="height: 16px;width: 16px;margin-right: 1rem;" alt="">
-            <img src="../../../../../assets/images/expert-whatsapp.png"
-                style="height: 16px;width: 16px;margin-right: 1rem;" alt="">
+<div id="layoutHome" style="color: #0F0F1F;" [style]="isDesktop ? 'margin-left: 3rem;' : ''">
+    <div [class]="isMobile ? '' : 'd-flex'">
+        <div class="d-flex">
+            <div>
+                <img src="../../../../../assets/images/user-expert.png" style="height: 12.357rem;width: 8.857rem;"
+                    alt="">
+            </div>
+            <div style="margin-left: 1.5rem;" [style]="isMobile ? '' : 'margin-right: 3rem;'">
+                <span [style]="isMobile ? 'font-size: 1.5rem;' : 'font-size: 2rem;'">Your expert</span>
+                <br />
+                <span class="fw-bold" [style]="isMobile ? 'font-size: 1.5rem;' : 'font-size: 2rem;'">{{expertModel.first_name + ' ' +
+                    expertModel.last_name}}</span>
+                <br />
+                <span style="font-size: 1.143rem;">{{expertModel.profession}}</span>
+                <br />
+                <br />
+                <p-rating [(ngModel)]="expertModel.average_star_review" [readonly]="true" [cancel]="false"
+                    [style.font-size]="'1rem'"></p-rating>
+                <br />
+                <img src="../../../../../assets/images/expert-facebook.png"
+                    style="height: 16px;width: 16px;margin-right: 1rem;" alt="">
+                <img src="../../../../../assets/images/expert instagram.png"
+                    style="height: 16px;width: 16px;margin-right: 1rem;" alt="">
+                <img src="../../../../../assets/images/expert-whatsapp.png"
+                    style="height: 16px;width: 16px;margin-right: 1rem;" alt="">
+            </div>
         </div>
-        <div class="web-center" style="float: right;margin-left: auto;">
+        <div [class]="isMobile ? 'mt-2' : 'web-center'" [style]="isMobile ? '' : 'float: right;margin-left: auto;'">
             <button class="btn mt-2 fw-bold m-auto btn-apply" style="font-size: 1.143rem;"
                 (click)="addReviewPopup()">Add Review
             </button>
-            <div class="mt-2" style="font-size: 1.143rem;color: #5D5D66;cursor: pointer;" (click)="changeExpert()">change expert</div>
+            <div class="mt-2" style="font-size: 1.143rem;color: #5D5D66;cursor: pointer;" (click)="changeExpert()">
+                change expert</div>
         </div>
     </div>
     <div class="mt-4 fw-bold fm-prompt" style="font-size: 1.429rem;color: #0F0F1F;">Last messages</div>
@@ -35,7 +41,8 @@
     </div>
 </div>
 
-<app-connect-expert (afterChangeExpert) = "afterChangeExpert()" [status]="'change'" [popupVisibility] = "connectExpertPopUpVisibility"></app-connect-expert>
+<app-connect-expert (afterChangeExpert)="afterChangeExpert()" [status]="'change'"
+    [popupVisibility]="connectExpertPopUpVisibility"></app-connect-expert>
 
 <p-dialog [(visible)]="reviewPopupVisibility" [style]="{ width: '40%' }" (onHide)="resetRateStar()">
     <div class="d-flex p-4">
@@ -59,10 +66,9 @@
         <div style="color: #0F0F1F;font-size: 1.429rem;font-weight: bold;">Add review to your expert</div>
         <!-- <p-rating [(ngModel)]="expertRate" class="mt-2" style="font-size: 4rem;" [readonly]="false" [cancel]="false"></p-rating> -->
         <div class="mt-4 mb-4">
-            <i *ngFor="let i of [1,2,3,4,5]" class="pi pi-star-fill" 
-            (click)="selectedRateStar = i"
-            [style.color]="i <= selectedRateStar ? '#FFCB45' : '#DFDFEF'"
-            style="font-size: 3rem;margin-right: 1rem;cursor: pointer;"></i>            
+            <i *ngFor="let i of [1,2,3,4,5]" class="pi pi-star-fill" (click)="selectedRateStar = i"
+                [style.color]="i <= selectedRateStar ? '#FFCB45' : '#DFDFEF'"
+                style="font-size: 3rem;margin-right: 1rem;cursor: pointer;"></i>
         </div>
 
         <div class="mt-2">

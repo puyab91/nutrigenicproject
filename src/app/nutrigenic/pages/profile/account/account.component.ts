@@ -4,6 +4,7 @@ import notiflix from 'notiflix';
 import { MenuItem } from 'primeng/api';
 import { UserProfileModel } from 'src/app/nutrigenic/models/profile/user-profile-model';
 import { UserProfileService } from 'src/app/nutrigenic/services/profile/user-profile.service';
+import { ResizeDetectionService } from 'src/app/nutrigenic/services/resize-detection.service';
 
 @Component({
     selector: 'app-account',
@@ -12,12 +13,24 @@ import { UserProfileService } from 'src/app/nutrigenic/services/profile/user-pro
 })
 export class AccountComponent {
     userProfile: UserProfileModel = new UserProfileModel();;
+    isTablet: boolean = false;
+    isMobile: boolean = false;
+    isDesktop: boolean = false;
 
-    constructor(private userProfileService: UserProfileService) { 
+    constructor(private userProfileService: UserProfileService,
+        private sizedetection: ResizeDetectionService) { 
 
     }    
 
     ngOnInit(){
+        this.sizedetection.refreshSize();
+        this.sizedetection.sizeCondition$.subscribe(data => {
+            this.isDesktop = data.isDesktop;
+            this.isTablet = data.isTablet;
+            this.isMobile = data.isMobile;
+
+        });
+                
         this.userProfileService.getUserProfile().subscribe({
             next: this.handleGetUserProfileResponse.bind(this),
             error: this.handleError.bind(this)

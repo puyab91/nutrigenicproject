@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { UserOrderModel } from 'src/app/nutrigenic/models/profile/user-order-model';
 import { UserProfileService } from 'src/app/nutrigenic/services/profile/user-profile.service';
+import { ResizeDetectionService } from 'src/app/nutrigenic/services/resize-detection.service';
 
 @Component({
     selector: 'app-my-orders',
@@ -9,11 +10,24 @@ import { UserProfileService } from 'src/app/nutrigenic/services/profile/user-pro
 })
 export class MyOrdersComponent {
     userOrders: UserOrderModel[] = [];
-    constructor(private userProfileService: UserProfileService) {
+    isTablet: boolean = false;
+    isMobile: boolean = false;
+    isDesktop: boolean = false;
+
+    constructor(private userProfileService: UserProfileService,
+        private sizedetection: ResizeDetectionService) {
   
     }
 
     ngOnInit(){
+        this.sizedetection.refreshSize();
+        this.sizedetection.sizeCondition$.subscribe(data => {
+            this.isDesktop = data.isDesktop;
+            this.isTablet = data.isTablet;
+            this.isMobile = data.isMobile;
+
+        });
+        
         this.userProfileService.getUserOrders().subscribe((response: any) => {            
             response.body.data.forEach((item: any) => {
                 var userOrder = new UserOrderModel();

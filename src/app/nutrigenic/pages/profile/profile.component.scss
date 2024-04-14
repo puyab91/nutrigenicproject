@@ -25,3 +25,34 @@
     z-index: 1001 !important;
     filter: none;
   }
+
+
+  @media screen and (max-width: 979px) {
+
+    .menu-container {
+      width: 100vw; 
+      overflow-x: auto; 
+      white-space: nowrap; 
+    }
+    
+    .menu-list {
+      padding-left: 0px;
+      padding-right: 1rem;
+      display: flex;
+      list-style-type: none;
+      margin: 0; 
+    }
+    }
+
+    @media screen and (min-width: 980px) {
+
+      .menu-container {
+        overflow-x: auto;
+      }
+      
+      .menu-list {
+        padding-left: 0px;
+        padding-right: 1rem;
+        list-style-type: none;
+      }
+    }

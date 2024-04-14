@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { MenuItem } from 'primeng/api';
+import { ResizeDetectionService } from '../../services/resize-detection.service';
 
 @Component({
     selector: 'app-profile',
@@ -10,8 +11,12 @@ import { MenuItem } from 'primeng/api';
 export class ProfileComponent {
     menuItems: any[] = [];
     addButtons: any[] = [];
-    selectedMenu:number = 1;
-    constructor() { 
+    selectedMenu: number = 1;
+    isTablet: boolean = false;
+    isMobile: boolean = false;
+    isDesktop: boolean = false;
+
+    constructor(private sizedetection: ResizeDetectionService) {
         this.menuItems = [
             {
                 id: 1,
@@ -65,9 +70,18 @@ export class ProfileComponent {
             {
                 id: 'sports',
                 text: 'Add sports'
-            }            
+            }
         ]
         this.selectedMenu = 1;
-    }    
+    }
 
+    ngOnInit() {
+        this.sizedetection.refreshSize();
+        this.sizedetection.sizeCondition$.subscribe(data => {
+            this.isDesktop = data.isDesktop;
+            this.isTablet = data.isTablet;
+            this.isMobile = data.isMobile;
+
+        });
+    }
 }

@@ -6,6 +6,7 @@ import { FileModel } from 'src/app/nutrigenic/models/profile/file-model';
 import { UserProfileModel } from 'src/app/nutrigenic/models/profile/user-profile-model';
 import { JwtTokenService } from 'src/app/nutrigenic/services/auth/jwt-token.service';
 import { UserProfileService } from 'src/app/nutrigenic/services/profile/user-profile.service';
+import { ResizeDetectionService } from 'src/app/nutrigenic/services/resize-detection.service';
 
 @Component({
     selector: 'app-user-profile',
@@ -31,8 +32,14 @@ export class UserProfileComponent {
     search: string = '';
     searchIcon = true;
     sports: any[] = [];
+    isTablet: boolean = false;
+    isMobile: boolean = false;
+    isDesktop: boolean = false;
+    
     constructor(private router: Router, private jwtTokenService: JwtTokenService,
-        private userProfileService: UserProfileService) {
+        private userProfileService: UserProfileService,
+        private sizedetection: ResizeDetectionService
+    ) {
         this.userProfile = new UserProfileModel();
         this.addButtons = [
             {
@@ -129,6 +136,14 @@ export class UserProfileComponent {
     }
 
     ngOnInit() {
+        this.sizedetection.refreshSize();
+        this.sizedetection.sizeCondition$.subscribe(data => {
+            this.isDesktop = data.isDesktop;
+            this.isTablet = data.isTablet;
+            this.isMobile = data.isMobile;
+
+        });
+
         this.jwtTokenService.getIsLogin().subscribe((data: any) => {
             if (data)
                 this.userProfileService.getUserProfile().subscribe({
@@ -222,10 +237,10 @@ export class UserProfileComponent {
         this.userProfile.birth_date = response.body.birth_date;
         this.userProfile.is_active = response.body.is_active;
         this.userProfile.gender = response.body.gender;
-        this.userProfile.weight = 0;
+        this.userProfile.weight = response.body.weight;
         this.userProfile.height = response.body.height;
         this.userProfile.imc = response.body.imc;
-        this.userProfile.photo_path = '';
+        this.userProfile.photo_path = response.body.photo_path;
         this.userProfile.has_to_upload_photo = response.body.has_to_upload_photo;
         this.userProfile.has_to_update_weight = response.body.has_to_update_weight;
         this.userProfile.has_unseen_notes = response.body.has_unseen_notes;
@@ -266,7 +281,6 @@ export class UserProfileComponent {
     }
 
     downloadFile(path: string) {
-        debugger;
         const downloadLink = document.createElement('a');
         downloadLink.href = path;
         downloadLink.download = path;

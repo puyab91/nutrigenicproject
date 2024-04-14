@@ -7,9 +7,6 @@ font-size: 1.143rem;
 margin-right: 0.5rem;
 }
 
-.mr4{
-margin-right:4rem;
-}
 
 .overlay {
     position: absolute;
@@ -20,3 +17,18 @@ margin-right:4rem;
     font-size: 0.857rem;
     color: #0F0F1F;
   }
+
+  @media screen and (max-width: 979px) {
+    .mr-auto{
+      margin-right:auto;
+      }
+      
+    }
+
+    @media screen and (min-width: 980px) {
+      .mr-auto{
+        margin-right:3rem;
+        }
+        
+
+    }

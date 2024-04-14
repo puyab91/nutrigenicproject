@@ -7,12 +7,26 @@
             <img class="w-100" src="../../../../assets/images/blog-top.png" style="display: block;height: auto;" />
         </div>
     </div>
-    <div class="mt-5">
-        <button *ngFor="let item of tabItems"
-            [style.background-color]="selectedMasterTab === item ? '#dfdfef' : 'white'"
-            (click)="selectedMasterTab = item" class="btn btn-primary mt-2 mx-2 categoriesButton">
-            {{ item }}
-        </button>
+    <!-- <div style="overflow-x: auto;white-space: nowrap;width: 100vh;display: flex;">
+        <div *ngFor="let item of tabItems" class="mt-5">
+            <button 
+                [style.background-color]="selectedMasterTab === item ? '#dfdfef' : 'white'"
+                (click)="selectedMasterTab = item" class="btn btn-primary mt-2 mx-2 categoriesButton">
+                {{ item }}
+            </button>
+        </div>
+    </div> -->
+    <div class="menu-container">
+        <ul class="menu-list" [class]="isMobile ? '' : 'justify-content-center'">
+            <li *ngFor="let item of tabItems" class="mb-2 p-2"
+                style="cursor: pointer; list-style-type: none;">
+                <button 
+                [style.background-color]="selectedMasterTab === item ? '#dfdfef' : 'white'"
+                (click)="selectedMasterTab = item" class="btn btn-primary mt-2 mx-2 categoriesButton">
+                {{ item }}
+            </button>
+            </li>
+        </ul>
     </div>
     <div class="mt-5 row mb-5" style="max-width: 90%;">
         <ng-container *ngFor="let item of blogsModel">
