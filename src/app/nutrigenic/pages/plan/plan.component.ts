@@ -1,6 +1,7 @@
 import { Component, ElementRef, HostListener, ViewChild } from '@angular/core';
 import { Subscription, debounceTime, fromEvent } from 'rxjs';
 import { ResizeDetectionService } from '../../services/resize-detection.service';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-plan',
@@ -21,8 +22,59 @@ export class PlanComponent {
     selectedMasterTab: string | null = 'Flexi';
     applyFlexi: string = 'Apply';
     applyCommit: string = 'Apply';
+    addAlergiesPopupVisibility: boolean = false;
+    alergies: any[] = [];
 
-    constructor(private sizedetection: ResizeDetectionService) { }
+    constructor(private router: Router, private sizedetection: ResizeDetectionService) {
+        this.alergies = [
+            {
+                sport: 'Crustaceans',
+                icon: '../../../../assets/images/alergy.png',
+                selected: false
+            },
+            {
+                sport: 'Crustaceans',
+                icon: '../../../../assets/images/alergy.png',
+                selected: false
+            },
+            {
+                sport: 'Crustaceans',
+                icon: '../../../../assets/images/alergy.png',
+                selected: false
+            },
+            {
+                sport: 'Crustaceans',
+                icon: '../../../../assets/images/alergy.png',
+                selected: false
+            },
+            {
+                sport: 'Crustaceans',
+                icon: '../../../../assets/images/alergy.png',
+                selected: false
+            },
+            {
+                sport: 'Crustaceans',
+                icon: '../../../../assets/images/alergy.png',
+                selected: false
+            },
+            {
+                sport: 'Crustaceans',
+                icon: '../../../../assets/images/alergy.png',
+                selected: false
+            },
+            {
+                sport: 'Crustaceans',
+                icon: '../../../../assets/images/alergy.png',
+                selected: false
+            },
+            {
+                sport: 'Crustaceans',
+                icon: '../../../../assets/images/alergy.png',
+                selected: false
+            },
+
+        ];
+    }
 
     ngOnInit() {
         this.sizedetection.refreshSize();
@@ -32,6 +84,21 @@ export class PlanComponent {
             this.isMobile = data.isMobile;
 
         });
+    }
+
+    goToPlanDetail(weeks: number, mealPerDay: number, dayPerWeek: number) {
+        this.showChooseAlergies();
+
+        var data: any = {
+            weeks: weeks,
+            mealPerDay: mealPerDay,
+            dayPerWeek: dayPerWeek
+        }
+
+        this.router
+            .navigate(['/planDetail'], { queryParams: data })
+            .then(() => { })
+            .catch(() => { });
     }
 
     selectButton(buttonList: string, buttonNumber: number) {
@@ -45,6 +112,10 @@ export class PlanComponent {
             this.selectedCommitWeekmealButton = buttonNumber;
     }
 
+    onDialogHide() {
+        this.handleBlurFilter();
+    }
+
     selectWeeksNumber(buttonNumber: string) {
         this.selectedCommitWeeksButton = buttonNumber;
     }
@@ -54,9 +125,13 @@ export class PlanComponent {
         this.handleBlurFilter();
     }
 
+    showChooseAlergies(){
+        this.addAlergiesPopupVisibility = !this.addAlergiesPopupVisibility;
+        this.handleBlurFilter();
+    }
 
     handleBlurFilter() {
-        if (this.connectExpertPopUpVisibility) {
+        if (this.connectExpertPopUpVisibility || this.addAlergiesPopupVisibility) {
             document.getElementsByClassName('layoutHomeClass')[0]?.classList.add('p-dialog-blur');
             document.getElementById('layoutHome')?.classList.add('p-dialog-blur');
             document.getElementById('layoutHeader')?.classList.add('p-dialog-blur');

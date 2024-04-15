@@ -145,5 +145,11 @@
             <img *ngIf="sport.selected" src="../../../../../assets/images/selectedSport.png"
                 style="margin-left: 0.7rem;width: 21.5px;height: 21.5px;" alt="">
         </button>
+        <div class="mt-4 p-2" style="text-align: center;">
+            <button class="btn fm-prompt fw-bold"
+                style="color: white;background-color: #EF870A;font-size: 1.143rem;border-radius: 12px;padding-top: 0.5rem;padding-bottom: 0.5rem;width: 40%;"
+                (click)="addUserWeight(biometricHeader)">
+                Save</button>
+        </div>
     </div>
     <p-dialog>

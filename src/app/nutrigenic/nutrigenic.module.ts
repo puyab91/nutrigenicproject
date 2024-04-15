@@ -41,6 +41,7 @@ import { HomeService } from './services/home/home.service';
 import { OurShopService } from './services/our-shop/our-shop.service';
 import { ConnectExpertComponent } from './pages/connect-expert/connect-expert.component';
 import { PlanService } from './services/plan/plan.service';
+import { PlanDetailComponent } from './pages/plan/plan-detail/plan-detail.component';
 
 @NgModule({
     declarations: [
@@ -49,6 +50,7 @@ import { PlanService } from './services/plan/plan.service';
         FooterComponent,
         HomeComponent,
         PlanComponent,
+        PlanDetailComponent,
         AboutUsComponent,
         BlogComponent,
         BlogDetailComponent,

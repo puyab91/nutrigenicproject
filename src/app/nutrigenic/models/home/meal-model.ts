@@ -15,6 +15,9 @@ export class MealModel {
     categoryId: number;
     categoryKey: string;
     categoryName: string;
+    price: string;
+    count: number;
+    isAdded: boolean;
 
     constructor() {
         this.id = 0;
@@ -33,5 +36,8 @@ export class MealModel {
         this.photo_path = '';
         this.categoryKey = '';
         this.categoryName = '';
+        this.price = '';
+        this.count = 1;
+        this.isAdded = false;
     }
 }

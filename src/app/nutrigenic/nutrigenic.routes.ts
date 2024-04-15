@@ -9,6 +9,7 @@ import { OurShopComponent } from './pages/ourshop/ourshop.component';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { CheckoutComponent } from './pages/checkout/checkout.component';
 import { ActivateComponent } from './pages/activate/activate.component';
+import { PlanDetailComponent } from './pages/plan/plan-detail/plan-detail.component';
 
 export const NutrigenicRoutes: Routes = [
     {
@@ -18,6 +19,7 @@ export const NutrigenicRoutes: Routes = [
             { path: '', component: HomeComponent },
             { path: 'home', component: HomeComponent },
             { path: 'plans', component: PlanComponent },
+            { path: 'planDetail', component: PlanDetailComponent },
             { path: 'about-us', component: AboutUsComponent },
             { path: 'blog', component: BlogComponent },
             { path: 'blogDetail', component: BlogDetailComponent },

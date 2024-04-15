@@ -84,7 +84,7 @@
                     </div>
                     <div class="web-center mt-3">
                         <button class="btn btn-primary mt-2 fw-bold btn-orderNow fm-prompt"
-                            style="font-size: 1.143rem;">Order now
+                            style="font-size: 1.143rem;" (click)="showChooseAlergies()">Order now
                             <i class="pi pi-arrow-right text-white fs08 arrow-icon"></i>
                         </button>
                     </div>
@@ -173,7 +173,7 @@
                             class="fw-bold" style="float: right;">£206.60</span></div>
                     <div class="web-center mt-3">
                         <button class="btn btn-primary mt-2 fw-bold btn-orderNow fm-prompt"
-                            style="font-size: 1.143rem;">Order now
+                            style="font-size: 1.143rem;" (click)="showChooseAlergies()">Order now
                             <i class="pi pi-arrow-right text-white fs08 arrow-icon"></i>
                         </button>
                     </div>
@@ -224,3 +224,30 @@
 </div>
 
 <app-connect-expert [status]="'add'" [popupVisibility] = "connectExpertPopUpVisibility"></app-connect-expert>
+
+<p-dialog header="Header" [(visible)]="addAlergiesPopupVisibility" [style]="{ width: '60%' }" (onHide)="onDialogHide()">
+    <ng-template pTemplate="header">
+        <div class="mt-4 align-items-center justify-content-center w-100 text-center">
+            <span class="fm-prompt fw-bold" style="font-size: 1.429rem;color: #0F0F1F;">Do you have any allergies?</span>
+            <br>
+            <span>We will show only meals safe for you.</span>
+        </div>
+    </ng-template>
+    <div class="mt-3 p-4">
+        <button *ngFor="let alergy of alergies" class="btn btn-primary mt-2 fm-rubik mx-2 sport-buttons"
+            (click)="alergy.selected = true" [style.background-color]="alergy.selected ? '#DFDFEF' : 'white'">
+            <img src="../../../../assets/images/alergy.png" style="width: 24px;height: 24px;margin-right: 1rem;" alt="">
+            {{alergy.sport}}
+            <img *ngIf="alergy.selected" src="../../../../../assets/images/selectedSport.png"
+                style="margin-left: 0.7rem;width: 21.5px;height: 21.5px;" alt="">
+        </button>
+        <div class="mt-4 p-2" style="text-align: center;">
+            <button class="btn fm-prompt fw-bold"
+                style="color: white;background-color: #EF870A;font-size: 1.143rem;border-radius: 12px;padding-top: 0.5rem;padding-bottom: 0.5rem;width: 20%;"
+                (click)="goToPlanDetail(1, selectedFlexiDaymealButton, selectedFlexiWeekmealButton)">
+                <span>Continue</span>
+                <i class="pi pi-arrow-right text-white fs08 arrow-icon"></i>
+            </button>
+        </div>
+    </div>
+    <p-dialog>

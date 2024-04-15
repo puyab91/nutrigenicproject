@@ -134,7 +134,7 @@ ul li::marker {
 }
 
 .btn-apply:hover {
-position: absolute;
+  position: absolute;
   width: 100%;
   background-color: #311C02;
   color: white;
@@ -167,4 +167,15 @@ position: absolute;
 .animation:hover {
   margin-top: -30% !important;
   box-shadow: 0.3rem 0.5rem 1.2rem rgba(72, 72, 80, 0.2);
+}
+
+.sport-buttons{
+  align-items: center;
+  background-color: white;
+  border: solid 1px #DFDFEF;
+  border-radius: 12px;
+  color: #190E01;
+  font-size: 1rem;
+  font-weight: bold;
+  padding: 12px;
 }
