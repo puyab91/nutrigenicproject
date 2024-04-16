@@ -68,9 +68,9 @@
                 </div>
                 <div class="mt-3 p-3" style="text-align: left;">
                     <span style="font-size: 0.714rem;color: #848790;">Promo code</span>
-                    <div class="d-flex position-relative" (mouseover)="applyFlexi = 'Connect with a professional'" (mouseout)="applyFlexi = 'Apply'">
+                    <div class="d-flex position-relative">
                         <input type="text" class="p-2 input-promo" placeholder="type here ..." />
-                        <button class="btn mt-2 fw-bold m-auto btn-apply">{{applyFlexi}}
+                        <button class="btn mt-2 fw-bold btn-apply position-absolute end-0" (mouseover)="applyFlexi = 'Connect with a professional'" (mouseout)="applyFlexi = 'Apply'">{{applyFlexi}}
                         </button>
                     </div>
                     <p-divider></p-divider>
@@ -88,7 +88,6 @@
                             <i class="pi pi-arrow-right text-white fs08 arrow-icon"></i>
                         </button>
                     </div>
-
                 </div>
             </div>
         </div>
@@ -159,9 +158,9 @@
                 </div>
                 <div class="mt-3 p-3" style="text-align: left;">
                     <span style="font-size: 0.714rem;color: #848790;">Promo code</span>
-                    <div class="d-flex position-relative"  (mouseover)="applyCommit = 'Connect with a professional'" (mouseout)="applyCommit = 'Apply'">
+                    <div class="d-flex position-relative">
                         <input type="text" class="p-2 input-promo" placeholder="type here ..." />
-                        <button class="btn mt-2 fw-bold m-auto btn-apply">{{applyCommit}}
+                        <button class="btn mt-2 fw-bold m-auto btn-apply position-absolute end-0" (mouseover)="applyCommit = 'Connect with a professional'" (mouseout)="applyCommit = 'Apply'">{{applyCommit}}
                         </button>
                     </div>
                     <p-divider></p-divider>
