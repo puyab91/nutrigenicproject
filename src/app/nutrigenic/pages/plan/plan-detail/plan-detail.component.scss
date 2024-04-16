@@ -97,6 +97,15 @@
   padding-bottom: 0.6rem;
 }
 
+.getStartButton:hover {
+  background-color: #5d5d66 !important;
+  background-image: linear-gradient(to right, black, #5d5d66);
+  background-size: 200% 100%;
+  animation: slideBackground 1s ease forwards;
+  object-fit: contain;
+  background-repeat: no-repeat;
+}
+
 :host ::ng-deep .p-dialog .p-dialog-header .p-dialog-header-icon:last-child {
   margin-right: 0;
   display: none;
@@ -113,4 +122,13 @@
 
 .t-black{
   color:  #0F0F1F;
+}
+
+::ng-deep .p-tooltip .p-tooltip-text{
+  background-color: #F9F9FB;
+  color: #5D5D66;
+}
+
+.plan-detail-margin {
+  margin-right: auto;
 }

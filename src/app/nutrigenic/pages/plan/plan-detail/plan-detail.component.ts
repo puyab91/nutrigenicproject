@@ -31,6 +31,7 @@ export class PlanDetailComponent {
     private homeService: HomeService) {
 
         this.route.queryParams.subscribe((params: any) => {
+            this.planOrderDetails.type = params.type
             this.planOrderDetails.weeks = params.weeks;
             this.planOrderDetails.mealPerDay = params.mealPerDay;
             this.planOrderDetails.dayPerWeek = params.dayPerWeek; 
@@ -60,6 +61,11 @@ export class PlanDetailComponent {
 
     }
 
+    addToCart(id: number){
+        this.mealsModel.filter((item:any) => item.id == id)[0].isAdded = true;
+        this.filterAddedMeals();
+    }
+
     getMeals() {
         this.homeService.getMeals().subscribe((response: any) => {
             response.body.data.forEach((item: any) => {
@@ -79,6 +85,7 @@ export class PlanDetailComponent {
                 mealModel.categoryId = item.categories.id;
                 mealModel.categoryKey = item.categories.key_name;
                 mealModel.categoryName = item.categories.name;
+                mealModel.alergies = "Alergy 1\nAlergy 2\nAlergy 3\n";
                 this.mealsModel.push(mealModel);
             });
             this.selectedTab = 0;
@@ -86,12 +93,15 @@ export class PlanDetailComponent {
         })
     }
 
-    filterAddedMeals(item: string){
-        if(item == 'selectedMeals')
-        this.selectedMealsTrigger = !this.selectedMealsTrigger;
-        if(item == 'amount')
-            this.amountTrigger = !this.amountTrigger;
+    filterAddedMeals(){
         this.AddedMeals = this.filteredMeals.filter((item:any) => item.isAdded == true);
+    }
+
+    showCheckoutDetails(item:string){
+        if(item == 'selectedMeals')
+            this.selectedMealsTrigger = !this.selectedMealsTrigger;
+            if(item == 'amount')
+                this.amountTrigger = !this.amountTrigger;
     }
 
     shopCategoryChange(id: number) {

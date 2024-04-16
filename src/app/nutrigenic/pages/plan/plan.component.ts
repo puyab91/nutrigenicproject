@@ -9,10 +9,10 @@ import { Router } from '@angular/router';
     styleUrls: ['./plan.component.scss']
 })
 export class PlanComponent {
-    selectedFlexiDaymealButton: number = 2;
-    selectedFlexiWeekmealButton: number = 3;
-    selectedCommitDaymealButton: number = 2;
-    selectedCommitWeekmealButton: number = 3;
+    selectedFlexiMealPerDayButton: number = 2;
+    selectedFlexiDayPerWeekButton: number = 3;
+    selectedCommitMealPerDayButton: number = 2;
+    selectedCommitDayPerWeekButton: number = 3;
     selectedCommitWeeksButton: string = '4w';
     connectExpertPopUpVisibility: boolean = false;
     isTablet: boolean = false;
@@ -24,6 +24,7 @@ export class PlanComponent {
     applyCommit: string = 'Apply';
     addAlergiesPopupVisibility: boolean = false;
     alergies: any[] = [];
+    selectedType: string = '';
 
     constructor(private router: Router, private sizedetection: ResizeDetectionService) {
         this.alergies = [
@@ -86,14 +87,23 @@ export class PlanComponent {
         });
     }
 
-    goToPlanDetail(weeks: number, mealPerDay: number, dayPerWeek: number) {
-        this.showChooseAlergies();
+    goToPlanDetail() {
+        this.showChooseAlergies('');
 
-        var data: any = {
-            weeks: weeks,
-            mealPerDay: mealPerDay,
-            dayPerWeek: dayPerWeek
-        }
+        if (this.selectedType == 'Flexi')
+            var data: any = {
+                type: this.selectedType,
+                weeks: 1,
+                mealPerDay: this.selectedFlexiMealPerDayButton,
+                dayPerWeek: this.selectedFlexiDayPerWeekButton
+            }
+        if (this.selectedType == 'Commit')
+            var data: any = {
+                type: this.selectedType,
+                weeks: parseInt(this.selectedCommitWeeksButton.slice(0, -1)),
+                mealPerDay: this.selectedCommitMealPerDayButton,
+                dayPerWeek: this.selectedCommitDayPerWeekButton
+            }
 
         this.router
             .navigate(['/planDetail'], { queryParams: data })
@@ -103,13 +113,13 @@ export class PlanComponent {
 
     selectButton(buttonList: string, buttonNumber: number) {
         if (buttonList == 'flexiDay')
-            this.selectedFlexiDaymealButton = buttonNumber;
+            this.selectedFlexiMealPerDayButton = buttonNumber;
         if (buttonList == 'flexiWeek')
-            this.selectedFlexiWeekmealButton = buttonNumber;
+            this.selectedFlexiDayPerWeekButton = buttonNumber;
         if (buttonList == 'commitDay')
-            this.selectedCommitDaymealButton = buttonNumber;
+            this.selectedCommitMealPerDayButton = buttonNumber;
         if (buttonList == 'commitWeek')
-            this.selectedCommitWeekmealButton = buttonNumber;
+            this.selectedCommitDayPerWeekButton = buttonNumber;
     }
 
     onDialogHide() {
@@ -125,7 +135,12 @@ export class PlanComponent {
         this.handleBlurFilter();
     }
 
-    showChooseAlergies(){
+    showChooseAlergies(issuerType: string) {
+        if (issuerType == 'flexi')
+            this.selectedType = 'Flexi';
+        if (issuerType == 'commit')
+            this.selectedType = 'Commit';
+        console.log(this.selectedType);
         this.addAlergiesPopupVisibility = !this.addAlergiesPopupVisibility;
         this.handleBlurFilter();
     }

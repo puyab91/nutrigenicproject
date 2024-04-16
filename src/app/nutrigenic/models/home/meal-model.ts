@@ -15,10 +15,11 @@ export class MealModel {
     categoryId: number;
     categoryKey: string;
     categoryName: string;
+    alergies: string;
     price: string;
     count: number;
     isAdded: boolean;
-
+    moreEnabled: boolean;
     constructor() {
         this.id = 0;
         this.name = '';
@@ -36,8 +37,10 @@ export class MealModel {
         this.photo_path = '';
         this.categoryKey = '';
         this.categoryName = '';
+        this.alergies = '';
         this.price = '';
         this.count = 1;
         this.isAdded = false;
+        this.moreEnabled = false;
     }
 }

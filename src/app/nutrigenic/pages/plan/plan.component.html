@@ -49,7 +49,7 @@
                     <div class="d-flex justify-content-center">
                         <div *ngFor="let i of [2, 3, 4, 5]" class="m-1" style="width: 15%;">
                             <button class="btn btn-primary mt-2 fw-bold btn-planMeal"
-                                [class.selectedButtonList]="selectedFlexiDaymealButton === i"
+                                [class.selectedButtonList]="selectedFlexiMealPerDayButton === i"
                                 (click)="selectButton('flexiDay',i)">{{ i
                                 }}</button>
                         </div>
@@ -59,9 +59,9 @@
                     <div class="d-flex justify-content-center">
                         <div *ngFor="let i of [ 3, 5, 6]" class="m-1" style="width: 15%;">
                             <button class="btn btn-primary mt-2 fw-bold btn-planMeal"
-                                [class.selectedButtonList]="selectedFlexiWeekmealButton === i"
+                                [class.selectedButtonList]="selectedFlexiDayPerWeekButton === i"
                                 (click)="selectButton('flexiWeek',i)"
-                                [disabled]="selectedFlexiDaymealButton === 2 && i === 5">{{ i
+                                [disabled]="selectedFlexiMealPerDayButton === 2 && i === 5">{{ i
                                 }}</button>
                         </div>
                     </div>
@@ -76,7 +76,7 @@
                     <p-divider></p-divider>
                     <div>
                         <span style="font-size: 1rem;">Deliveries Per Week</span>
-                        <span style="float: right;font-size: 1rem;">{{ selectedFlexiWeekmealButton === 3 ? '01' : '02' }}</span>
+                        <span style="float: right;font-size: 1rem;">{{ selectedFlexiDayPerWeekButton === 3 ? '01' : '02' }}</span>
                     </div>
                     <p-divider></p-divider>
                     <div><i class="pi pi-angle-down mx-1 fs08"></i><span class="fw-bold" style="font-size: 1rem;">You
@@ -84,7 +84,7 @@
                     </div>
                     <div class="web-center mt-3">
                         <button class="btn btn-primary mt-2 fw-bold btn-orderNow fm-prompt"
-                            style="font-size: 1.143rem;" (click)="showChooseAlergies()">Order now
+                            style="font-size: 1.143rem;" (click)="showChooseAlergies('flexi')">Order now
                             <i class="pi pi-arrow-right text-white fs08 arrow-icon"></i>
                         </button>
                     </div>
@@ -128,7 +128,7 @@
                     <div class="d-flex justify-content-center">
                         <div *ngFor="let i of [2, 3, 4, 5]" class="m-1" style="width: 15%;">
                             <button class="btn btn-primary mt-2 fw-bold btn-planMeal"
-                                [class.selectedButtonList]="selectedCommitDaymealButton === i"
+                                [class.selectedButtonList]="selectedCommitMealPerDayButton === i"
                                 (click)="selectButton('commitDay',i)">{{ i
                                 }}</button>
                         </div>
@@ -138,9 +138,9 @@
                     <div class="d-flex justify-content-center">
                         <div *ngFor="let i of [ 3, 5, 6]" class="m-1" style="width: 15%;">
                             <button class="btn btn-primary mt-2 fw-bold btn-planMeal"
-                                [class.selectedButtonList]="selectedCommitWeekmealButton === i"
+                                [class.selectedButtonList]="selectedCommitDayPerWeekButton === i"
                                 (click)="selectButton('commitWeek',i)"
-                                [disabled]="selectedCommitDaymealButton === 2 && i === 5">{{ i
+                                [disabled]="selectedCommitMealPerDayButton === 2 && i === 5">{{ i
                                 }}</button>
                         </div>
                     </div>
@@ -166,14 +166,14 @@
                     </div>
                     <p-divider></p-divider>
                     <div><span>Deliveries Per Week</span>
-                        <span style="float: right;">{{ selectedCommitWeekmealButton === 3 ? '01' : '02' }}</span>
+                        <span style="float: right;">{{ selectedCommitDayPerWeekButton === 3 ? '01' : '02' }}</span>
                     </div>
                     <p-divider></p-divider>
                     <div><i class="pi pi-angle-down mx-1 fs08"></i><span class="fw-bold">You will pay</span><span
                             class="fw-bold" style="float: right;">£206.60</span></div>
                     <div class="web-center mt-3">
                         <button class="btn btn-primary mt-2 fw-bold btn-orderNow fm-prompt"
-                            style="font-size: 1.143rem;" (click)="showChooseAlergies()">Order now
+                            style="font-size: 1.143rem;" (click)="showChooseAlergies('commit')">Order now
                             <i class="pi pi-arrow-right text-white fs08 arrow-icon"></i>
                         </button>
                     </div>
@@ -242,9 +242,9 @@
                 style="margin-left: 0.7rem;width: 21.5px;height: 21.5px;" alt="">
         </button>
         <div class="mt-4 p-2" style="text-align: center;">
-            <button class="btn fm-prompt fw-bold"
-                style="color: white;background-color: #EF870A;font-size: 1.143rem;border-radius: 12px;padding-top: 0.5rem;padding-bottom: 0.5rem;width: 20%;"
-                (click)="goToPlanDetail(1, selectedFlexiDaymealButton, selectedFlexiWeekmealButton)">
+            <button class="btn fm-prompt fw-bold btn-orderNow"
+                style="width: 20%;color: white;"
+                (click)="goToPlanDetail()">
                 <span>Continue</span>
                 <i class="pi pi-arrow-right text-white fs08 arrow-icon"></i>
             </button>

@@ -1,5 +1,14 @@
 <div id="layoutHome" class="web-center">
     <div style="width: 85%;">
+        <div class="d-flex justify-content-center mt-4" style="align-items: center;" *ngIf="planOrderDetails.type === 'Commit'">
+            <i class="text-black mx-3 pi pi-angle-double-left" style="font-size: 1.5rem;"></i>
+            <div>
+                <button class="btn fm-prompt px-3"
+                    style="background-color: #DFDFEF;font-size: 1.143rem;font-weight: bold;border-radius: 12px;">I°
+                    Week</button>
+            </div>
+            <i class="text-black mx-3 pi pi-angle-double-right" style="font-size: 1.5rem;"></i>
+        </div>
         <div class="mt-4 web-left row">
             <div class="col-md-2">
                 <span>First delivery on</span>
@@ -48,10 +57,51 @@
                     {{item.name}}
                 </div>
                 <div class="web-left mt-2" style="font-size: 1rem;">
-                    <span>{{ item.description }}</span>
-                    <span class="fw-bold" style="cursor: pointer;" *ngIf="item.description"> more ></span>
+                    <div>
+                        <span>{{ item.description }}</span>
+                        <span class="fw-bold" style="cursor: pointer;" *ngIf="item.description && !item.moreEnabled"
+                            (click)="item.moreEnabled = !item.moreEnabled" > more ></span>
+                    </div>
+                    <div class="d-flex mt-2 fm-rubik plan-detail" *ngIf="item.moreEnabled">
+                        <div class="plan-detail-margin">
+                            <span>Energy:</span>
+                            <br />
+                            <span style="font-weight: bold;">{{ item.energyKcal }} Kcal</span>
+                        </div>
+                        <div class="plan-detail-margin">
+                            <span>Protein:</span>
+                            <br />
+                            <span style="font-weight: bold;">{{ item.protein }} gr</span>
+                        </div>
+                        <div class="plan-detail-margin">
+                            <span>Carbs:</span>
+                            <br />
+                            <span style="font-weight: bold;">{{ item.availableCarbohydrate }} gr</span>
+                        </div>
+                        <div class="plan-detail-margin">
+                            <span>Sugar:</span>
+                            <br />
+                            <span style="font-weight: bold;">{{ item.sugars }} gr</span>
+                        </div>
+                        <div class="plan-detail-margin">
+                            <span>Fats:</span>
+                            <br />
+                            <span style="font-weight: bold;">{{ item.fat }} gr</span>
+                        </div>
+                        <div class="plan-detail-margin">
+                            <span>Salts:</span>
+                            <br />
+                            <span style="font-weight: bold;">{{ item.sodium }} gr</span>
+                        </div>
+                    </div>
+                    <div class="fw-bold mt-2" style="cursor: pointer;float: right;" (click)="item.moreEnabled = !item.moreEnabled" *ngIf="item.moreEnabled">< less</div>
                 </div>
-                <div class="fw-bold mt-4">
+                <div class="web-left mt-2" style="font-size: 1rem;" *ngIf="!item.moreEnabled">
+                    <span>Alergies</span>
+                    <i class="pi pi-info-circle" style="font-size: 0.8rem;margin-left: 0.5rem;cursor: pointer;"
+                        [pTooltip]="item.alergies" tooltipPosition="top" placeholder="Top"></i>
+                </div>
+                <div class="fw-bold mt-4" *ngIf="!item.moreEnabled">
                     <button class="btn btn-dec-ourshop p-0" (click)="item.count = item.count == 1 ? 1 : item.count - 1"
                         style="margin-right: 0.5rem;">
                         <i class="pi pi-minus fw-bold" style="padding: 0.6rem;
@@ -65,14 +115,14 @@
                     </button>
                     <button class="btn btn-primary fw-bold fm-prompt"
                         [ngClass]="item.isAdded ? 'btn-added' : 'btn-add-to-cart'" style="float: right;font-size: 1rem;"
-                        (click)="item.isAdded = true">{{item.isAdded ? 'Added' : 'Add to cart'}}</button>
+                        (click)="addToCart(item.id)">{{item.isAdded ? 'Added' : 'Add to cart'}}</button>
                 </div>
             </div>
         </div>
     </div>
 </ng-template>
 
-<p-dialog visible="true" [position]="'bottom'" [style]="{ width: '100vw' }">
+<p-dialog [visible]="AddedMeals.length > 0" [position]="'bottom'" [style]="{ width: '100vw' }">
     <div style="width: 85%;">
         <div class="d-flex fm-rubik justify-content-center mb-5" style="align-items: center;font-size: 1.143rem;">
             <div class="mx-auto">
@@ -85,8 +135,8 @@
                     <span class="fw-bold t-black">{{planOrderDetails.mealPerDay}}</span>
                     <span class="fw-bold t-black"> meals</span>
                     <span> ×</span>
-                    <span class="fw-bold"> {{planOrderDetails.dayPerWeek}}</span>
-                    <span class="fw-bold"> days</span>
+                    <span class="fw-bold t-black"> {{planOrderDetails.dayPerWeek}}</span>
+                    <span class="fw-bold t-black"> days</span>
                 </div>
                 <div>
                     <img src="../../../../assets/images/pencil.png" style="height: 14px;width: 14px;" alt="">
@@ -95,9 +145,10 @@
             </div>
             <div class="mx-auto">
                 <div class="mb-2">
-                    <span class="t-black" style="font-size: 3.357rem;">1</span>
+                    <span class="t-black" style="font-size: 3.357rem;">{{AddedMeals.length}}</span>
                     <span class="fw-bold t-black"> meals selected</span>
-                    <i class="pi mx-1 fs08" style="cursor: pointer;font-size: 1.5rem;" (click)="filterAddedMeals('selectedMeals')"
+                    <i class="pi mx-1 fs08" style="cursor: pointer;font-size: 1.5rem;"
+                        (click)="showCheckoutDetails('selectedMeals')"
                         [ngClass]="selectedMealsTrigger ? 'pi-angle-up' : 'pi-angle-down'"></i>
                 </div>
                 <div *ngIf="selectedMealsTrigger">
@@ -106,7 +157,7 @@
                         <span class="fm-rubik-bold" style="float: right;">×{{item.count}}</span>
                     </div>
                     <p-divider></p-divider>
-                    <div class="d-flex justify-content-center">
+                    <div class="d-flex justify-content-center" style="align-items: center;">
                         <i class="text-black mx-3 pi pi-angle-double-left" style="font-size: 1.5rem;"></i>
                         <div>
                             <button class="btn fm-prompt px-3"
@@ -130,29 +181,30 @@
                     <span *ngIf="!amountTrigger">You pay:</span>
                     <div>
                         <span class="fw-bold t-black">{{amountTrigger ? 'Cost details' : '£206.60'}}</span>
-                        <i class="pi mx-1 fs08" style="cursor: pointer;font-size: 1.5rem;" (click)="filterAddedMeals('amount')"
-                        [ngClass]="amountTrigger ? 'pi-angle-up' : 'pi-angle-down'"></i>
+                        <i class="pi mx-1 fs08" style="cursor: pointer;font-size: 1.5rem;"
+                            (click)="showCheckoutDetails('amount')"
+                            [ngClass]="amountTrigger ? 'pi-angle-up' : 'pi-angle-down'"></i>
                     </div>
                 </div>
                 <div *ngIf="amountTrigger">
                     <div>
                         <span style="margin-right: 1rem;">Deliveries Fee</span>
-                        <span style="float: right;">£87.00</span>                        
+                        <span style="float: right;">£87.00</span>
                     </div>
                     <p-divider></p-divider>
                     <div>
                         <span style="margin-right: 1rem;">Sub Total</span>
-                        <span style="float: right;">£177.26</span>                        
+                        <span style="float: right;">£177.26</span>
                     </div>
                     <p-divider></p-divider>
                     <div>
                         <span style="margin-right: 1rem;">Discount</span>
-                        <span style="float: right;">£43.27</span>                        
+                        <span style="float: right;">£43.27</span>
                     </div>
                     <p-divider></p-divider>
                     <div>
-                        <span style="margin-right: 1rem;font-weight: bold;color: 2C2C30;">Total</span>
-                        <span style="float: right;font-weight: bold;color: 2C2C30;">£206.60</span>                        
+                        <span style="margin-right: 1rem;font-weight: bold;color: #2C2C30;">Total</span>
+                        <span style="float: right;font-weight: bold;color: #2C2C30;">£206.60</span>
                     </div>
                     <p-divider></p-divider>
                 </div>
