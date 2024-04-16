@@ -58,8 +58,10 @@ export class ConnectExpertComponent {
     }
 
     assignExpert(id: number) {
-        if (this.status == 'add')
+        if (this.status == 'add') {
             this.planService.assignExperts(id);
+            this.afterChangeExpert.emit(true);
+        }
         if (this.status == 'change')
             this.userProfileService.getUserExpert().subscribe((response: any) => {
                 if (response.body) {

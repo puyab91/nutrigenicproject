@@ -70,21 +70,24 @@
                     <span style="font-size: 0.714rem;color: #848790;">Promo code</span>
                     <div class="d-flex position-relative">
                         <input type="text" class="p-2 input-promo" placeholder="type here ..." />
-                        <button class="btn mt-2 fw-bold btn-apply position-absolute end-0" (mouseover)="applyFlexi = 'Connect with a professional'" (mouseout)="applyFlexi = 'Apply'">{{applyFlexi}}
+                        <button class="btn mt-2 fw-bold btn-apply position-absolute end-0"
+                            (mouseover)="applyFlexi = 'Connect with a professional'"
+                            (mouseout)="applyFlexi = 'Apply'">{{applyFlexi}}
                         </button>
                     </div>
                     <p-divider></p-divider>
                     <div>
                         <span style="font-size: 1rem;">Deliveries Per Week</span>
-                        <span style="float: right;font-size: 1rem;">{{ selectedFlexiDayPerWeekButton === 3 ? '01' : '02' }}</span>
+                        <span style="float: right;font-size: 1rem;">{{ selectedFlexiDayPerWeekButton === 3 ? '01' : '02'
+                            }}</span>
                     </div>
                     <p-divider></p-divider>
                     <div><i class="pi pi-angle-down mx-1 fs08"></i><span class="fw-bold" style="font-size: 1rem;">You
                             will pay</span><span class="fw-bold" style="float: right;font-size: 1rem;">£206.60</span>
                     </div>
                     <div class="web-center mt-3">
-                        <button class="btn btn-primary mt-2 fw-bold btn-orderNow fm-prompt"
-                            style="font-size: 1.143rem;" (click)="showChooseAlergies('flexi')">Order now
+                        <button class="btn btn-primary mt-2 fw-bold btn-orderNow fm-prompt" style="font-size: 1.143rem;"
+                            (click)="showChooseAlergies('flexi')">Order now
                             <i class="pi pi-arrow-right text-white fs08 arrow-icon"></i>
                         </button>
                     </div>
@@ -160,7 +163,9 @@
                     <span style="font-size: 0.714rem;color: #848790;">Promo code</span>
                     <div class="d-flex position-relative">
                         <input type="text" class="p-2 input-promo" placeholder="type here ..." />
-                        <button class="btn mt-2 fw-bold m-auto btn-apply position-absolute end-0" (mouseover)="applyCommit = 'Connect with a professional'" (mouseout)="applyCommit = 'Apply'">{{applyCommit}}
+                        <button class="btn mt-2 fw-bold m-auto btn-apply position-absolute end-0"
+                            (mouseover)="applyCommit = 'Connect with a professional'"
+                            (mouseout)="applyCommit = 'Apply'">{{applyCommit}}
                         </button>
                     </div>
                     <p-divider></p-divider>
@@ -171,8 +176,8 @@
                     <div><i class="pi pi-angle-down mx-1 fs08"></i><span class="fw-bold">You will pay</span><span
                             class="fw-bold" style="float: right;">£206.60</span></div>
                     <div class="web-center mt-3">
-                        <button class="btn btn-primary mt-2 fw-bold btn-orderNow fm-prompt"
-                            style="font-size: 1.143rem;" (click)="showChooseAlergies('commit')">Order now
+                        <button class="btn btn-primary mt-2 fw-bold btn-orderNow fm-prompt" style="font-size: 1.143rem;"
+                            (click)="showChooseAlergies('commit')">Order now
                             <i class="pi pi-arrow-right text-white fs08 arrow-icon"></i>
                         </button>
                     </div>
@@ -203,7 +208,7 @@
                             wellness goals. Start your tailored health journey today!</span></div>
                     <div class="mt-5">
                         <button class="btn btn-primary mt-2 fw-bold btn-plan" style="font-size: 1.143rem;"
-                        (click)="showOnnectToExpertPopUp()">Connect with
+                            (click)="showOnnectToExpertPopUp()">Connect with
                             an expert
                         </button>
                     </div>
@@ -222,12 +227,14 @@
     </div>
 </div>
 
-<app-connect-expert [status]="'add'" [popupVisibility] = "connectExpertPopUpVisibility"></app-connect-expert>
+<app-connect-expert (afterChangeExpert)="showMakeOwnDialog()" [status]="'add'"
+    [popupVisibility]="connectExpertPopUpVisibility"></app-connect-expert>
 
 <p-dialog header="Header" [(visible)]="addAlergiesPopupVisibility" [style]="{ width: '60%' }" (onHide)="onDialogHide()">
     <ng-template pTemplate="header">
         <div class="mt-4 align-items-center justify-content-center w-100 text-center">
-            <span class="fm-prompt fw-bold" style="font-size: 1.429rem;color: #0F0F1F;">Do you have any allergies?</span>
+            <span class="fm-prompt fw-bold" style="font-size: 1.429rem;color: #0F0F1F;">Do you have any
+                allergies?</span>
             <br>
             <span>We will show only meals safe for you.</span>
         </div>
@@ -241,12 +248,110 @@
                 style="margin-left: 0.7rem;width: 21.5px;height: 21.5px;" alt="">
         </button>
         <div class="mt-4 p-2" style="text-align: center;">
-            <button class="btn fm-prompt fw-bold btn-orderNow"
-                style="width: 20%;color: white;"
+            <button class="btn fm-prompt fw-bold btn-orderNow" style="width: 20%;color: white;"
                 (click)="goToPlanDetail()">
                 <span>Continue</span>
                 <i class="pi pi-arrow-right text-white fs08 arrow-icon"></i>
             </button>
         </div>
     </div>
-    <p-dialog>
+</p-dialog>
+
+<p-dialog header="Header" [visible]="'true'" [style]="{ width: '60%' }" (onHide)="onDialogHide()">
+    <ng-template pTemplate="header">
+        <div class="mt-4 align-items-center justify-content-center w-100 text-center">
+            <span class="fm-prompt fw-bold" style="font-size: 1.429rem;color: #0F0F1F;">Make your own</span>
+            <br>
+            <span>add some textadd some textadd some textadd some text</span>
+        </div>
+    </ng-template>
+    <p-divider></p-divider>
+    <div class="mt-3 p-4">
+        <div class="d-flex my-4 justify-content-center">
+            <div class="mx-3 own-meal-label-container">
+                <span class="mx-3 own-meal-label">Protein</span>
+                <p-dropdown [options]="protein" optionLabel="value" [showClear]="true"
+                    placeholder="Pick an option"></p-dropdown>
+            </div>
+            <div class="mx-3">
+                <span class="mx-3">Amount</span>
+                <p-dropdown [options]="amount" optionLabel="value" [showClear]="true"></p-dropdown>
+                <span class="mx-2">Grams</span>
+            </div>
+        </div>
+        <div class="d-flex my-4 justify-content-center">
+            <div class="mx-3 own-meal-label-container">
+                <span class="mx-3 own-meal-label">Carbs</span>
+                <p-dropdown [options]="carbs" optionLabel="value" [showClear]="true"
+                    placeholder="Pick an option"></p-dropdown>
+            </div>
+            <div class="mx-3">
+                <span class="mx-3">Amount</span>
+                <p-dropdown [options]="amount" optionLabel="value" [showClear]="true"></p-dropdown>
+                <span class="mx-2">Grams</span>
+            </div>
+        </div>
+        <div class="d-flex my-4 justify-content-center">
+            <div class="mx-3 own-meal-label-container">
+                <span class="mx-3 own-meal-label">Veg</span>
+                <p-dropdown [options]="veg" optionLabel="value" [showClear]="true"
+                    placeholder="Pick an option"></p-dropdown>
+            </div>
+            <div class="mx-3">
+                <span class="mx-3">Amount</span>
+                <p-dropdown [options]="amount" optionLabel="value" [showClear]="true"></p-dropdown>
+                <span class="mx-2">Grams</span>
+            </div>
+        </div>
+        <p-divider></p-divider>
+        <div class="d-flex mt-2 fm-rubik">
+            <div class="plan-detail-margin">
+                <span>Energy:</span>
+                <br />
+                <span style="font-weight: bold;">220 Kcal</span>
+            </div>
+            <div class="plan-detail-margin">
+                <span>Protein:</span>
+                <br />
+                <span style="font-weight: bold;">4.3 gr</span>
+            </div>
+            <div class="plan-detail-margin">
+                <span>Carbs:</span>
+                <br />
+                <span style="font-weight: bold;">8.2 gr</span>
+            </div>
+            <div class="plan-detail-margin">
+                <span>Sugar:</span>
+                <br />
+                <span style="font-weight: bold;">8.2 gr</span>
+            </div>
+            <div class="plan-detail-margin">
+                <span>Fats:</span>
+                <br />
+                <span style="font-weight: bold;">8.2 gr</span>
+            </div>
+            <div class="plan-detail-margin">
+                <span>Salts:</span>
+                <br />
+                <span style="font-weight: bold;">8.2 gr</span>
+            </div>
+        </div>
+        <p-divider></p-divider>
+        <div>
+            <span class="fm-prompt fw-bold" style="font-size: 1.143rem;color: #0F0F1F;">Choose from the Master plan</span>
+            <button class="btn fm-prompt fw-bold btn-orderNow" style="color: white;float: right;"
+                (click)="goToPlanDetail()">
+                <span>Confirm and add</span>
+            </button>
+        </div>
+    </div>
+
+</p-dialog>
+
+<!-- <div class="mt-4 p-2" style="text-align: center;">
+    <button class="btn fm-prompt fw-bold btn-orderNow" style="width: 20%;color: white;"
+        (click)="goToPlanDetail()">
+        <span>Continue</span>
+        <i class="pi pi-arrow-right text-white fs08 arrow-icon"></i>
+    </button>
+</div> -->

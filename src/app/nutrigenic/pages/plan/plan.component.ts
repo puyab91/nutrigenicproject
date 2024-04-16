@@ -15,6 +15,7 @@ export class PlanComponent {
     selectedCommitDayPerWeekButton: number = 3;
     selectedCommitWeeksButton: string = '4w';
     connectExpertPopUpVisibility: boolean = false;
+    makeOunMealPopupVisibility: boolean = false;
     isTablet: boolean = false;
     isMobile: boolean = false;
     isDesktop: boolean = false;
@@ -25,6 +26,10 @@ export class PlanComponent {
     addAlergiesPopupVisibility: boolean = false;
     alergies: any[] = [];
     selectedType: string = '';
+    protein: any[] = [{ value: 'Protein' }]
+    carbs: any[] = [{ value: 'Carbs' }]
+    veg: any[] = [{ value: 'Veg' }]
+    amount: any[] = [{ value: 999 }, { value: 222 }]
 
     constructor(private router: Router, private sizedetection: ResizeDetectionService) {
         this.alergies = [
@@ -120,6 +125,10 @@ export class PlanComponent {
             this.selectedCommitMealPerDayButton = buttonNumber;
         if (buttonList == 'commitWeek')
             this.selectedCommitDayPerWeekButton = buttonNumber;
+    }
+
+    showMakeOwnDialog() {
+        this.makeOunMealPopupVisibility = !this.makeOunMealPopupVisibility;
     }
 
     onDialogHide() {

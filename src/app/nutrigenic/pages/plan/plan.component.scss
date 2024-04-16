@@ -169,7 +169,7 @@ ul li::marker {
   box-shadow: 0.3rem 0.5rem 1.2rem rgba(72, 72, 80, 0.2);
 }
 
-.sport-buttons{
+.sport-buttons {
   align-items: center;
   background-color: white;
   border: solid 1px #DFDFEF;
@@ -178,4 +178,40 @@ ul li::marker {
   font-size: 1rem;
   font-weight: bold;
   padding: 12px;
+}
+
+::ng-deep .p-inputtext {
+  background-color: white !important;
+  padding: 0.5rem 0.75rem;
+}
+
+::ng-deep .p-input-filled .p-dropdown {
+  background: white;
+}
+
+::ng-deep .p-input-filled .p-dropdown:not(.p-disabled):hover {
+  background-color: white;
+}
+
+::ng-deep .p-dropdown:not(.p-disabled):hover {
+  border-color: #ced4da;
+}
+
+::ng-deep .p-dropdown:not(.p-disabled).p-focus {
+  box-shadow: none;
+  border-color: #ced4da;
+}
+
+.own-meal-label-container {
+  display: grid;
+  grid-template-columns: auto 1fr;
+}
+
+.own-meal-label {
+  width: 50px;
+}
+
+.plan-detail-margin {
+  margin-right: auto;
+  margin-left: auto;
 }
