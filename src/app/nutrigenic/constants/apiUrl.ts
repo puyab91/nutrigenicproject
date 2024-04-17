@@ -28,6 +28,10 @@ export class ApiUrl {
     return this.baseUrl + 'profile';
   }
 
+  static get setAddress(): string {
+    return this.baseUrl + 'profile/address';
+  }
+
   static get setWeight(): string {
     return this.baseUrl + 'biometrics/weight';
   }

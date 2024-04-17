@@ -2,6 +2,7 @@ import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import notiflix from 'notiflix';
 import { MenuItem } from 'primeng/api';
+import { ChartModel, Dataset } from 'src/app/nutrigenic/models/profile/chart-model';
 import { FileModel } from 'src/app/nutrigenic/models/profile/file-model';
 import { UserProfileModel } from 'src/app/nutrigenic/models/profile/user-profile-model';
 import { JwtTokenService } from 'src/app/nutrigenic/services/auth/jwt-token.service';
@@ -27,7 +28,7 @@ export class UserProfileComponent {
     biometricUnit: string = '';
     value: string = '00.00';
     apiLoaded: boolean = false;
-    tabItems = ['Weight', 'BMI', 'Pictures', 'Blood test'];
+    tabItems = ['Weight', 'IMC', 'Pictures', 'Blood test'];
     selectedTab: string | null = 'Weight';
     search: string = '';
     searchIcon = true;
@@ -35,7 +36,9 @@ export class UserProfileComponent {
     isTablet: boolean = false;
     isMobile: boolean = false;
     isDesktop: boolean = false;
-    
+    selectedAddButton: string = '';
+    data: ChartModel = new ChartModel();
+
     constructor(private router: Router, private jwtTokenService: JwtTokenService,
         private userProfileService: UserProfileService,
         private sizedetection: ResizeDetectionService
@@ -47,8 +50,8 @@ export class UserProfileComponent {
                 text: 'Add weight'
             },
             {
-                id: 'BMI',
-                text: 'Add BMI'
+                id: 'IMC',
+                text: 'Add IMC'
             },
             {
                 id: 'pictures',
@@ -133,6 +136,17 @@ export class UserProfileComponent {
 
             });
         });
+
+        this.loadChart('Weight');
+        // this.data = {
+        //     labels: ['2024/01/01', '2024/02/01', '2024/03/15', '2024/04/01', '2024/05/01', '2024/06/01', '2024/07/01'],
+        //     datasets: [
+        //         {
+        //             label: 'First Dataset',
+        //             data: [10, 20, 30, 40, 50, 60, 70]
+        //         }
+        //     ]
+        // }
     }
 
     ngOnInit() {
@@ -169,17 +183,21 @@ export class UserProfileComponent {
     }
 
     showBiometricPopup(id: string) {
+        this.selectedAddButton = id;
         if (id == 'weight') {
             this.biometricHeader = 'weight';
             this.biometricField = 'Weight';
             this.biometricUnit = 'Kgs';
             this.addBiometricPopupVisibility = !this.addBiometricPopupVisibility;
         }
-        if (id == 'BMI') {
-            this.biometricHeader = 'BMI';
-            this.biometricField = 'BMI';
+        if (id == 'IMC') {
+            this.biometricHeader = 'IMC';
+            this.biometricField = 'IMC';
             this.biometricUnit = '';
             this.addBiometricPopupVisibility = !this.addBiometricPopupVisibility;
+        }
+        if (id == 'pictures' || id == 'blood') {
+            document.getElementById('fileInput')?.click();
         }
         if (id == 'sports') {
             this.addSportPopupVisibility = !this.addSportPopupVisibility;
@@ -187,7 +205,39 @@ export class UserProfileComponent {
         this.handleBlurFilter();
     }
 
+    selectedTabChange(item: string) {
+        this.selectedTab = item;
+        this.loadChart(item);
+    }
 
+    loadChart(chart: string) {
+        debugger;
+        var chartData: ChartModel = new ChartModel();
+        var dataSet: Dataset = new Dataset();
+
+        this.userProfileService.getUserBiometrics().subscribe((response: any) => {
+            debugger;
+            dataSet.label = chart;
+            if (chart == 'Weight') {
+                response.body.weights.sort((a: any, b: any) => a.id - b.id).forEach((item: any) => {
+                    chartData.labels.push(item.date)
+                });
+                response.body.weights.sort((a: any, b: any) => a.id - b.id).forEach((item: any) => {
+                    dataSet.data.push(item.weight)
+                });
+            }
+            if (chart == 'IMC') {
+                response.body.imcs.sort((a: any, b: any) => a.id - b.id).forEach((item: any) => {
+                    chartData.labels.push(item.date)
+                });
+                response.body.imcs.sort((a: any, b: any) => a.id - b.id).forEach((item: any) => {
+                    dataSet.data.push(item.imc)
+                });
+            }
+            chartData.datasets.push(dataSet);
+            this.data = chartData;
+        });
+    }
 
     onDragOver(event: DragEvent) {
         event.preventDefault();
@@ -200,9 +250,9 @@ export class UserProfileComponent {
     onFileSelected(event: any) {
         const file: File = event.target.files[0];
         if (file) {
-            if (this.selectedTab == 'Blood test')
+            if (this.selectedTab == 'Blood test' || this.selectedAddButton == 'blood')
                 this.userProfileService.setUserPicture(file, false);
-            if (this.selectedTab == 'Pictures')
+            if (this.selectedTab == 'Pictures' || this.selectedAddButton == 'pictures')
                 this.userProfileService.setUserPicture(file, true);
         }
     }
@@ -214,8 +264,8 @@ export class UserProfileComponent {
                 next: this.handleSetUserWeightResponse.bind(this),
                 error: this.handleError.bind(this)
             });
-        if (id == 'BMI')
-            this.userProfileService.setUserBMI(parseFloat(this.value)).subscribe({
+        if (id == 'IMC')
+            this.userProfileService.setUserIMC(parseFloat(this.value)).subscribe({
                 next: this.handleSetUserWeightResponse.bind(this),
                 error: this.handleError.bind(this)
             });

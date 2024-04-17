@@ -65,6 +65,27 @@ export class ApiServiceCall {
       .pipe();
   }
 
+  Patch<T>(
+    url: string,
+    authorize: boolean,
+    params: any = null
+  ): Observable<OperationResult<T>> {
+    if (authorize) 
+      this.addTokenToHeader();
+
+    let _url = this.baseUrl + url;
+    let body: any;
+    if (params) {
+      body = JSON.stringify(params);
+    }
+    return this.httpClient
+      .patch<OperationResult<T>>(_url, body!, {
+        headers: this.headers,
+        observe: 'response' as 'body'
+      })
+      .pipe();
+  }
+
   Put<T>(url: string,
     authorize: boolean, params: any = null): Observable<OperationResult<T>> {
     if (authorize) 

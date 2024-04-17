@@ -15,7 +15,9 @@ export class UserProfileModel {
     has_to_upload_photo: boolean;
     has_to_update_weight: boolean;
     has_unseen_notes: boolean;
-
+    address: string;
+    city: string;
+    zip: string;
     constructor(){
         this.id = 0;
         this.first_name = '';
@@ -32,6 +34,9 @@ export class UserProfileModel {
         this.has_to_upload_photo = false;
         this.has_to_update_weight = false;
         this.has_unseen_notes = false;
+        this.address = '';
+        this.city = '';
+        this.zip = '';
     }
         
         

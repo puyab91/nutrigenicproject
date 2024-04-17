@@ -52,7 +52,9 @@ export class AccountComponent {
         this.userProfile.has_to_upload_photo = response.body.has_to_upload_photo;
         this.userProfile.has_to_update_weight = response.body.has_to_update_weight;
         this.userProfile.has_unseen_notes = response.body.has_unseen_notes;
-
+        this.userProfile.address = response.body.address;
+        this.userProfile.city = response.body.city;
+        this.userProfile.zip = response.body.zip;
     }
 
     handleError(error: any): void {
@@ -60,5 +62,12 @@ export class AccountComponent {
             position: 'right-top',
             timeout: 3000
         });
+    }
+
+    updateAddress(){
+        if(this.userProfile.address == '' || this.userProfile.city == '' || this.userProfile.zip == '')
+            this.handleError({message: 'Fill address, city and zip then try again'});
+        else
+            this.userProfileService.setAddress({address: this.userProfile.address, city: this.userProfile.city, zip: this.userProfile.zip});
     }
 }

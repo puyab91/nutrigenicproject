@@ -25,6 +25,11 @@ export class UserProfileService {
         return this.serviceCall.GET(_url, true, null);
     }
 
+    getUserBiometrics(): Observable<OperationResult<any>> {
+        let _url = ApiUrl.biometrics;
+        return this.serviceCall.GET(_url, true, null);
+    }
+
     getExpertNotes(expertId: number): Observable<OperationResult<any>> {
         const id = this.jwtTokenservice.getId();
         let _url = ApiUrl.experts + '/' + expertId + '/notes' + '/' + id;
@@ -48,20 +53,28 @@ export class UserProfileService {
         return this.serviceCall.Post(_url, true, { weight: weight });
     }
 
-    setUserBMI(imc: number): Observable<OperationResult<any>> {
+    setUserIMC(imc: number): Observable<OperationResult<any>> {
         let _url = ApiUrl.setImc;
         return this.serviceCall.Post(_url, true, { imc: imc });
+    }
+
+    setAddress(address: any): void {
+        let _url = ApiUrl.setAddress;
+        this.serviceCall.Patch(_url, true, address).subscribe({
+            next: this.handleSuccessResponse.bind(this),
+            error: this.handleError.bind(this)
+        });;
     }
 
     submitExpertReview(review: any, expertId: number): void {
         let _url = ApiUrl.experts + '/' + expertId + '/reviews';
         this.serviceCall.Post(_url, true, review).subscribe({
-            next: this.handleSubmitReviewResponse.bind(this),
+            next: this.handleSuccessResponse.bind(this),
             error: this.handleError.bind(this)
         });;
     }
 
-    handleSubmitReviewResponse(response: any): void {
+    handleSuccessResponse(response: any): void {
         notiflix.Notify.success(response.statusCode + '- Operation unsuccessful', {
             position: 'right-top',
             timeout: 3000
@@ -116,8 +129,8 @@ export class UserProfileService {
             headers: headers,
             observe: 'response' as 'body'
         }).subscribe({
-            next: this.handleSubmitReviewResponse.bind(this),
+            next: this.handleSuccessResponse.bind(this),
             error: this.handleError.bind(this)
-        });;
+        });
     }
 }

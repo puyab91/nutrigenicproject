@@ -3,13 +3,15 @@
         <div class="col-md-6 mx-1">
             <span class="input-title">First name</span>
             <div class="">
-                <input [(ngModel)]="userProfile.first_name" type="text" class="p-2 input-promo w-100" placeholder="type here ..." />
+                <input [(ngModel)]="userProfile.first_name" type="text" class="p-2 input-promo w-100"
+                    placeholder="type here ..." />
             </div>
         </div>
         <div class="col-md-6 mx-1">
             <span class="input-title">Last name</span>
             <div class="">
-                <input [(ngModel)]="userProfile.last_name" type="text" class="p-2 input-promo w-100" placeholder="type here ..." />
+                <input [(ngModel)]="userProfile.last_name" type="text" class="p-2 input-promo w-100"
+                    placeholder="type here ..." />
             </div>
         </div>
     </div>
@@ -17,7 +19,8 @@
         <div class="col-md-12 w-100 mx-2">
             <span class="input-title">Email</span>
             <div class="">
-                <input [(ngModel)]="userProfile.email" type="email" class="p-2 input-promo w-100" placeholder="type here ..." />
+                <input [(ngModel)]="userProfile.email" type="email" class="p-2 input-promo w-100"
+                    placeholder="type here ..." />
             </div>
         </div>
     </div>
@@ -25,7 +28,8 @@
         <div class="col-md-12 w-100 mx-2">
             <span class="input-title">Phone number</span>
             <div class="">
-                <input [(ngModel)]="userProfile.phone_number" type="text" class="p-2 input-promo w-100" placeholder="type here ..." />
+                <input [(ngModel)]="userProfile.phone_number" type="text" class="p-2 input-promo w-100"
+                    placeholder="type here ..." />
             </div>
         </div>
     </div>
@@ -41,7 +45,7 @@
         <div class="col-md-12 w-100 mx-2">
             <span class="input-title">address</span>
             <div class="">
-                <input type="text" class="p-2 input-promo w-100" placeholder="type here ..." />
+                <input [(ngModel)]="userProfile.address" type="text" class="p-2 input-promo w-100" placeholder="type here ..." />
             </div>
         </div>
     </div>
@@ -49,17 +53,20 @@
         <div class="col-md-6 mx-1">
             <span class="input-title">City</span>
             <div class="">
-                <input type="text" class="p-2 input-promo w-100" placeholder="type here ..." />
+                <input [(ngModel)]="userProfile.city" type="text" class="p-2 input-promo w-100" placeholder="type here ..." />
             </div>
         </div>
         <div class="col-md-6 mx-1">
             <span class="input-title">Postal code</span>
             <div class="">
-                <input type="text" class="p-2 input-promo w-100" placeholder="type here ..." />
+                <input [(ngModel)]="userProfile.zip" type="text" class="p-2 input-promo w-100" placeholder="type here ..." />
             </div>
         </div>
     </div>
-    <div class="mt-5 fw-bold" style="font-size: 1.143rem;color: #0F0F1F;">
+    <button class="btn mt-4 fw-bold btn-apply" style="font-size: 1.143rem;color: #311C02;"
+        (click)="updateAddress()">Update Address
+    </button>
+    <div class="mt-3 fw-bold" style="font-size: 1.143rem;color: #0F0F1F;">
         My allergens:
     </div>
     <div>

@@ -32,7 +32,7 @@ import { AuthService } from './services/auth/auth.service';
 import { JwtTokenService } from './services/auth/jwt-token.service';
 import { ApiServiceCall } from './services/global.apiServicecall';
 import { PasswordModule } from 'primeng/password';
-import { GoogleLoginProvider, GoogleSigninButtonDirective, GoogleSigninButtonModule,SocialAuthServiceConfig, SocialLoginModule } from '@abacritt/angularx-social-login';
+import { GoogleLoginProvider, GoogleSigninButtonDirective, GoogleSigninButtonModule, SocialAuthServiceConfig, SocialLoginModule } from '@abacritt/angularx-social-login';
 import { UserProfileService } from './services/profile/user-profile.service';
 import { ResizeDetectionService } from './services/resize-detection.service';
 import { ActivateComponent } from './pages/activate/activate.component';
@@ -42,6 +42,7 @@ import { OurShopService } from './services/our-shop/our-shop.service';
 import { ConnectExpertComponent } from './pages/connect-expert/connect-expert.component';
 import { PlanService } from './services/plan/plan.service';
 import { PlanDetailComponent } from './pages/plan/plan-detail/plan-detail.component';
+import { ChartModule } from 'primeng/chart';
 
 @NgModule({
     declarations: [
@@ -80,7 +81,8 @@ import { PlanDetailComponent } from './pages/plan/plan-detail/plan-detail.compon
         DropdownModule,
         PasswordModule,
         GoogleSigninButtonModule,
-        ScrollPanelModule
+        ScrollPanelModule,
+        ChartModule
     ],
     exports: [GoogleSigninButtonDirective],
     providers: [
@@ -93,8 +95,8 @@ import { PlanDetailComponent } from './pages/plan/plan-detail/plan-detail.compon
                         id: GoogleLoginProvider.PROVIDER_ID,
                         provider: new GoogleLoginProvider(
                             '1083792866672-i9ss790f42nf1kb4on2e1j2lh9hf31kc.apps.googleusercontent.com', {
-                                scopes: 'profile email'
-                              }
+                            scopes: 'profile email'
+                        }
                         )
                     }
                 ],

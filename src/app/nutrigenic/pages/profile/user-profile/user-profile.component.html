@@ -13,6 +13,7 @@
                 Add those information to help your Expert to track your progress and propose the best solution for you
             </div>
             <div class="mt-4">
+                <input #fileInput id="fileInput" type="file" style="display: none;" (change)="onFileSelected($event)">
                 <button *ngFor="let item of addButtons" class="btn mt-2 fw-bold btn-apply"
                     style="font-size: 1.143rem;color: #311C02;" (click)="showBiometricPopup(item.id)">{{item.text}}
                 </button>
@@ -21,8 +22,8 @@
         <div *ngIf="userProfile.weight > 0 || userProfile.photo_path !== ''">
             <div class="mt-5">
                 <button *ngFor="let item of tabItems"
-                    [style.background-color]="selectedTab === item ? '#dfdfef' : 'white'"
-                    (click)="selectedTab = item" class="btn btn-primary mt-2 mx-2 categoriesButton">
+                    [style.background-color]="selectedTab === item ? '#dfdfef' : 'white'" (click)="selectedTabChange(item)"
+                    class="btn btn-primary mt-2 mx-2 categoriesButton">
                     {{ item }}
                 </button>
                 <button *ngIf="selectedTab === 'Weight'" class="btn mt-2 fw-bold btn-apply"
@@ -31,7 +32,8 @@
                 </button>
             </div>
             <div class="w-100 mt-4" style="height: 22rem;background-color: #D9D9D9;border-radius: 20px;"
-                *ngIf="selectedTab === 'Weight' || selectedTab === 'BMI'">
+                *ngIf="selectedTab === 'Weight' || selectedTab === 'IMC'">
+                <p-chart type="line" [data]="data"></p-chart>
             </div>
             <div class="w-100 mt-4 d-flex" style="display: flex; flex-direction: row; overflow-x: auto;"
                 *ngIf="selectedTab === 'Pictures' || selectedTab === 'Blood test'">
@@ -51,7 +53,8 @@
                         <p-divider class="flex-grow-1"></p-divider>
                     </div>
                     <div>
-                        <input #fileInput type="file" style="display: none;" (change)="onFileSelected($event)">
+                        <input #fileInput id="fileInput" type="file" style="display: none;"
+                            (change)="onFileSelected($event)">
                         <button class="btn mt-2 fw-bold btn-apply" (click)="fileInput.click()"
                             style="font-size: 1.143rem;color: #311C02;margin-right: 0px;">Upload
                         </button>
@@ -74,7 +77,8 @@
                         <ng-template let-item pTemplate="item">
                             <div class="web-center mx-1" (click)="downloadFile(item.path)"
                                 style="height: 18.357rem;border-radius: 20px;border: 1.5px #ECECEE solid;align-content: center;cursor: pointer;">
-                                <img src="../../../../../assets/images/document-attachment.png" style="width: 84px;height: 84px;object-fit: contain;" alt="">
+                                <img src="../../../../../assets/images/document-attachment.png"
+                                    style="width: 84px;height: 84px;object-fit: contain;" alt="">
                                 <div class="fm-rubik mt-5" style="font-size: 1rem;color: #5D5D66;">{{item.date}}</div>
                             </div>
                         </ng-template>
@@ -89,8 +93,7 @@
     <app-connect-card *ngIf="connectCardVisibility"></app-connect-card>
 </div>
 
-<p-dialog [(visible)]="addBiometricPopupVisibility" [style]="{ width: '23.857rem' }"
-    (onHide)="onDialogHide()">
+<p-dialog [(visible)]="addBiometricPopupVisibility" [style]="{ width: '23.857rem' }" (onHide)="onDialogHide()">
     <div class="web-center">
         <div class="fw-bold" style="font-size: 1.429rem;color: #0F0F1F;">Add your today {{biometricHeader}}</div>
         <div class="mt-4 d-flex justify-content-center" style="align-items: center;">
@@ -133,8 +136,9 @@
                 <i class="pi pi-search" style="font-size: 1rem;font-weight: bold;color: #5D5D66;"
                     *ngIf="searchIcon"></i>
                 <input type="text" class="p-2 input-promo mainLoginInput fm-rubik"
-                    placeholder="Search for the sport you practice" style="font-size: 1rem;font-weight: bold;color: #5D5D66;"
-                    (input)="inputTextChange($event)" [(ngModel)]="search" />
+                    placeholder="Search for the sport you practice"
+                    style="font-size: 1rem;font-weight: bold;color: #5D5D66;" (input)="inputTextChange($event)"
+                    [(ngModel)]="search" />
             </span>
         </div>
     </div>
