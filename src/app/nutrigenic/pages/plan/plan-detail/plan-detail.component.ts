@@ -23,9 +23,11 @@ export class PlanDetailComponent {
     mealsModel: MealModel[] = [];
     filteredMeals: MealModel[] = [];
     AddedMeals: MealModel[] = [];
+    showInPopUp: MealModel = new MealModel();
+    mealPopUpVisibility: boolean = false;
     selectedMealsTrigger: boolean = false;
     amountTrigger: boolean = false;
-
+    
     constructor(private route: ActivatedRoute,
         private sizedetection: ResizeDetectionService,
     private homeService: HomeService) {
@@ -64,6 +66,7 @@ export class PlanDetailComponent {
     addToCart(id: number){
         this.mealsModel.filter((item:any) => item.id == id)[0].isAdded = true;
         this.filterAddedMeals();
+        this.mealPopUpVisibility = false;
     }
 
     getMeals() {
@@ -97,6 +100,24 @@ export class PlanDetailComponent {
         this.AddedMeals = this.filteredMeals.filter((item:any) => item.isAdded == true);
     }
 
+    decreaseCount(event: any,id: number){
+        debugger;
+        event.stopPropagation();
+        this.mealsModel.forEach((item:MealModel) => {
+            if(item.id == id)
+                item.count = item.count == 1 ? 1 : item.count - 1
+        });
+    }
+
+    increaseCount(event: any,id: number){
+        debugger;
+        event.stopPropagation();
+        this.mealsModel.forEach((item:MealModel) => {
+            if(item.id == id)
+                item.count = item.count + 1;
+        });
+    }
+
     showCheckoutDetails(item:string){
         if(item == 'selectedMeals')
             this.selectedMealsTrigger = !this.selectedMealsTrigger;
@@ -106,6 +127,11 @@ export class PlanDetailComponent {
 
     shopCategoryChange(id: number) {
 var x= id;
+    }
+
+    showMealInPopup(item: MealModel){
+        this.showInPopUp = item;
+        this.mealPopUpVisibility = true;
     }
 
     inputTextChange(event: any) {

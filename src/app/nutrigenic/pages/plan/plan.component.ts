@@ -15,7 +15,7 @@ export class PlanComponent {
     selectedCommitDayPerWeekButton: number = 3;
     selectedCommitWeeksButton: string = '4w';
     connectExpertPopUpVisibility: boolean = false;
-    makeOunMealPopupVisibility: boolean = false;
+    makeOwnMealPopupVisibility: boolean = false;
     isTablet: boolean = false;
     isMobile: boolean = false;
     isDesktop: boolean = false;
@@ -93,22 +93,30 @@ export class PlanComponent {
     }
 
     goToPlanDetail() {
-        this.showChooseAlergies('');
-
-        if (this.selectedType == 'Flexi')
+        if (this.selectedType == 'Flexi') {
+            this.showChooseAlergies('flexi');
             var data: any = {
                 type: this.selectedType,
                 weeks: 1,
                 mealPerDay: this.selectedFlexiMealPerDayButton,
                 dayPerWeek: this.selectedFlexiDayPerWeekButton
             }
-        if (this.selectedType == 'Commit')
+        }
+        else if (this.selectedType == 'Commit') {
+            this.showChooseAlergies('commit');
             var data: any = {
                 type: this.selectedType,
                 weeks: parseInt(this.selectedCommitWeeksButton.slice(0, -1)),
                 mealPerDay: this.selectedCommitMealPerDayButton,
                 dayPerWeek: this.selectedCommitDayPerWeekButton
             }
+        }
+        else {
+            this.connectExpertPopUpVisibility = !this.connectExpertPopUpVisibility;
+            this.makeOwnMealPopupVisibility = !this.makeOwnMealPopupVisibility;
+            this.handleBlurFilter();
+        }
+
 
         this.router
             .navigate(['/planDetail'], { queryParams: data })
@@ -128,7 +136,8 @@ export class PlanComponent {
     }
 
     showMakeOwnDialog() {
-        this.makeOunMealPopupVisibility = !this.makeOunMealPopupVisibility;
+        this.makeOwnMealPopupVisibility = !this.makeOwnMealPopupVisibility;
+        this.handleBlurFilter();
     }
 
     onDialogHide() {
@@ -149,13 +158,12 @@ export class PlanComponent {
             this.selectedType = 'Flexi';
         if (issuerType == 'commit')
             this.selectedType = 'Commit';
-        console.log(this.selectedType);
         this.addAlergiesPopupVisibility = !this.addAlergiesPopupVisibility;
         this.handleBlurFilter();
     }
 
     handleBlurFilter() {
-        if (this.connectExpertPopUpVisibility || this.addAlergiesPopupVisibility) {
+        if (this.connectExpertPopUpVisibility || this.addAlergiesPopupVisibility || this.makeOwnMealPopupVisibility) {
             document.getElementsByClassName('layoutHomeClass')[0]?.classList.add('p-dialog-blur');
             document.getElementById('layoutHome')?.classList.add('p-dialog-blur');
             document.getElementById('layoutHeader')?.classList.add('p-dialog-blur');

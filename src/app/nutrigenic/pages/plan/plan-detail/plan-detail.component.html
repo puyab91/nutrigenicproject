@@ -1,6 +1,7 @@
 <div id="layoutHome" class="web-center">
-    <div style="width: 85%;">
-        <div class="d-flex justify-content-center mt-4" style="align-items: center;" *ngIf="planOrderDetails.type === 'Commit'">
+    <div style="width: 90%;">
+        <div class="d-flex justify-content-center mt-4" style="align-items: center;"
+            *ngIf="planOrderDetails.type === 'Commit'">
             <i class="text-black mx-3 pi pi-angle-double-left" style="font-size: 1.5rem;"></i>
             <div>
                 <button class="btn fm-prompt px-3"
@@ -48,7 +49,7 @@
 <ng-template #listCards let-item>
     <div class="mb-3 position-relative responsiveFont fm-rubik"
         [class]="isDesktop ? 'col-md-3' : isTablet ? 'col-md-6' : 'col-md-12' ">
-        <div class="card shadow p-3">
+        <div class="card shadow p-3" style="cursor: pointer;" (click)="showMealInPopup(item)">
             <div class="">
                 <img class="w-100" [src]="item.image_path" style="border-radius: 12px 12px 0 0;" />
             </div>
@@ -59,70 +60,71 @@
                 <div class="web-left mt-2" style="font-size: 1rem;">
                     <div>
                         <span>{{ item.description }}</span>
-                        <span class="fw-bold" style="cursor: pointer;" *ngIf="item.description && !item.moreEnabled"
-                            (click)="item.moreEnabled = !item.moreEnabled" > more ></span>
+                        <!-- <span class="fw-bold" style="cursor: pointer;" *ngIf="item.description && !item.moreEnabled"
+                            (click)="item.moreEnabled = !item.moreEnabled"> more ></span> -->
                     </div>
-                    <div class="d-flex mt-2 fm-rubik plan-detail" *ngIf="item.moreEnabled">
-                        <div class="plan-detail-margin">
+                    <div class="row mt-2 fm-rubik plan-detail" *ngIf="!item.isAdded">
+                        <div class="plan-detail-margin col-md-3">
                             <span>Energy:</span>
                             <br />
                             <span style="font-weight: bold;">{{ item.energyKcal }} Kcal</span>
                         </div>
-                        <div class="plan-detail-margin">
+                        <div class="plan-detail-margin col-md-3">
                             <span>Protein:</span>
                             <br />
                             <span style="font-weight: bold;">{{ item.protein }} gr</span>
                         </div>
-                        <div class="plan-detail-margin">
+                        <div class="plan-detail-margin col-md-3">
                             <span>Carbs:</span>
                             <br />
                             <span style="font-weight: bold;">{{ item.availableCarbohydrate }} gr</span>
                         </div>
-                        <div class="plan-detail-margin">
+                        <div class="plan-detail-margin col-md-3">
                             <span>Sugar:</span>
                             <br />
                             <span style="font-weight: bold;">{{ item.sugars }} gr</span>
                         </div>
-                        <div class="plan-detail-margin">
+                        <div class="plan-detail-margin col-md-3">
                             <span>Fats:</span>
                             <br />
                             <span style="font-weight: bold;">{{ item.fat }} gr</span>
                         </div>
-                        <div class="plan-detail-margin">
+                        <div class="plan-detail-margin col-md-3">
                             <span>Salts:</span>
                             <br />
                             <span style="font-weight: bold;">{{ item.sodium }} gr</span>
                         </div>
                     </div>
-                    <div class="fw-bold mt-2" style="cursor: pointer;float: right;" (click)="item.moreEnabled = !item.moreEnabled" *ngIf="item.moreEnabled">< less</div>
                 </div>
-                <div class="web-left mt-2" style="font-size: 1rem;" *ngIf="!item.moreEnabled">
+                <div class="web-left mt-2" style="font-size: 1rem;" *ngIf="item.isAdded">
                     <span>Alergies</span>
                     <i class="pi pi-info-circle" style="font-size: 0.8rem;margin-left: 0.5rem;cursor: pointer;"
                         [pTooltip]="item.alergies" tooltipPosition="top" placeholder="Top"></i>
                 </div>
-                <div class="fw-bold mt-4" *ngIf="!item.moreEnabled">
-                    <button class="btn btn-dec-ourshop p-0" (click)="item.count = item.count == 1 ? 1 : item.count - 1"
+                <div class="fw-bold mt-4" *ngIf="item.isAdded">
+                    <button class="btn btn-dec-ourshop p-0" (click)="decreaseCount($event,item.id)"
                         style="margin-right: 0.5rem;">
                         <i class="pi pi-minus fw-bold" style="padding: 0.6rem;
                         font-size: 0.8rem;color: #EF870A;"></i>
                     </button>
                     <span> {{item.count}} </span>
-                    <button class="btn btn-primary btn-add-to-cart p-0" (click)="item.count = item.count + 1"
+                    <button class="btn btn-primary btn-add-to-cart p-0" (click)="increaseCount($event,item.id)"
                         style="margin-left: 0.5rem;border-radius: 25px;">
                         <i class="pi pi-plus fw-bold" style="padding: 0.6rem;
                         font-size: 0.8rem;"></i>
                     </button>
                     <button class="btn btn-primary fw-bold fm-prompt"
                         [ngClass]="item.isAdded ? 'btn-added' : 'btn-add-to-cart'" style="float: right;font-size: 1rem;"
-                        (click)="addToCart(item.id)">{{item.isAdded ? 'Added' : 'Add to cart'}}</button>
+                        (click)="addToCart(item.id)">{{item.isAdded ? 'Added'
+                        : 'Add to cart'}}</button>
                 </div>
             </div>
         </div>
     </div>
 </ng-template>
 
-<p-dialog [visible]="AddedMeals.length > 0" [position]="'bottom'" [style]="{ width: '100vw' }">
+<p-dialog [visible]="AddedMeals.length > 0 && mealPopUpVisibility === false" [position]="'bottom'"
+    [style]="{ width: '100vw' }">
     <div style="width: 85%;">
         <div class="d-flex fm-rubik justify-content-center mb-5" style="align-items: center;font-size: 1.143rem;">
             <div class="mx-auto">
@@ -216,6 +218,74 @@
                         style="height: 24px;width: 24px;margin-left: 0.5rem;" alt="">
                 </button>
             </div>
+        </div>
+    </div>
+</p-dialog>
+
+<p-dialog [visible]="mealPopUpVisibility" [styleClass]="'custom-dialog'" [style]="{ width: '30%' }">
+    <ng-template pTemplate="header">
+        <img [src]="showInPopUp.photo_path" style="width: 100%;height: 200px;">
+    </ng-template>
+    <div class="p-3 se">
+        <div class="fw-bold mt-3" style="font-size: 1.143rem;">
+            {{showInPopUp.name}}
+        </div>
+        <div class="web-left mt-2" style="font-size: 1rem;">
+            <div>
+                <span>{{ showInPopUp.description }}</span>
+            </div>
+            <div class="mt-2">
+                <span>Allergens:</span>
+                <span> {{showInPopUp.alergies}}</span>
+            </div>
+            <div class="row mt-2 fm-rubik plan-detail">
+                <div class="plan-detail-margin col-md-2">
+                    <span>Energy:</span>
+                    <br />
+                    <span style="font-weight: bold;">{{ showInPopUp.energyKcal }} Kcal</span>
+                </div>
+                <div class="plan-detail-margin col-md-2">
+                    <span>Protein:</span>
+                    <br />
+                    <span style="font-weight: bold;">{{ showInPopUp.protein }} gr</span>
+                </div>
+                <div class="plan-detail-margin col-md-2">
+                    <span>Carbs:</span>
+                    <br />
+                    <span style="font-weight: bold;">{{ showInPopUp.availableCarbohydrate }} gr</span>
+                </div>
+                <div class="plan-detail-margin col-md-2">
+                    <span>Sugar:</span>
+                    <br />
+                    <span style="font-weight: bold;">{{ showInPopUp.sugars }} gr</span>
+                </div>
+                <div class="plan-detail-margin col-md-2">
+                    <span>Fats:</span>
+                    <br />
+                    <span style="font-weight: bold;">{{ showInPopUp.fat }} gr</span>
+                </div>
+                <div class="plan-detail-margin col-md-2">
+                    <span>Salts:</span>
+                    <br />
+                    <span style="font-weight: bold;">{{ showInPopUp.sodium }} gr</span>
+                </div>
+            </div>
+        </div>
+        <div class="fw-bold mt-4">
+            <button class="btn btn-dec-ourshop p-0"
+                (click)="showInPopUp.count = showInPopUp.count == 1 ? 1 : showInPopUp.count - 1"
+                style="margin-right: 0.5rem;">
+                <i class="pi pi-minus fw-bold" style="padding: 0.6rem;
+            font-size: 0.8rem;color: #EF870A;"></i>
+            </button>
+            <span> {{showInPopUp.count}} </span>
+            <button class="btn btn-primary btn-add-to-cart p-0" (click)="showInPopUp.count = showInPopUp.count + 1"
+                style="margin-left: 0.5rem;border-radius: 25px;">
+                <i class="pi pi-plus fw-bold" style="padding: 0.6rem;
+            font-size: 0.8rem;"></i>
+            </button>
+            <button class="btn btn-primary fw-bold fm-prompt btn-add-to-cart"
+                style="float: right;font-size: 1rem;width: 50%;" (click)="addToCart(showInPopUp.id)">Add</button>
         </div>
     </div>
 </p-dialog>

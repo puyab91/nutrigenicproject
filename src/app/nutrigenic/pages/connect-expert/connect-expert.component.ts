@@ -58,6 +58,8 @@ export class ConnectExpertComponent {
     }
 
     assignExpert(id: number) {
+        this.popupVisibility = false
+
         if (this.status == 'add') {
             this.planService.assignExperts(id);
             this.afterChangeExpert.emit(true);
@@ -71,12 +73,11 @@ export class ConnectExpertComponent {
                     }, 5000);
                 }
             });
-        this.popupVisibility = false
     }
 
     onDialogHide() {
-        this.handleBlurFilter();
         this.popupVisibility = false
+        //this.handleBlurFilter();
     }
 
     handleBlurFilter() {
