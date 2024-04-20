@@ -64,32 +64,32 @@
                             (click)="item.moreEnabled = !item.moreEnabled"> more ></span> -->
                     </div>
                     <div class="row mt-2 fm-rubik plan-detail" *ngIf="!item.isAdded">
-                        <div class="plan-detail-margin col-md-3">
+                        <div class="plan-detail-font col-md-3">
                             <span>Energy:</span>
                             <br />
                             <span style="font-weight: bold;">{{ item.energyKcal }} Kcal</span>
                         </div>
-                        <div class="plan-detail-margin col-md-3">
+                        <div class="plan-detail-font col-md-3">
                             <span>Protein:</span>
                             <br />
                             <span style="font-weight: bold;">{{ item.protein }} gr</span>
                         </div>
-                        <div class="plan-detail-margin col-md-3">
+                        <div class="plan-detail-font col-md-3">
                             <span>Carbs:</span>
                             <br />
                             <span style="font-weight: bold;">{{ item.availableCarbohydrate }} gr</span>
                         </div>
-                        <div class="plan-detail-margin col-md-3">
+                        <div class="plan-detail-font col-md-3">
                             <span>Sugar:</span>
                             <br />
                             <span style="font-weight: bold;">{{ item.sugars }} gr</span>
                         </div>
-                        <div class="plan-detail-margin col-md-3">
+                        <div class="plan-detail-font col-md-3">
                             <span>Fats:</span>
                             <br />
                             <span style="font-weight: bold;">{{ item.fat }} gr</span>
                         </div>
-                        <div class="plan-detail-margin col-md-3">
+                        <div class="plan-detail-font col-md-3">
                             <span>Salts:</span>
                             <br />
                             <span style="font-weight: bold;">{{ item.sodium }} gr</span>
@@ -222,49 +222,49 @@
     </div>
 </p-dialog>
 
-<p-dialog [visible]="mealPopUpVisibility" [styleClass]="'custom-dialog'" [style]="{ width: '30%' }">
+<p-dialog [(visible)]="mealPopUpVisibility" [styleClass]="'custom-dialog'" [style]="{ width: '40%' }" (onHide)="handleBlurFilter();">
     <ng-template pTemplate="header">
-        <img [src]="showInPopUp.photo_path" style="width: 100%;height: 200px;">
+        <img [src]="showInPopUp.photo_path" style="width: 100%;height: 300px;">
     </ng-template>
-    <div class="p-3 se">
-        <div class="fw-bold mt-3" style="font-size: 1.143rem;">
+    <div class="p-3">
+        <div class="fw-bold mt-3" style="font-size: 1.5rem;">
             {{showInPopUp.name}}
         </div>
-        <div class="web-left mt-2" style="font-size: 1rem;">
+        <div class="web-left mt-2" style="font-size: 1.143rem;">
             <div>
-                <span>{{ showInPopUp.description }}</span>
+                <span style="font-size: 1.143rem;">{{ showInPopUp.description }}</span>
             </div>
             <div class="mt-2">
                 <span>Allergens:</span>
                 <span> {{showInPopUp.alergies}}</span>
             </div>
             <div class="row mt-2 fm-rubik plan-detail">
-                <div class="plan-detail-margin col-md-2">
+                <div class="plan-detail-font-dialog col-md-2">
                     <span>Energy:</span>
                     <br />
                     <span style="font-weight: bold;">{{ showInPopUp.energyKcal }} Kcal</span>
                 </div>
-                <div class="plan-detail-margin col-md-2">
+                <div class="plan-detail-font-dialog col-md-2">
                     <span>Protein:</span>
                     <br />
                     <span style="font-weight: bold;">{{ showInPopUp.protein }} gr</span>
                 </div>
-                <div class="plan-detail-margin col-md-2">
+                <div class="plan-detail-font-dialog col-md-2">
                     <span>Carbs:</span>
                     <br />
                     <span style="font-weight: bold;">{{ showInPopUp.availableCarbohydrate }} gr</span>
                 </div>
-                <div class="plan-detail-margin col-md-2">
+                <div class="plan-detail-font-dialog col-md-2">
                     <span>Sugar:</span>
                     <br />
                     <span style="font-weight: bold;">{{ showInPopUp.sugars }} gr</span>
                 </div>
-                <div class="plan-detail-margin col-md-2">
+                <div class="plan-detail-font-dialog col-md-2">
                     <span>Fats:</span>
                     <br />
                     <span style="font-weight: bold;">{{ showInPopUp.fat }} gr</span>
                 </div>
-                <div class="plan-detail-margin col-md-2">
+                <div class="plan-detail-font-dialog col-md-2">
                     <span>Salts:</span>
                     <br />
                     <span style="font-weight: bold;">{{ showInPopUp.sodium }} gr</span>

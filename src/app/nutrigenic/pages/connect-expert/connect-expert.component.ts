@@ -17,6 +17,8 @@ export class ConnectExpertComponent {
     @Input() popupVisibility: boolean = false;
     @Input() status: string = '';
     @Output() afterChangeExpert = new EventEmitter<any>();
+    @Output() popupVisibilityChange = new EventEmitter<boolean>();
+    isChangeExpertEmited: boolean = false;
     value: number = 3;
     expertsModel: ExpertModel[] = [];
     mealsList: any[] = [];
@@ -59,10 +61,12 @@ export class ConnectExpertComponent {
 
     assignExpert(id: number) {
         this.popupVisibility = false
+        this.popupVisibilityChange.emit(false);
 
         if (this.status == 'add') {
             this.planService.assignExperts(id);
             this.afterChangeExpert.emit(true);
+            this.isChangeExpertEmited = true;
         }
         if (this.status == 'change')
             this.userProfileService.getUserExpert().subscribe((response: any) => {
@@ -70,14 +74,17 @@ export class ConnectExpertComponent {
                     this.planService.changeExpert(id, response.body.id);
                     setTimeout(() => {
                         this.afterChangeExpert.emit(true);
+                        this.isChangeExpertEmited = true;
                     }, 5000);
                 }
             });
     }
 
     onDialogHide() {
-        this.popupVisibility = false
-        //this.handleBlurFilter();
+        if(!this.isChangeExpertEmited){
+            this.popupVisibilityChange.emit(this.popupVisibility);
+            this.handleBlurFilter();
+        }
     }
 
     handleBlurFilter() {

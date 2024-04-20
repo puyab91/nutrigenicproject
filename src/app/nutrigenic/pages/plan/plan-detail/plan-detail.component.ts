@@ -132,6 +132,7 @@ var x= id;
     showMealInPopup(item: MealModel){
         this.showInPopUp = item;
         this.mealPopUpVisibility = true;
+        this.handleBlurFilter();
     }
 
     inputTextChange(event: any) {
@@ -141,5 +142,18 @@ var x= id;
         else
             this.searchIcon = false;
 
+    }
+
+    handleBlurFilter() {
+        if (this.mealPopUpVisibility) {
+            document.getElementsByClassName('layoutHomeClass')[0]?.classList.add('p-dialog-blur');
+            document.getElementById('layoutHome')?.classList.add('p-dialog-blur');
+            document.getElementById('layoutHeader')?.classList.add('p-dialog-blur');
+        }
+        else {
+            document.getElementsByClassName('layoutHomeClass')[0]?.classList.remove('p-dialog-blur');
+            document.getElementById('layoutHome')?.classList.remove('p-dialog-blur');
+            document.getElementById('layoutHeader')?.classList.remove('p-dialog-blur');
+        }
     }
 }

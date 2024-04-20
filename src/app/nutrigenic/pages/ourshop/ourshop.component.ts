@@ -23,7 +23,7 @@ export class OurShopComponent {
 
     constructor(private router: Router,
         private sizedetection: ResizeDetectionService,
-        private ourShopService: OurShopService) { }
+        public ourShopService: OurShopService) { }
 
     ngOnInit() {
         this.sizedetection.refreshSize();

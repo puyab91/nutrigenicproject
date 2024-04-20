@@ -186,3 +186,15 @@
   z-index: 1;
   width: 115px;
 }
+
+.shopping-counter {
+  position: absolute;
+  bottom: -8px;
+  right: 6px;
+  font-size: 0.8rem !important;
+  background-color: black;
+  color: white;
+  padding-left: 0.4rem;
+  padding-right: 0.4rem;
+  border-radius: 10px;
+}

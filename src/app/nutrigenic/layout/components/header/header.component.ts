@@ -9,6 +9,8 @@ import { JwtTokenService } from 'src/app/nutrigenic/services/auth/jwt-token.serv
 import { GoogleLoginProvider, SocialAuthService, SocialUser } from '@abacritt/angularx-social-login';
 import { GoogleSigninButtonDirective } from '@abacritt/angularx-social-login';
 import { ResizeDetectionService } from 'src/app/nutrigenic/services/resize-detection.service';
+import { OurShopService } from 'src/app/nutrigenic/services/our-shop/our-shop.service';
+import { Subscription } from 'rxjs';
 
 //declare const gapi: any;
 
@@ -33,12 +35,19 @@ export class HeaderComponent {
     isTablet: boolean = false;
     isMobile: boolean = false;
     isDesktop: boolean = false;
+    private subscription: Subscription;
+    productCount: number = 0;
 
     constructor(private router: Router,
         private authService: AuthService,
         private jwtTokenService: JwtTokenService,
         private googleAuthService: SocialAuthService,
-        private sizedetection: ResizeDetectionService) {
+        private sizedetection: ResizeDetectionService,
+    private ourShopService: OurShopService) {
+        this.subscription = this.ourShopService.productCounter$.subscribe((value: number) => {
+            debugger;
+            this.productCount = value;
+          });
     }
     ngOnInit(): void {
         this.sizedetection.refreshSize();

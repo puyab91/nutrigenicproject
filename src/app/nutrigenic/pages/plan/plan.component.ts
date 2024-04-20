@@ -112,7 +112,6 @@ export class PlanComponent {
             }
         }
         else {
-            this.connectExpertPopUpVisibility = !this.connectExpertPopUpVisibility;
             this.makeOwnMealPopupVisibility = !this.makeOwnMealPopupVisibility;
             this.handleBlurFilter();
         }

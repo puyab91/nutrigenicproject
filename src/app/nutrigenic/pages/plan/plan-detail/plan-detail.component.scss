@@ -117,10 +117,10 @@
 
 :host ::ng-deep .p-dialog .p-dialog-header .p-dialog-header-icon:last-child {
   margin-right: 0;
-  display: none;
-  // position: absolute;
-  // right: 0;
-  // top: 0;
+  //display: none;
+   position: absolute;
+   right: 0;
+   top: 0;
 }
 
 // :host ::ng-deep .custom-dialog .p-dialog .p-dialog-header .p-dialog-header-icon:last-child {
@@ -146,8 +146,12 @@
   color: #5D5D66;
 }
 
-.plan-detail-margin {
+.plan-detail-font {
   font-size: 0.857rem;
+}
+
+.plan-detail-font-dialog {
+  font-size: 1.143rem;
 }
 
 ::ng-deep .p-dialog-header{

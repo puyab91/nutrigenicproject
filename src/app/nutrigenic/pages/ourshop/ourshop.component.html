@@ -88,7 +88,8 @@
                         font-size: 0.8rem;"></i>
                     </button>
                     <button class="btn btn-primary fw-bold btn-ourshop fm-prompt"
-                        style="float: right;font-size: 1rem;border-radius: 10px;padding-left: 1rem;padding-right: 1rem;">Add
+                        style="float: right;font-size: 1rem;border-radius: 10px;padding-left: 1rem;padding-right: 1rem;"
+                        (click)="ourShopService.addToMyShop(item.id)">Add
                         to cart</button>
                 </div>
             </div>
