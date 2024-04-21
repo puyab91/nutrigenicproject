@@ -27,18 +27,18 @@ export class PlanDetailComponent {
     mealPopUpVisibility: boolean = false;
     selectedMealsTrigger: boolean = false;
     amountTrigger: boolean = false;
-    
+    mealPopupWidth?: string;
     constructor(private route: ActivatedRoute,
         private sizedetection: ResizeDetectionService,
-    private homeService: HomeService) {
+        private homeService: HomeService) {
 
         this.route.queryParams.subscribe((params: any) => {
             this.planOrderDetails.type = params.type
             this.planOrderDetails.weeks = params.weeks;
             this.planOrderDetails.mealPerDay = params.mealPerDay;
-            this.planOrderDetails.dayPerWeek = params.dayPerWeek; 
-            console.log(this.planOrderDetails);           
-          });
+            this.planOrderDetails.dayPerWeek = params.dayPerWeek;
+            console.log(this.planOrderDetails);
+        });
     }
 
     ngOnInit() {
@@ -47,10 +47,15 @@ export class PlanDetailComponent {
             this.isDesktop = data.isDesktop;
             this.isTablet = data.isTablet;
             this.isMobile = data.isMobile;
+
+            if (this.isDesktop)
+                this.mealPopupWidth = '30%';
+            else
+                this.mealPopupWidth = '60%';
         });
 
 
-          this.tabItems = [
+        this.tabItems = [
             { name: 'Home', id: 0 },
             { name: 'Lean Gains', id: 1 },
             { name: 'Fat Loss', id: 2 },
@@ -63,8 +68,8 @@ export class PlanDetailComponent {
 
     }
 
-    addToCart(id: number){
-        this.mealsModel.filter((item:any) => item.id == id)[0].isAdded = true;
+    addToCart(id: number) {
+        this.mealsModel.filter((item: any) => item.id == id)[0].isAdded = true;
         this.filterAddedMeals();
         this.mealPopUpVisibility = false;
     }
@@ -96,40 +101,38 @@ export class PlanDetailComponent {
         })
     }
 
-    filterAddedMeals(){
-        this.AddedMeals = this.filteredMeals.filter((item:any) => item.isAdded == true);
+    filterAddedMeals() {
+        this.AddedMeals = this.filteredMeals.filter((item: any) => item.isAdded == true);
     }
 
-    decreaseCount(event: any,id: number){
-        debugger;
+    decreaseCount(event: any, id: number) {
         event.stopPropagation();
-        this.mealsModel.forEach((item:MealModel) => {
-            if(item.id == id)
+        this.mealsModel.forEach((item: MealModel) => {
+            if (item.id == id)
                 item.count = item.count == 1 ? 1 : item.count - 1
         });
     }
 
-    increaseCount(event: any,id: number){
-        debugger;
+    increaseCount(event: any, id: number) {
         event.stopPropagation();
-        this.mealsModel.forEach((item:MealModel) => {
-            if(item.id == id)
+        this.mealsModel.forEach((item: MealModel) => {
+            if (item.id == id)
                 item.count = item.count + 1;
         });
     }
 
-    showCheckoutDetails(item:string){
-        if(item == 'selectedMeals')
+    showCheckoutDetails(item: string) {
+        if (item == 'selectedMeals')
             this.selectedMealsTrigger = !this.selectedMealsTrigger;
-            if(item == 'amount')
-                this.amountTrigger = !this.amountTrigger;
+        if (item == 'amount')
+            this.amountTrigger = !this.amountTrigger;
     }
 
     shopCategoryChange(id: number) {
-var x= id;
+        var x = id;
     }
 
-    showMealInPopup(item: MealModel){
+    showMealInPopup(item: MealModel) {
         this.showInPopUp = item;
         this.mealPopUpVisibility = true;
         this.handleBlurFilter();

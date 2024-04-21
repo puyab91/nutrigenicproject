@@ -211,12 +211,10 @@ export class UserProfileComponent {
     }
 
     loadChart(chart: string) {
-        debugger;
         var chartData: ChartModel = new ChartModel();
         var dataSet: Dataset = new Dataset();
 
         this.userProfileService.getUserBiometrics().subscribe((response: any) => {
-            debugger;
             dataSet.label = chart;
             if (chart == 'Weight') {
                 response.body.weights.sort((a: any, b: any) => a.id - b.id).forEach((item: any) => {

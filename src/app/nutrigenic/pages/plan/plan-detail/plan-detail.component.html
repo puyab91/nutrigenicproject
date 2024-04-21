@@ -222,9 +222,11 @@
     </div>
 </p-dialog>
 
-<p-dialog [(visible)]="mealPopUpVisibility" [styleClass]="'custom-dialog'" [style]="{ width: '40%' }" (onHide)="handleBlurFilter();">
+<p-dialog [(visible)]="mealPopUpVisibility" [styleClass]="'custom-dialog'" [style]="{ width: mealPopupWidth }"
+    (onHide)="handleBlurFilter();">
     <ng-template pTemplate="header">
-        <img [src]="showInPopUp.photo_path" style="width: 100%;height: 300px;">
+        <img [src]="showInPopUp.photo_path"
+            style="width: 100%;height: 300px;border-radius: 25px 25px 0 0;border: none;">
     </ng-template>
     <div class="p-3">
         <div class="fw-bold mt-3" style="font-size: 1.5rem;">
@@ -235,7 +237,7 @@
                 <span style="font-size: 1.143rem;">{{ showInPopUp.description }}</span>
             </div>
             <div class="mt-2">
-                <span>Allergens:</span>
+                <span class="fw-bold">Allergens:</span>
                 <span> {{showInPopUp.alergies}}</span>
             </div>
             <div class="row mt-2 fm-rubik plan-detail">
@@ -271,21 +273,24 @@
                 </div>
             </div>
         </div>
-        <div class="fw-bold mt-4">
-            <button class="btn btn-dec-ourshop p-0"
-                (click)="showInPopUp.count = showInPopUp.count == 1 ? 1 : showInPopUp.count - 1"
-                style="margin-right: 0.5rem;">
-                <i class="pi pi-minus fw-bold" style="padding: 0.6rem;
+        <div class="fw-bold mt-4 d-flex position-relative">
+            <div style="margin-left: 10%;">
+                <button class="btn btn-dec-ourshop p-0"
+                    (click)="showInPopUp.count = showInPopUp.count == 1 ? 1 : showInPopUp.count - 1"
+                    style="margin-right: 0.5rem;">
+                    <i class="pi pi-minus fw-bold" style="padding: 0.6rem;
             font-size: 0.8rem;color: #EF870A;"></i>
-            </button>
-            <span> {{showInPopUp.count}} </span>
-            <button class="btn btn-primary btn-add-to-cart p-0" (click)="showInPopUp.count = showInPopUp.count + 1"
-                style="margin-left: 0.5rem;border-radius: 25px;">
-                <i class="pi pi-plus fw-bold" style="padding: 0.6rem;
+                </button>
+                <span> {{showInPopUp.count}} </span>
+                <button class="btn btn-primary btn-add-to-cart p-0" (click)="showInPopUp.count = showInPopUp.count + 1"
+                    style="margin-left: 0.5rem;border-radius: 25px;">
+                    <i class="pi pi-plus fw-bold" style="padding: 0.6rem;
             font-size: 0.8rem;"></i>
-            </button>
-            <button class="btn btn-primary fw-bold fm-prompt btn-add-to-cart"
-                style="float: right;font-size: 1rem;width: 50%;" (click)="addToCart(showInPopUp.id)">Add</button>
+                </button>
+            </div>
+
+            <button class="btn btn-primary fw-bold fm-prompt btn-add-to-cart py-2"
+                style="float: right;font-size: 1rem;width: 50%;position: absolute;right:0;" (click)="addToCart(showInPopUp.id)">Add</button>
         </div>
     </div>
 </p-dialog>

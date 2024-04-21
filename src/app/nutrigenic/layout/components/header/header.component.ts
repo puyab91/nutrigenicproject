@@ -45,7 +45,6 @@ export class HeaderComponent {
         private sizedetection: ResizeDetectionService,
     private ourShopService: OurShopService) {
         this.subscription = this.ourShopService.productCounter$.subscribe((value: number) => {
-            debugger;
             this.productCount = value;
           });
     }
