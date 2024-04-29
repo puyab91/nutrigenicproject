@@ -27,7 +27,6 @@ export class PlanDetailComponent {
     mealPopUpVisibility: boolean = false;
     selectedMealsTrigger: boolean = false;
     amountTrigger: boolean = false;
-    mealPopupWidth?: string;
     constructor(private route: ActivatedRoute,
         private sizedetection: ResizeDetectionService,
         private homeService: HomeService) {
@@ -47,11 +46,6 @@ export class PlanDetailComponent {
             this.isDesktop = data.isDesktop;
             this.isTablet = data.isTablet;
             this.isMobile = data.isMobile;
-
-            if (this.isDesktop)
-                this.mealPopupWidth = '30%';
-            else
-                this.mealPopupWidth = '60%';
         });
 
 
