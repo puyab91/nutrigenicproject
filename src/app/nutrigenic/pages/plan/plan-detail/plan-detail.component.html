@@ -63,36 +63,40 @@
                         <!-- <span class="fw-bold" style="cursor: pointer;" *ngIf="item.description && !item.moreEnabled"
                             (click)="item.moreEnabled = !item.moreEnabled"> more ></span> -->
                     </div>
-                    <div class="row mt-2 fm-rubik" *ngIf="!item.isAdded">
-                        <div class="plan-detail-font col-md-3">
-                            <span>Energy:</span>
-                            <br />
-                            <span style="font-weight: bold;">{{ item.energyKcal }} Kcal</span>
+                    <div class="mt-2 fm-rubik w-100"  [ngClass]="isDesktop || isTablet ? 'd-flex' : ''" *ngIf="!item.isAdded">
+                        <div class="d-flex" [ngClass]="isMobile ? 'w-100' : 'w-50'">
+                            <div class="plan-detail">
+                                <span>Energy:</span>
+                                <br />
+                                <span style="font-weight: bold;">{{ item.energyKcal }} Kcal</span>
+                            </div>
+                            <div class="plan-detail">
+                                <span>Protein:</span>
+                                <br />
+                                <span style="font-weight: bold;">{{ item.protein }} gr</span>
+                            </div>
+                            <div class="plan-detail">
+                                <span>Carbs:</span>
+                                <br />
+                                <span style="font-weight: bold;">{{ item.availableCarbohydrate }} gr</span>
+                            </div>
                         </div>
-                        <div class="plan-detail-font col-md-3">
-                            <span>Protein:</span>
-                            <br />
-                            <span style="font-weight: bold;">{{ item.protein }} gr</span>
-                        </div>
-                        <div class="plan-detail-font col-md-3">
-                            <span>Carbs:</span>
-                            <br />
-                            <span style="font-weight: bold;">{{ item.availableCarbohydrate }} gr</span>
-                        </div>
-                        <div class="plan-detail-font col-md-3">
-                            <span>Sugar:</span>
-                            <br />
-                            <span style="font-weight: bold;">{{ item.sugars }} gr</span>
-                        </div>
-                        <div class="plan-detail-font col-md-3">
-                            <span>Fats:</span>
-                            <br />
-                            <span style="font-weight: bold;">{{ item.fat }} gr</span>
-                        </div>
-                        <div class="plan-detail-font col-md-3">
-                            <span>Salts:</span>
-                            <br />
-                            <span style="font-weight: bold;">{{ item.sodium }} gr</span>
+                        <div class="d-flex" [ngClass]="isMobile ? 'w-100 mt-4' : 'w-50'">
+                            <div class="plan-detail">
+                                <span>Sugar:</span>
+                                <br />
+                                <span style="font-weight: bold;">{{ item.sugars }} gr</span>
+                            </div>
+                            <div class="plan-detail">
+                                <span>Fats:</span>
+                                <br />
+                                <span style="font-weight: bold;">{{ item.fat }} gr</span>
+                            </div>
+                            <div class="plan-detail">
+                                <span>Salts:</span>
+                                <br />
+                                <span style="font-weight: bold;">{{ item.sodium }} gr</span>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -124,53 +128,55 @@
 </ng-template>
 
 <p-dialog [visible]="AddedMeals.length > 0 && mealPopUpVisibility === false" [position]="'bottom'"
-    [style]="{ width: '100vw' }">
-    <div style="width: 85%;">
-        <div class="d-flex fm-rubik justify-content-center mb-5" style="align-items: center;font-size: 1.143rem;">
-            <div class="mx-auto">
-                <div>
-                    <span class="fw-bold t-black">{{planOrderDetails.weeks}} </span>
-                    <span class="fw-bold t-black"> week</span>
-                    <span> plan</span>
-                </div>
-                <div>
-                    <span class="fw-bold t-black">{{planOrderDetails.mealPerDay}}</span>
-                    <span class="fw-bold t-black"> meals</span>
-                    <span> ×</span>
-                    <span class="fw-bold t-black"> {{planOrderDetails.dayPerWeek}}</span>
-                    <span class="fw-bold t-black"> days</span>
-                </div>
-                <div>
-                    <img src="../../../../assets/images/pencil.png" style="height: 14px;width: 14px;" alt="">
-                    <span class="mx-2">edit</span>
-                </div>
-            </div>
-            <div class="mx-auto">
-                <div class="mb-2">
-                    <span class="t-black" style="font-size: 3.357rem;">{{AddedMeals.length}}</span>
-                    <span class="fw-bold t-black"> meals selected</span>
-                    <i class="pi mx-1 fs08" style="cursor: pointer;font-size: 1.5rem;"
-                        (click)="showCheckoutDetails('selectedMeals')"
-                        [ngClass]="selectedMealsTrigger ? 'pi-angle-up' : 'pi-angle-down'"></i>
-                </div>
-                <div *ngIf="selectedMealsTrigger">
-                    <div *ngFor="let item of AddedMeals" class="mb-1">
-                        <span style="margin-right: 1rem;font-style: italic;">{{item.name}}</span>
-                        <span class="fm-rubik-bold" style="float: right;">×{{item.count}}</span>
+    [style]="{ width: '100%' }">
+    <div style="padding-top: 1rem;" [style]="isDesktop ? 'width: 85%;' : 'width: 95%'">
+        <div class="fm-rubik justify-content-center mb-5" style="align-items: center;font-size: 1.143rem;" [ngClass]="isMobile && (amountTrigger || selectedMealsTrigger) ? '' : 'd-flex'">
+            <div [ngClass]="isDesktop ? 'd-flex w-50' : ''">
+                <div class="mx-auto" [ngClass]="isTablet || isMobile ? 'd-flex w-100' : ''">
+                    <div [style]="!isDesktop ? 'margin-right: 1rem' : ''">
+                        <span class="fw-bold t-black">{{planOrderDetails.weeks}} </span>
+                        <span class="fw-bold t-black"> week</span>
+                        <span> plan</span>
                     </div>
-                    <p-divider></p-divider>
-                    <div class="d-flex justify-content-center" style="align-items: center;">
-                        <i class="text-black mx-3 pi pi-angle-double-left" style="font-size: 1.5rem;"></i>
-                        <div>
-                            <button class="btn fm-prompt px-3"
-                                style="background-color: #DFDFEF;font-size: 1.143rem;font-weight: bold;border-radius: 12px;">I°
-                                Week</button>
+                    <div [style]="!isDesktop ? 'margin-right: 1rem' : ''">
+                        <span class="fw-bold t-black">{{planOrderDetails.mealPerDay}}</span>
+                        <span class="fw-bold t-black"> meals</span>
+                        <span> ×</span>
+                        <span class="fw-bold t-black"> {{planOrderDetails.dayPerWeek}}</span>
+                        <span class="fw-bold t-black"> days</span>
+                    </div>
+                    <div>
+                        <img src="../../../../assets/images/pencil.png" style="height: 14px;width: 14px;" alt="">
+                        <span class="mx-2">edit</span>
+                    </div>
+                </div>
+                <div class="mx-auto web-left">
+                    <div class="mb-2">
+                        <span class="t-black" style="font-size: 3.357rem;">{{AddedMeals.length}}</span>
+                        <span class="fw-bold t-black"> meals selected</span>
+                        <i class="pi mx-1 fs08" style="cursor: pointer;font-size: 1.5rem;"
+                            (click)="showCheckoutDetails('selectedMeals')"
+                            [ngClass]="selectedMealsTrigger ? 'pi-angle-up' : 'pi-angle-down'"></i>
+                    </div>
+                    <div *ngIf="selectedMealsTrigger">
+                        <div *ngFor="let item of AddedMeals" class="mb-1">
+                            <span style="margin-right: 1rem;font-style: italic;">{{item.name}}</span>
+                            <span class="fm-rubik-bold" style="float: right;">×{{item.count}}</span>
                         </div>
-                        <i class="text-black mx-3 pi pi-angle-double-right" style="font-size: 1.5rem;"></i>
+                        <p-divider></p-divider>
+                        <div class="d-flex justify-content-center" style="align-items: center;">
+                            <i class="text-black mx-3 pi pi-angle-double-left" style="font-size: 1.5rem;"></i>
+                            <div>
+                                <button class="btn fm-prompt px-3"
+                                    style="background-color: #DFDFEF;font-size: 1.143rem;font-weight: bold;border-radius: 12px;">I°
+                                    Week</button>
+                            </div>
+                            <i class="text-black mx-3 pi pi-angle-double-right" style="font-size: 1.5rem;"></i>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="mx-auto">
+            </div>            
+            <div class="mx-auto" *ngIf="isDesktop">
                 <span style="font-style: italic;">Select 2 more</span>
                 <div>
                     <i class="pi circleIcon m-1 pi-circle-fill" style="font-size: 0.5rem;"></i>
@@ -178,8 +184,8 @@
                     <i class="pi circleIcon m-1 pi-circle" style="font-size: 0.5rem;color: #9595a1;"></i>
                 </div>
             </div>
-            <div class="mx-auto">
-                <div class="mb-2">
+            <div class="mx-auto" [ngClass]="isMobile ? 'web-right' : ''">
+                <div class="my-2">
                     <span *ngIf="!amountTrigger">You pay:</span>
                     <div>
                         <span class="fw-bold t-black">{{amountTrigger ? 'Cost details' : '£206.60'}}</span>
@@ -211,7 +217,7 @@
                     <p-divider></p-divider>
                 </div>
             </div>
-            <div>
+            <div *ngIf="!isMobile">
                 <button class="btn btn-primary mt-4 fw-bold getStartButton fm-prompt-button">
                     <span>Checkout</span>
                     <img src="../../../../../assets/images/checkout.png"
@@ -222,54 +228,58 @@
     </div>
 </p-dialog>
 
-<p-dialog [(visible)]="mealPopUpVisibility" [breakpoints]="{ '979px': '90vw' }" [styleClass]="'custom-dialog'" [style]="{ width: '40%' }"
-    (onHide)="handleBlurFilter();">
+<p-dialog [(visible)]="mealPopUpVisibility" [breakpoints]="{ '979px': '90vw' }" [styleClass]="'custom-dialog'"
+    [style]="{ width: '40%' }" (onHide)="handleBlurFilter();">
     <ng-template pTemplate="header">
         <img [src]="showInPopUp.photo_path"
             style="width: 100%;height: 300px;border-radius: 25px 25px 0 0;border: none;">
     </ng-template>
     <div class="p-3 fm-rubik">
-        <div class="fw-bold mt-3" style="font-size: 1.5rem;">
+        <div class="fw-bold mt-3 web-left" style="font-size: 1.143rem;">
             {{showInPopUp.name}}
         </div>
-        <div class="web-left mt-2" style="font-size: 1.143rem;">
+        <div  class="web-left mt-2" style="font-size: 1rem;">
             <div>
-                <span style="font-size: 1.143rem;">{{ showInPopUp.description }}</span>
+                <span style="font-size: 1rem;">{{ showInPopUp.description }}</span>
             </div>
             <div class="mt-2">
                 <span class="fw-bold">Allergens:</span>
                 <span> {{showInPopUp.alergies}}</span>
             </div>
-            <div class="row mt-2 fm-rubik plan-detail">
-                <div class="plan-detail-font-dialog col-md-2">
-                    <span>Energy:</span>
-                    <br />
-                    <span style="font-weight: bold;">{{ showInPopUp.energyKcal }} Kcal</span>
+            <div class="mt-2 fm-rubik w-100"  [ngClass]="isDesktop || isTablet ? 'd-flex' : ''">
+                <div class="d-flex" [ngClass]="isMobile ? 'w-100' : 'w-50'">
+                    <div class="plan-detail">
+                        <span>Energy:</span>
+                        <br />
+                        <span style="font-weight: bold;">{{ showInPopUp.energyKcal }} Kcal</span>
+                    </div>
+                    <div class="plan-detail">
+                        <span>Protein:</span>
+                        <br />
+                        <span style="font-weight: bold;">{{ showInPopUp.protein }} gr</span>
+                    </div>
+                    <div class="plan-detail">
+                        <span>Carbs:</span>
+                        <br />
+                        <span style="font-weight: bold;">{{ showInPopUp.availableCarbohydrate }} gr</span>
+                    </div>
                 </div>
-                <div class="plan-detail-font-dialog col-md-2">
-                    <span>Protein:</span>
-                    <br />
-                    <span style="font-weight: bold;">{{ showInPopUp.protein }} gr</span>
-                </div>
-                <div class="plan-detail-font-dialog col-md-2">
-                    <span>Carbs:</span>
-                    <br />
-                    <span style="font-weight: bold;">{{ showInPopUp.availableCarbohydrate }} gr</span>
-                </div>
-                <div class="plan-detail-font-dialog col-md-2">
-                    <span>Sugar:</span>
-                    <br />
-                    <span style="font-weight: bold;">{{ showInPopUp.sugars }} gr</span>
-                </div>
-                <div class="plan-detail-font-dialog col-md-2">
-                    <span>Fats:</span>
-                    <br />
-                    <span style="font-weight: bold;">{{ showInPopUp.fat }} gr</span>
-                </div>
-                <div class="plan-detail-font-dialog col-md-2">
-                    <span>Salts:</span>
-                    <br />
-                    <span style="font-weight: bold;">{{ showInPopUp.sodium }} gr</span>
+                <div class="d-flex" [ngClass]="isMobile ? 'w-100 mt-4' : 'w-50'">
+                    <div class="plan-detail">
+                        <span>Sugar:</span>
+                        <br />
+                        <span style="font-weight: bold;">{{ showInPopUp.sugars }} gr</span>
+                    </div>
+                    <div class="plan-detail">
+                        <span>Fats:</span>
+                        <br />
+                        <span style="font-weight: bold;">{{ showInPopUp.fat }} gr</span>
+                    </div>
+                    <div class="plan-detail">
+                        <span>Salts:</span>
+                        <br />
+                        <span style="font-weight: bold;">{{ showInPopUp.sodium }} gr</span>
+                    </div>
                 </div>
             </div>
         </div>
@@ -290,7 +300,8 @@
             </div>
 
             <button class="btn btn-primary fw-bold fm-prompt btn-add-to-cart py-2"
-                style="float: right;font-size: 1rem;width: 50%;position: absolute;right:0;" (click)="addToCart(showInPopUp.id)">Add</button>
+                style="float: right;font-size: 1rem;width: 50%;position: absolute;right:0;"
+                (click)="addToCart(showInPopUp.id)">Add</button>
         </div>
     </div>
 </p-dialog>

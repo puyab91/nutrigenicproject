@@ -233,3 +233,31 @@ ul li::marker {
     width: 40%;
   }
 }
+
+.make-own-field-color{
+  color: #0F0F1F;
+  font-weight: bold;
+}
+.make-own-unit-color{
+  color: #5D5D66;
+}
+
+::ng-deep .p-dropdown .p-dropdown-label.p-placeholder {
+  color: #0F0F1F;
+  font-weight: bold;
+}
+::ng-deep .p-dropdown .p-dropdown-label {
+  color: #0F0F1F;
+  font-weight: bold;
+}
+
+::ng-deep .p-dropdown-panel .p-dropdown-items .p-dropdown-item {
+  margin: 0;
+  padding: 0.75rem 1.25rem;
+  border: 0 none;
+  color: #0F0F1F;
+  background: transparent;
+  transition: box-shadow 0.2s;
+  border-radius: 0;
+  font-weight: bold;
+}

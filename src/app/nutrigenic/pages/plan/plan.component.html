@@ -269,40 +269,40 @@
     </ng-template>
     <p-divider></p-divider>
     <div class="mt-3 p-4">
-        <div class="mb-5 justify-content-center" [ngClass]="isDesktop || isTablet ? 'd-flex' : ''">
+        <div class="mb-5 justify-content-center fm-rubik" [ngClass]="isDesktop || isTablet ? 'd-flex' : ''">
             <div class="mx-3 own-meal-label-container">
-                <span class="mx-3 own-meal-label">Protein</span>
+                <span class="mx-3 own-meal-label make-own-field-color">Protein</span>
                 <p-dropdown [options]="protein" optionLabel="value" [showClear]="true"
                     placeholder="Pick an option"></p-dropdown>
             </div>
             <div class="mx-3" [ngClass]="isMobile ? 'mt-3' : ''">
-                <span class="mx-3">Amount</span>
+                <span class="mx-3 make-own-field-color">Amount</span>
                 <p-dropdown [options]="amount" optionLabel="value" [showClear]="true"></p-dropdown>
-                <span class="mx-2">Grams</span>
+                <span class="mx-2 make-own-unit-color">Grams</span>
             </div>
         </div>
-        <div class="my-5 justify-content-center" [ngClass]="isDesktop || isTablet ? 'd-flex' : ''">
+        <div class="my-5 justify-content-center fm-rubik" [ngClass]="isDesktop || isTablet ? 'd-flex' : ''">
             <div class="mx-3 own-meal-label-container">
-                <span class="mx-3 own-meal-label">Carbs</span>
+                <span class="mx-3 own-meal-label make-own-field-color">Carbs</span>
                 <p-dropdown [options]="carbs" optionLabel="value" [showClear]="true"
                     placeholder="Pick an option"></p-dropdown>
             </div>
             <div class="mx-3" [ngClass]="isMobile ? 'mt-3' : ''">
-                <span class="mx-3">Amount</span>
+                <span class="mx-3 make-own-field-color">Amount</span>
                 <p-dropdown [options]="amount" optionLabel="value" [showClear]="true"></p-dropdown>
-                <span class="mx-2">Grams</span>
+                <span class="mx-2 make-own-unit-color">Grams</span>
             </div>
         </div>
-        <div class="my-5 justify-content-center" [ngClass]="isDesktop || isTablet ? 'd-flex' : ''">
+        <div class="my-5 justify-content-center fm-rubik" [ngClass]="isDesktop || isTablet ? 'd-flex' : ''">
             <div class="mx-3 own-meal-label-container">
-                <span class="mx-3 own-meal-label">Veg</span>
+                <span class="mx-3 own-meal-label make-own-field-color">Veg</span>
                 <p-dropdown [options]="veg" optionLabel="value" [showClear]="true"
                     placeholder="Pick an option"></p-dropdown>
             </div>
             <div class="mx-3" [ngClass]="isMobile ? 'mt-3' : ''">
-                <span class="mx-3">Amount</span>
+                <span class="mx-3 make-own-field-color">Amount</span>
                 <p-dropdown [options]="amount" optionLabel="value" [showClear]="true"></p-dropdown>
-                <span class="mx-2">Grams</span>
+                <span class="mx-2 make-own-unit-color">Grams</span>
             </div>
         </div>
         <p-divider></p-divider>

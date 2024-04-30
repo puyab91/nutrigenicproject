@@ -4,6 +4,7 @@
 
 :host ::ng-deep .p-dialog-content {
   background-color: #DFDFEF;
+  text-align: -webkit-center;
 }
 
 :host ::ng-deep .custom-dialog .p-dialog-content {
@@ -160,11 +161,13 @@
   color: #5D5D66;
 }
 
-.plan-detail-font {
+.plan-detail {
+  margin-right: auto;
+  margin-left: auto;
   font-size: 0.857rem;
 }
 
 .plan-detail-font-dialog {
-  font-size: 1.143rem;
+  font-size: 1rem;
   margin-right: auto;
 }
